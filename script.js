@@ -547,79 +547,88 @@ document.addEventListener('DOMContentLoaded', () => {
 
   obs.observe(document.getElementById('editor-container'));
 });
-//---Dragging box video animation---//
-document.addEventListener('DOMContentLoaded', () => {
-            const videoOverlayStates = [
-                document.getElementById('video-overlay-0'), // Knowledge at Your Fingertip
-                document.getElementById('video-overlay-1'), // Collaborate
-                document.getElementById('video-overlay-2')  // Version History
-            ];
-            const userPreviewCircle = document.getElementById('user-preview-circle');
-
-            // Scroll thresholds based on the user's screenshot analysis
-            // These values are approximate and can be adjusted
-            const threshold1 = 950; // Corresponds to 'top-[950]' for the first animation
-            const threshold2 = 1830; // Corresponds to 'top-[1830px]' for the second animation
-
-            let currentState = -1; // -1 means initial state, 0, 1, 2 for the actual states
-
-            function updateVideoOverlayContent() {
-                const scrollY = window.scrollY;
-                let newState = 0; // Default to the first state
-
-                if (scrollY >= threshold2) {
-                    newState = 2; // Version History
-                } else if (scrollY >= threshold1) {
-                    newState = 1; // Collaborate
-                } else {
-                    newState = 0; // Knowledge at Your Fingertip
-                }
-
-                if (newState !== currentState) {
-                    // Hide current state
-                    if (currentState !== -1) { // Don't try to hide if it's the initial load
-                        videoOverlayStates[currentState].classList.remove('opacity-100');
-                        videoOverlayStates[currentState].classList.add('opacity-0');
-                        // Remove animation class if previous state was video-overlay-1
-                        if (currentState === 1) {
-                            videoOverlayStates[currentState].classList.remove('video-overlay-active');
-                        }
-                    }
-
-                    // Show new state
-                    videoOverlayStates[newState].classList.remove('opacity-0');
-                    videoOverlayStates[newState].classList.add('opacity-100');
-
-                    // Add animation class if new state is video-overlay-1
-                    if (newState === 1) {
-                        videoOverlayStates[newState].classList.add('video-overlay-active');
-                    }
-
-                    currentState = newState;
-                }
+//---Dragging pin animation---//
+const draggableBox = document.getElementById('draggablePinWrapper');
+const draggableContainer = document.getElementById('draggableContainer');
+const snapTargetRow = document.getElementById('snap-target-row');
+let isDragging = false;
+let offsetX, offsetY;
+function getRect(element) {
+return element.getBoundingClientRect();
+        }
+function snapToTargetRowAndMaintainHorizontalPosition() {
+const containerRect = getRect(draggableContainer);
+const boxRect = getRect(draggableBox);
+if (!snapTargetRow) {
+console.error("Snap target row not found.");
+return;
+}
+const targetRowRect = getRect(snapTargetRow);
+const targetY = (targetRowRect.top + targetRowRect.height / 2) - containerRect.top - (boxRect.height / 2);
+const transformMatrix = new WebKitCSSMatrix(window.getComputedStyle(draggableBox).transform);
+let targetX = transformMatrix.m41;
+targetX = Math.max(0, Math.min(targetX, containerRect.width - boxRect.width));
+draggableBox.style.transform = `translate(${targetX}px, ${targetY}px)`;
+draggableBox.style.left = '0px';
+draggableBox.style.top = '0px';
+        }
+draggableBox.addEventListener('mousedown', (e) => {
+isDragging = true;
+draggableBox.classList.add('dragging');
+const boxRect = getRect(draggableBox);
+offsetX = e.clientX - boxRect.left;
+offsetY = e.clientY - boxRect.top;
+        });
+draggableContainer.addEventListener('mousemove', (e) => {
+if (!isDragging) return;
+const containerRect = getRect(draggableContainer);
+let newX = e.clientX - offsetX - containerRect.left;
+let newY = e.clientY - offsetY - containerRect.top;
+const boxRect = getRect(draggableBox);
+newX = Math.max(0, Math.min(newX, containerRect.width - boxRect.width));
+newY = Math.max(0, Math.min(newY, containerRect.height - boxRect.height));
+draggableBox.style.transform = `translate(${newX}px, ${newY}px)`;
+        });
+draggableContainer.addEventListener('mouseup', () => {
+if (isDragging) {
+isDragging = false;
+draggableBox.classList.remove('dragging');
+snapToTargetRowAndMaintainHorizontalPosition();
             }
-
-            function updateUserPreviewCirclePosition() {
-                const scrollY = window.scrollY;
-                const initialRight = 32; // Tailwind 'right-8'
-                const initialTop = 64; // Tailwind 'top-16'
-
-                const newTop = initialTop - (scrollY * 0.1);
-                userPreviewCircle.style.top = `${Math.max(16, newTop)}px`;
+        });
+draggableBox.addEventListener('touchstart', (e) => {
+isDragging = true;
+draggableBox.classList.add('dragging');
+e.preventDefault();
+const touch = e.touches[0];
+const boxRect = getRect(draggableBox);
+offsetX = touch.clientX - boxRect.left;
+offsetY = touch.clientY - boxRect.top;
+        });
+draggableContainer.addEventListener('touchmove', (e) => {
+if (!isDragging) return;
+e.preventDefault();
+const touch = e.touches[0];
+const containerRect = getRect(draggableContainer);
+let newX = touch.clientX - offsetX - containerRect.left;
+let newY = touch.clientY - offsetY - containerRect.top;
+const boxRect = getRect(draggableBox);
+newX = Math.max(0, Math.min(newX, containerRect.width - boxRect.width));
+newY = Math.max(0, Math.min(newY, containerRect.height - boxRect.height));
+draggableBox.style.transform = `translate(${newX}px, ${newY}px)`;
+        });
+draggableContainer.addEventListener('touchend', () => {
+if (isDragging) {
+isDragging = false;
+draggableBox.classList.remove('dragging');
+snapToTargetRowAndMaintainHorizontalPosition();
             }
+        });
+window.onload = () => {
+            snapToTargetRowAndMaintainHorizontalPosition();
+        };
 
-            // Initial call to set the correct state on page load
-            updateVideoOverlayContent();
-            updateUserPreviewCirclePosition();
-
-            // Add scroll event listener
-            window.addEventListener('scroll', () => {
-                updateVideoOverlayContent();
-                updateUserPreviewCirclePosition();
-            });
-
-            // Handle window resize to ensure responsiveness
-            window.addEventListener('resize', () => {
-                updateUserPreviewCirclePosition();
-            });
+        // Recalculate snap position on window resize
+        window.addEventListener('resize', () => {
+            snapToTargetRowAndMaintainHorizontalPosition();
         });
