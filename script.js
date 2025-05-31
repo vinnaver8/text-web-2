@@ -547,4 +547,79 @@ document.addEventListener('DOMContentLoaded', () => {
 
   obs.observe(document.getElementById('editor-container'));
 });
-//---Dragging animation---//
+//---Dragging box video animation---//
+document.addEventListener('DOMContentLoaded', () => {
+            const videoOverlayStates = [
+                document.getElementById('video-overlay-0'), // Knowledge at Your Fingertip
+                document.getElementById('video-overlay-1'), // Collaborate
+                document.getElementById('video-overlay-2')  // Version History
+            ];
+            const userPreviewCircle = document.getElementById('user-preview-circle');
+
+            // Scroll thresholds based on the user's screenshot analysis
+            // These values are approximate and can be adjusted
+            const threshold1 = 950; // Corresponds to 'top-[950]' for the first animation
+            const threshold2 = 1830; // Corresponds to 'top-[1830px]' for the second animation
+
+            let currentState = -1; // -1 means initial state, 0, 1, 2 for the actual states
+
+            function updateVideoOverlayContent() {
+                const scrollY = window.scrollY;
+                let newState = 0; // Default to the first state
+
+                if (scrollY >= threshold2) {
+                    newState = 2; // Version History
+                } else if (scrollY >= threshold1) {
+                    newState = 1; // Collaborate
+                } else {
+                    newState = 0; // Knowledge at Your Fingertip
+                }
+
+                if (newState !== currentState) {
+                    // Hide current state
+                    if (currentState !== -1) { // Don't try to hide if it's the initial load
+                        videoOverlayStates[currentState].classList.remove('opacity-100');
+                        videoOverlayStates[currentState].classList.add('opacity-0');
+                        // Remove animation class if previous state was video-overlay-1
+                        if (currentState === 1) {
+                            videoOverlayStates[currentState].classList.remove('video-overlay-active');
+                        }
+                    }
+
+                    // Show new state
+                    videoOverlayStates[newState].classList.remove('opacity-0');
+                    videoOverlayStates[newState].classList.add('opacity-100');
+
+                    // Add animation class if new state is video-overlay-1
+                    if (newState === 1) {
+                        videoOverlayStates[newState].classList.add('video-overlay-active');
+                    }
+
+                    currentState = newState;
+                }
+            }
+
+            function updateUserPreviewCirclePosition() {
+                const scrollY = window.scrollY;
+                const initialRight = 32; // Tailwind 'right-8'
+                const initialTop = 64; // Tailwind 'top-16'
+
+                const newTop = initialTop - (scrollY * 0.1);
+                userPreviewCircle.style.top = `${Math.max(16, newTop)}px`;
+            }
+
+            // Initial call to set the correct state on page load
+            updateVideoOverlayContent();
+            updateUserPreviewCirclePosition();
+
+            // Add scroll event listener
+            window.addEventListener('scroll', () => {
+                updateVideoOverlayContent();
+                updateUserPreviewCirclePosition();
+            });
+
+            // Handle window resize to ensure responsiveness
+            window.addEventListener('resize', () => {
+                updateUserPreviewCirclePosition();
+            });
+        });
