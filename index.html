@@ -1,344 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>INDOX AI - Metabrain Section</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    /* Custom styles for smooth transitions and font */
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden; /* Prevent horizontal scrolling */
-      background-color: #0D0D0D; /* Body background */
-      color: #e0e0e0; /* Lighter text for contrast */
-    }
-    .video-overlay-content {
-      transition: opacity 0.5s ease-in-out;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Video Overlay Layout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* General transition for video overlay content */
+        .video-overlay-content {
+            transition: opacity 0.5s ease-in-out;
+        }
+        /* Smooth movement for the user preview circle */
+        .user-preview-circle {
+            transition: transform 0.3s ease-out; 
+        }
 
-    /* Arrow animation styles for video overlay */
-    .video-overlay-content .arrow-container {
-      position: absolute;
-      top: 50%; /* Center vertically within the overlay */
-      left: 50%; /* Center horizontally within the overlay */
-      transform: translate(-50%, -50%); /* Adjust for its own size */
-      width: 150px; /* Fixed width for container */
-      height: 50px; /* Height to contain arrows */
-      pointer-events: none;
-      overflow: hidden;
-    }
-    .video-overlay-content .arrow-svg {
-      position: absolute;
-      fill: none;
-      stroke: #EF4444; /* Red color for arrows */
-      stroke-width: 2;
-      opacity: 0; /* Initially hidden */
-      transition: opacity 0.3s ease-in-out;
-      top: 50%; /* Center vertically within its container */
-      transform: translateY(-50%); /* Adjust for its own height */
-    }
+        /* Arrow animation styles for video overlay */
+        .video-overlay-content .arrow-container {
+            position: absolute;
+            top: 50%; /* Center vertically within the overlay */
+            left: 70%; /* Center horizontally within the overlay */
+            transform: translate(-50%, -50%); /* Adjust for its own size */
+            width: 100px; /* A fixed width for the container to define the central area */
+            height: 50px; /* Height to contain arrows */
+            pointer-events: none; /* Allow clicks to pass through */
+            overflow: hidden;
+        }
 
-    /* Keyframes for arrow animation */
-    @keyframes arrowMoveLeft {
-      0% {
-        transform: translate(0px, -50%) scale(0.8);
-        opacity: 0;
-      }
-      20% {
-        opacity: 1;
-      }
-      100% {
-        transform: translate(-70px, -50%) scale(1);
-        opacity: 1;
-      }
-    }
-    @keyframes arrowMoveRight {
-      0% {
-        transform: translate(0px, -50%) scale(0.8);
-        opacity: 0;
-      }
-      20% {
-        opacity: 1;
-      }
-      100% {
-        transform: translate(70px, -50%) scale(1);
-        opacity: 1;
-      }
-    }
-    /* Apply animation when active */
-    .video-overlay-active .arrow-left {
-      animation: arrowMoveLeft 1s forwards;
-      left: 50%; /* Start from center of arrow-container */
-    }
-    .video-overlay-active .arrow-right {
-      animation: arrowMoveRight 1s forwards;
-      left: 50%; /* Start from center of arrow-container */
-    }
+        .video-overlay-content .arrow-svg {
+            position: absolute;
+            fill: none;
+            stroke: #EF4444; /* Red color for arrows */
+            stroke-width: 2;
+            opacity: 0; /* Initially hidden */
+            transition: opacity 0.3s ease-in-out;
+            top: 50%; /* Center vertically within its container */
+            transform: translateY(-50%); /* Adjust for its own height */
+        }
 
-    /* Custom styles for Metabrain section elements */
-    #toolbar {
-      background-color: #1E1E1E;
-      transition: opacity 0.3s ease-in-out;
-    }
-    #editor {
-      color: white; /* Ensure text is visible on dark background */
-    }
-    #highlight-overlay span {
-      background: linear-gradient(90deg, #ffeba4 50%, transparent 50%) 100% 0 / 200% 100% no-repeat;
-      background-position: calc((1 - var(--highlight-position)) * 100%) 1;
-    }
-    #cursor-overlay span {
-      background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAxMCAzNiI+PHBhdGggZmlsbD0iIzMwMzIzNiIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNNCAyNi4xQTUuMDAyIDUuMDAyIDAgMCAwIDUgMzZhNSA1IDAgMCAwIDEtOS45VjBINHoiIGNsaXAtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==) 100% 0 no-repeat;
-      background-position: calc(var(--cursor-position) * 100%) 8px;
-    }
-    .text-orange {
-      color: orange; /* Specific color for "powerful features" */
-    }
-  </style>
+        /* Keyframes for arrow animation */
+        @keyframes arrowMoveLeft {
+            0% {
+                transform: translate(0px, -50%) scale(0.8); /* Start at center of container */
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-70px, -50%) scale(1); /* Move left from center */
+                opacity: 1;
+            }
+        }
+
+        @keyframes arrowMoveRight {
+            0% {
+                transform: translate(0px, -50%) scale(0.8); /* Start at center of container */
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(70px, -50%) scale(1); /* Move right from center */
+                opacity: 1;
+            }
+        }
+
+        /* Apply animation when active */
+        .video-overlay-active .arrow-left {
+            animation: arrowMoveLeft 1s forwards;
+            left: 50%; /* Start from center of arrow-container */
+        }
+
+        .video-overlay-active .arrow-right {
+            animation: arrowMoveRight 1s forwards;
+            left: 50%; /* Start from center of arrow-container */
+        }
+    </style>
 </head>
-<body class="bg-[#0D0D0D] text-white min-h-screen font-sans antialiased">
-  <div class="relative flex min-h-screen bg-[#0D0D0D]">
-    <section id="metabrain-section" class="metabrain relative flex min-h-[1700px] overflow-hidden pt-32 bg-[#0D0D0D] rounded-xl shadow-md p-6 mb-8 text-gray-100 w-full">
-      <!-- Left video card: sticky and vertically centered -->
-      <div
-        id="metabrain-video-panel"
-        class="sticky top-1/2 transform -translate-y-1/2 h-[360px] w-[300px] bg-black rounded-xl shadow-lg overflow-hidden aspect-video z-10"
-      >
-        <video class="absolute inset-0 w-full h-full object-cover" autoplay loop muted playsinline>
-          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+<body class="bg-[#0D0D0D] text-gray-800">
 
-        <div
-          id="video-overlay-0"
-          class="video-overlay-content opacity-100 absolute inset-0 flex flex-col justify-center items-center p-6 text-white bg-black bg-opacity-50"
-        >
-          <h2 class="text-xl font-semibold mb-4 text-white text-center">Knowledge at Your Fingertip</h2>
-          <p class="text-gray-200 text-sm text-center">
-            Huly offers a wide range of features to create and manage your collaborative tools and boost team efficiency.
-          </p>
-          <div class="mt-4 flex items-center justify-center space-x-2">
-            <span class="inline-block bg-blue-400 text-blue-900 text-xs px-2 py-1 rounded-full">John S.</span>
-            <span class="inline-block bg-purple-400 text-purple-900 text-xs px-2 py-1 rounded-full">Lilianna</span>
-          </div>
-        </div>
+    <div id="video-card-container" class="fixed left-8 z-10 w-[300px] h-[300px]" style="top: 50%; transform: translateY(-50%);">
+        <div id="left-video-panel" class="relative bg-black rounded-xl shadow-lg w-full h-full overflow-hidden">
+            <video class="absolute inset-0 w-full h-full object-cover" autoplay loop muted playsinline>
+                <source src="holographicgradient.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
 
-        <div
-          id="video-overlay-1"
-          class="video-overlay-content opacity-0 absolute inset-0 flex flex-col justify-center items-center p-6 text-white bg-black bg-opacity-50"
-        >
-          <div class="relative w-full h-full flex flex-col justify-center items-center">
-            <div class="arrow-container">
-              <svg class="arrow-svg arrow-left" width="24" height="24" viewBox="0 0 24 24">
-                <path d="M15 18l-6-6 6-6"></path>
-              </svg>
-              <svg class="arrow-svg arrow-right" width="24" height="24" viewBox="0 0 24 24">
-                <path d="M9 18l6-6-6-6"></path>
-              </svg>
+            <div id="video-overlay-0" class="video-overlay-content opacity-100 absolute inset-0 flex flex-col justify-center items-center p-6 text-white bg-black bg-opacity-50">
+                <h2 class="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-red-500 to-pink-500">
+                    Knowledge at <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-red-500 to-pink-500">Fingertips</span>
+                </h2>
+                <p class="text-gray-200 text-sm text-center">
+                    Huly offers a wide range of features to create and manage your collaborative tools and boost team efficiency.
+                </p>
+                <div class="mt-4 flex items-center justify-center space-x-2">
+                    <span class="inline-block bg-blue-400 text-blue-900 text-xs px-2 py-1 rounded-full">John S.</span>
+                    <span class="inline-block bg-purple-400 text-purple-900 text-xs px-2 py-1 rounded-full">Lilianna</span>
+                </div>
             </div>
-            <h2 class="text-xl font-semibold mb-4 text-white z-10">Team</h2>
-            <p class="text-gray-200 text-sm text-center z-10">
-              Enhance teamwork with powerful real-time collaboration features.
-            </p>
-            <div class="mt-4 flex items-center justify-center space-x-2 z-10">
-              <span class="inline-block bg-blue-400 text-blue-900 text-xs px-2 py-1 rounded-full">John S.</span>
-              <span class="inline-block bg-purple-400 text-purple-900 text-xs px-2 py-1 rounded-full">Lilianna</span>
+
+            <div id="video-overlay-1" class="video-overlay-content opacity-0 absolute inset-0 flex flex-col justify-center items-center p-6 text-white bg-black bg-opacity-50">
+                <div class="relative w-full h-full flex flex-col justify-center items-center">
+                    <div class="arrow-container">
+                        <svg class="arrow-svg arrow-left" width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M15 18l-6-6 6-6"></path>
+                        </svg>
+                        <svg class="arrow-svg arrow-right" width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M9 18l6-6-6-6"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-xl font-semibold mb-4 text-white z-10">Team</h2>
+                    <p class="text-gray-200 text-sm text-center z-10">
+                        Enhance teamwork with powerful real-time collaboration features.
+                    </p>
+                    <div class="mt-4 flex items-center justify-center space-x-2 z-10">
+                        <span class="inline-block bg-blue-400 text-blue-900 text-xs px-2 py-1 rounded-full">John S.</span>
+                        <span class="inline-block bg-purple-400 text-purple-900 text-xs px-2 py-1 rounded-full">Lilianna</span>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Right section: main content flows alongside the sticky video card -->
-      <div class="flex-1 ml-[320px]">
-        <div id="draggableContainer" class="relative md:absolute md:w-[570px] md:top-[15px] md:left-[360px] md:text-left text-80 text-center w-full md:w-auto overflow-visible pt-32">
-          <h1 class="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-red-500 to-pink-500">
-            Knowledge at
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-red-500 to-pink-500">
-              Fingertips
-            </span>
-          </h1>
-          <p id="snap-target-row" class="max-w-xl mx-auto md:mx-0 mb-12" style="color: #A0A0A0;">
-            Huly offers a wide range of features to create and manage your project documentation. Huly's suite of collaborative editing tools boosts team efficiency.
-          </p>
-          <div id="main-wrapper">
-            <div
-              id="draggablePinWrapper"
-              class="absolute flex flex-col items-start cursor-grab active:cursor-grabbing select-none float-pin md:top-[20px] md:left-[100px]"
-              style="left: 1px; top: -20px;"
-            >
-              <div class="relative w-[66px] h-[66px]">
-                <img
-                  id="draggablebox"
-                  src="https://placehold.co/66x66/007BFF/FFFFFF?text=PIN"
-                  alt="pin"
-                  class="relative w-full h-full object-contain pointer-events-none [filter:drop-shadow(0_0_10px_rgba(0,123,255,0.8))]"
-                />
-              </div>
+            <div id="video-overlay-2" class="video-overlay-content opacity-0 absolute inset-0 flex flex-col justify-center items-center p-6 text-white bg-black bg-opacity-50">
+                <h2 class="text-xl font-semibold mb-4 text-white text-center">Version History</h2>
+                <p class="text-gray-200 text-sm text-center">
+                    Track every edit effortlessly, and never lose a single change.
+                </p>
+                <div class="mt-4 text-gray-300 text-xs">
+                    <p>Finn Hayes - Today, 3:18 PM</p>
+                    <p>Zoe Quinn - Today, 1:50 PM</p>
+                    <p>Ava Neal - Yesterday, 2:55 PM</p>
+                </div>
             </div>
-          </div>
-          <div class="relative">
-            <div
-              id="toolbar"
-              class="absolute md:absolute md:top-[-5px] md:left-[0px] z-50 mx-auto flex h-20 w-fit min-w-[330px]
-                     rounded-md px-1.5 shadow-[0px_10px_20px_0px_#00000080] items-center
-                     lg:-top-10 lg:left-11
-                     md:-top-8 md:left-7 md:h-[30px] md:min-w-[218px] md:px-1
-                     sm:-top-6 sm:left-0 sm:h-[27px] sm:min-w-[190px]"
-              style="background-color: #1E1E1E;"
-            >
-              <button
-                id="btn-link"
-                class="transition-all duration-200 flex h-7 cursor-pointer items-center rounded-md bg-blue-600 pl-2 pr-3 text-sm tracking-tight text-white md:h-[22px] md:px-1.5 md:text-xs sm:text-xs"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 mr-1 md:h-3 md:w-3">
-                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07L10 3.46"></path>
-                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07L14 20.54"></path>
-                </svg>
-                <span>Link</span>
-              </button>
+        </div>
+    </div>
 
-              <button id="btn-bold" class="ml-1.5 transition-all duration-200 p-1 rounded-md hover:bg-gray-700">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24"
-                  class="h-5 w-5 md:h-4 md:w-4 fill-gray-400">
-                  <path d="M8.176 16.331V7.621h4.756q1.31 0 2.186.389t1.317 1.079q.44.684.44 1.577 0 .696-.278 1.224-.277.522-.765.859-.482.33-1.102.47v.115q.678.03 1.27.383.597.354.969.992.37.633.37 1.508 0 .945-.469 1.688-.465.737-1.375 1.166t-2.244.429zm2.511-2.053h2.047q1.05 0 1.532-.4.48-.406.481-1.08 0-.492-.238-.87a1.6 1.6 0 0 0-.678-.591q-.435-.215-1.039-.215h-2.105zm0-4.855h1.862q.517 0 .916-.18.406-.186.638-.522.238-.336.238-.806 0-.644-.458-1.038-.452-.395-1.288-.395h-1.908z"></path>
-                </svg>
-                <span class="sr-only">Bold</span>
-              </button>
+    <section id="section-1" class="relative min-h-[800px] bg-gray-900 text-white flex items-center justify-center">
+        <h2 class="text-4xl font-bold">Section 1: Introduction</h2>
+    </section>
 
-              <button id="btn-italic" class="ml-1.5 transition-all duration-200 p-1 rounded-md hover:bg-gray-700">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24"
-                  class="h-5 w-5 md:h-4 md:w-4 fill-gray-400">
-                  <path d="M12.193 6H17V7.556h-2.585l-3.328 9.888H7V18h5.807V16.444h2.586L12.068 6z"></path>
-                </svg>
-                <span class="sr-only">Italic</span>
-              </button>
-
-              <button id="btn-underline" class="ml-1.5 transition-all duration-200 p-1 rounded-md hover:bg-gray-700">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24"
-                  class="h-5 w-5 md:h-4 md:w-4 fill-gray-400">
-                  <path d="M12 17.5q-2.062 0-3.312-1.031-1.25-1.03-1.25-2.875V5h2v8.625q0 1.125.438 1.625.437.5 1.187.5.75 0 1.188-.5.437-.5.437-1.625V5h2v8.625q0 1.844-1.25 2.875-1.25 1.031-3.312 1.031zM4 20h16v2H4z"></path>
-                </svg>
-                <span class="sr-only">Underline</span>
-              </button>
-
-              <button id="btn-strike" class="ml-1.5 transition-all duration-200 p-1 rounded-md hover:bg-gray-700">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24"
-                  class="h-5 w-5 md:h-4 md:w-4 fill-gray-400">
-                  <path d="M12 10.5q-2.062 0-3.312-1.031-1.25-1.03-1.25-2.875V5h2v1.625q0 1.125.438 1.625.437.5 1.187.5.75 0 1.188-.5.437-.5.437-1.625V5h2v1.625q0 1.844-1.25 2.875-1.25 1.031-3.312 1.031zM4 11h16v2H4zM12 17.5q-2.062 0-3.312-1.031-1.25-1.03-1.25-2.875V12h2v1.625q0 1.125.438 1.625.437.5 1.187.5.75 0 1.188-.5.437-.5.437-1.625V12h2v1.625q0 1.844-1.25 2.875-1.25 1.031-3.312 1.031z"></path>
-                </svg>
-                <span class="sr-only">Strikethrough</span>
-              </button>
-
-              <span class="ml-2 h-5 w-px bg-gray-600 md:h-4"></span>
-
-              <button class="ml-2.5 md:ml-1.5 sm:ml-1 p-1 rounded-md hover:bg-gray-700">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24"
-                  class="h-5 w-5 md:h-4 md:w-4 fill-gray-400">
-                  <path d="M12 12c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3zm0 2c-2.671 0-8 1.348-8 4v2h16v-2c0-2.652-5.329-4-8-4z"></path>
-                </svg>
-                <span class="sr-only">Mention</span>
-              </button>
-
-              <button id="btn-highlight" class="ml-2 md:ml-1.5 p-1 rounded-md hover:bg-gray-700">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24"
-                  class="h-5 w-5 md:h-4 md:w-4 fill-gray-400">
-                  <path d="m20.707 5.826-3.535-3.533a.999.999 0 0 0-1.408-.006L7.096 10.82a1.01 1.01 0 0 0-.273.488l-1.024 4.437L4 18h2.828l1.142-1.129 3.588-.828c.18-.042.345-.133.477-.262l8.667-8.535a1 1 0 0 0 .005-1.42zm-9.369 7.833-2.121-2.12 7.243-7.131 2.12 2.12-7.242 7.131zM4 20h16v2H4z"></path>
-                </svg>
-                <span class="sr-only">Toggle Highlight</span>
-              </button>
+    <section id="section-2" class="relative min-h-[1500px] bg-gray-800 text-white">
+        <div class="p-8">
+            <h2 class="text-4xl font-bold mb-4">Section 2: Interactive Content</h2>
+            <p class="text-lg">This is where the video card will be active and follow your scroll, staying vertically centered.</p>
+            <div class="h-[1000px] flex items-center justify-center text-gray-400">
+                <p>Scroll down to see the card move!</p>
             </div>
-          </div>
         </div>
+    </section>
 
-        <div class="relative mt-12 md:absolute md:top-[330px] md:left-[365px] md:w-[570px]" id="editor-container">
-          <div
-            id="editor"
-            contenteditable="true"
-            class="relative z-10 whitespace-pre-wrap leading-relaxed font-normal p-2 focus:outline-none"
-          >
-            <span class="font-semibold">Documents in Huly</span> can be used for sharing reference materials among team members, collaborating on plans and roadmaps, storing meeting notes and assigning action items.
-          </div>
-          <div
-            id="highlight-overlay"
-            class="absolute top-0 scale-[1.02] inset-0 opacity-0 z-0 transition-opacity duration-300 pointer-events-none md:absolute md:w-[570px] md:h-[10px]"
-            style="--highlight-position: 1"
-          >
-            <span
-              class="pointer-events-none bg-no-repeat text-transparent whitespace-pre-wrap leading-relaxed block p-2"
-              style="background: linear-gradient(90deg, #ffeba4 50%, transparent 50%) 100% 0 / 200% 100% no-repeat;
-                     background-position: calc((1 - var(--highlight-position)) * 100%) 1"
-            >
-              <span class="font-semibold">Documents in Huly</span> can be used for sharing reference materials among team members, collaborating on plans and roadmaps, storing meeting notes and assigning action items.
-            </span>
-          </div>
-          <div
-            id="cursor-overlay"
-            class="relative absolute w-full scale-[1] opacity-0 transition-opacity duration-300 pointer-events-none md:absolute md:top-[330px] md:right-[30px]"
-            style="--cursor-position: 0"
-          >
-            <span
-              class="pointer-events-none md:h-[10px] !bg-[length:10px_36px] bg-no-repeat text-transparent md:!bg-[length:8px_26px] whitespace-pre-wrap leading-relaxed block p-2 md:pr-2 sm:!bg-[length:7px_25px]"
-              style="background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAxMCAzNiI+PHBhdGggZmlsbD0iIzMwMzIzNiIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNNCAyNi4xQTUuMDAyIDUuMDAyIDAgMCAwIDUgMzZhNSA1IDAgMCAwIDEtOS45VjBINHoiIGNsaXAtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==) 100% 0 no-repeat;
-                     background-position: calc(var(--cursor-position) * 100%) 8px"
-              aria-hidden="true"
-            >
-              <span class="font-semibold">Documents in Huly</span> can be used for sharing reference materials among team members, collaborating on plans and roadmaps, storing meeting notes and assigning action items.
-            </span>
-          </div>
-        </div>
+    <section id="section-3" class="relative min-h-[800px] bg-gray-900 text-white flex items-center justify-center">
+        <h2 class="text-4xl font-bold">Section 3: Conclusion</h2>
+    </section>
 
-        <div class="relative flex items-center top-0 justify-center md:absolute md:top-[520px] md:left-[365px]">
-          <img
-            src="https://placehold.co/570x450/333333/FFFFFF?text=Board+Image"
-            alt="chat"
-            class="w-[360px] h-[240px] md:w-[570px] md:h-[450px] rounded-[20px]"
-          />
-        </div>
+    <div class="relative flex min-h-screen">
+        <div class="w-full md:ml-[33.333%] lg:ml-[25%] xl:ml-[20%] p-8 md:p-12 lg:p-16 relative z-0">
+            <div id="user-preview-circle" class="user-preview-circle fixed right-8 top-16 w-12 h-12 rounded-full bg-cover bg-center shadow-md z-20"
+                 style="background-image: url('https://placehold.co/48x48/FF6347/FFFFFF?text=User');">
+            </div> </div></div>
+    <div id="draggableContainer" class="relative md:absolute md:w-[570px] md:top-[15px] md:left-[360px] md:text-left text-80 text-center w-full md:w-auto relative overflow-visible pt-32">
+<h1 class="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-red-500 to-pink-500">
+  Knowledge at <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-red-500 to-pink-500">Fingertips</span>
+</h1>
+<p id="snap-target-row" class="max-w-xl mx-auto md:mx-0 mb-12" style="color: #A0A0A0;">
+  Huly offers a wide range of features to create and manage your project documentation. Huly's suite of collaborative editing tools boosts team efficiency.
+</p>
+<div id="main-wrapper">
+<div id="draggablePinWrapper"
+  class="absolute flex flex-col items-start cursor-grab active:cursor-grabbing select-none float-pin md:top-[20px] md:left-[100px]"
+  style="left:1px; top:-20px;">
+  <div class="relative w-[66px] h-[66px]">
+    <img id="draggablebox"
+     src="blue-pin.png"
+     alt="pin"
+     class="relative w-full h-full object-contain pointer-events-none [filter:drop-shadow(0_0_10px_rgba(0,123,255,0.8))]" />
+  </div>
+</div>
+</div>
+<div class="relative">
+    <div id="toolbar"
+        class="absolute md:absolute md:top-[-5px] md:left-[0px] z-50 mx-auto flex h-20 w-fit min-w-[330px]
+               rounded-md px-1.5 shadow-[0px_10px_20px_0px_#00000080] items-center
+               lg:-top-10 lg:left-11
+               md:-top-8 md:left-7 md:h-[30px] md:min-w-[218px] md:px-1
+               sm:-top-6 sm:left-0 sm:h-[27px] sm:min-w-[190px]"
+        style="background-color:#1E1E1E;">
+        <button id="btn-link" class="transition-all duration-200 flex h-7 cursor-pointer items-center rounded-md bg-blue-600 pl-2 pr-3 text-sm tracking-tight text-white md:h-[22px] md:px-1.5 md:text-xs sm:text-xs">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 mr-1 md:h-3 md:w-3">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07L10 3.46"></path>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07L14 20.54"></path>
+            </svg>
+            <span>Link</span>
+        </button>
 
-        <div class="relative flex flex-wrap md:absolute md:top-[960px] md:left-[365px] md:w-[570px] md:h-[50px]">
-          <div class="absolute left-0 top-0 h-[31.5%] w-px xl:h-[33%] sm:hidden"></div>
-          <p class="relative max-w-full break-words -mt-8 pb-3 pt-[68px] lg:-mt-9 md:mt-[-19px] md:pt-[47px] sm:mt-[-22px] sm:pt-[38px]">
-            <span class="absolute left-1/2 top-0 -z-10 h-full w-px" aria-hidden="true"></span>
-            With
-            <span
-              class="relative text-center bg-gradient-to-br from-slate-7 to-slate-7 bg-[left_14px] bg-no-repeat [transition:background_1s_0.5s,color_0.5s_0s] lg:bg-[left_12px] md:bg-[left_9px] bg-[length:100%_2px] text-slate-7 sm:bg-[length:100%_1px]"
-            >
-              live
-            </span>
-            real-time collaboration, remote teams are able to unify life on the page. Tagging users, linking to issues, and assigning action items are just a few of the
-            <span
-              class="relative bg-gradient-to-br from-slate-7 to-slate-7 bg-[left_14px] bg-no-repeat [transition:background_1.5s_2s,color_0.5s_1.5s] lg:bg-[left_12px] md:bg-[left_9px] bg-[length:100%_2px] text-slate-7 sm:bg-[length:100%_1px]"
-            >
-              advanced solutions
-            </span>
-            <span class="relative pr-2 md:pr-1">
-              <strong class="font-medium text-orange">powerful features</strong>
-              <span class="relative">
-                <span
-                  class="absolute z-40 flex flex-col items-center hover:cursor-grab active:cursor-grabbing group bottom-[-8px] left-[-30px] text-orange md:top-[10px] md:left-[-21px] sm:left-[-16px]"
-                  aria-hidden="true"
-                  draggable="false"
-                  style="-webkit-touch-callout: none; -webkit-user-select: none; user-select: none; touch-action: none"
-                >
-                </span>
-              </span>
-            </span>
-            available within the Huly document editor.
-          </p>
-        </div>
+        <button id="btn-bold" class="ml-1.5 transition-all duration-200 p-1 rounded-md hover:bg-gray-700">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" class="h-5 w-5 md:h-4 md:w-4 fill-gray-400">
+                <path d="M8.176 16.331V7.621h4.756q1.31 0 2.186.389t1.317 1.079q.44.684.44 1.577 0 .696-.278 1.224-.277.522-.765.859-.482.33-1.102.47v.115q.678.03 1.27.383q.597.354.969.992q.37.633.37 1.508 0 .945-.469 1.688-.465.737-1.375 1.166t-2.244.429zm2.511-2.053h2.047q1.05 0 1.532-.4.48-.406.481-1.08 0-.492-.238-.87a1.6 1.6 0 0 0-.678-.591q-.435-.215-1.039-.215h-2.105zm0-4.855h1.862q.517 0 .916-.18.406-.186.638-.522.238-.336.238-.806 0-.644-.458-1.038-.452-.395-1.288-.395h-1.908z"></path>
+            </svg>
+            <span class="sr-only">Bold</span>
+        </button>
 
-        <div class="relative flex items-center justify-center top-0 md:absolute md:top-[1100px] md:left-[365px]">
-          <img
-            id="visible"
-            src="https://placehold.co/570x450/333333/FFFFFF?text=Code+Screenshot"
-            alt="code screenshot"
-            class="w-[360px] h-[240px] md:w-[570px] md:h-[450px] rounded-[20px]"
-          />
-          <pre id="codeBlock" class="hidden">
+        <button id="btn-italic" class="ml-1.5 transition-all duration-200 p-1 rounded-md hover:bg-gray-700">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" class="h-5 w-5 md:h-4 md:w-4 fill-gray-400">
+                <path d="M12.193 6H17V7.556h-2.585l-3.328 9.888H7V18h5.807V16.444h2.586L12.068 6z"></path>
+            </svg>
+            <span class="sr-only">Italic</span>
+        </button>
+
+        <button id="btn-underline" class="ml-1.5 transition-all duration-200 p-1 rounded-md hover:bg-gray-700">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" class="h-5 w-5 md:h-4 md:w-4 fill-gray-400">
+                <path d="M12 17.5q-2.062 0-3.312-1.031-1.25-1.03-1.25-2.875V5h2v8.625q0 1.125.438 1.625.437.5 1.187.5.75 0 1.188-.5.437-.5.437-1.625V5h2v8.625q0 1.844-1.25 2.875-1.25 1.031-3.312 1.031zM4 20h16v2H4z"></path>
+            </svg>
+            <span class="sr-only">Underline</span>
+        </button>
+
+        <button id="btn-strike" class="ml-1.5 transition-all duration-200 p-1 rounded-md hover:bg-gray-700">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" class="h-5 w-5 md:h-4 md:w-4 fill-gray-400">
+                <path d="M12 10.5q-2.062 0-3.312-1.031-1.25-1.03-1.25-2.875V5h2v1.625q0 1.125.438 1.625.437.5 1.187.5.75 0 1.188-.5.437-.5.437-1.625V5h2v1.625q0 1.844-1.25 2.875-1.25 1.031-3.312 1.031zM4 11h16v2H4zM12 17.5q-2.062 0-3.312-1.031-1.25-1.03-1.25-2.875V12h2v1.625q0 1.125.438 1.625.437.5 1.187.5.75 0 1.188-.5.437-.5.437-1.625V12h2v1.625q0 1.844-1.25 2.875-1.25 1.031-3.312 1.031z"></path>
+            </svg>
+            <span class="sr-only">Strikethrough</span>
+        </button>
+
+        <span class="ml-2 h-5 w-px bg-gray-600 md:h-4"></span>
+
+        <button class="ml-2.5 md:ml-1.5 sm:ml-1 p-1 rounded-md hover:bg-gray-700">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" class="h-5 w-5 md:h-4 md:w-4 fill-gray-400">
+                <path d="M12 12c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3zm0 2c-2.671 0-8 1.348-8 4v2h16v-2c0-2.652-5.329-4-8-4z"></path>
+            </svg>
+            <span class="sr-only">Mention</span>
+        </button>
+
+        <button id="btn-highlight" class="ml-2 md:ml-1.5 p-1 rounded-md hover:bg-gray-700">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" class="h-5 w-5 md:h-4 md:w-4 fill-gray-400">
+                <path d="m20.707 5.826-3.535-3.533a.999.999 0 0 0-1.408-.006L7.096 10.82a1.01 1.01 0 0 0-.273.488l-1.024 4.437L4 18h2.828l1.142-1.129 3.588-.828c.18-.042.345-.133.477-.262l8.667-8.535a1 1 0 0 0 .005-1.42zm-9.369 7.833-2.121-2.12 7.243-7.131 2.12 2.12-7.242 7.131zM4 20h16v2H4z"></path>
+</svg>
+<span class="sr-only">Toggle Highlight</span>
+</button>
+</div>
+</div> </div>   
+<div class="relative mt-12 md:absolute md:top-[330px] md:left-[365px] md:w-[570px]" id="editor-container">
+<div id="editor" contenteditable="true" 
+class="relative z-10 whitespace-pre-wrap leading-relaxed text-white font-normal p-2 focus:outline-none ">
+<span class="font-semibold">Documents in Huly</span> can be used for sharing reference materials among team members, collaborating on plans and roadmaps, storing meeting notes and assigning action items.
+</div>
+<div id="highlight-overlay"
+class="absolute top-0 scale-[1.02] inset-0 opacity-0 z-0 transition-opacity duration-300 pointer-events-none md:absolute md:w-[570px] md:h-[10px]"
+style="--highlight-position: 1;">
+<span class="pointer-events-none bg-no-repeat text-transparent whitespace-pre-wrap leading-relaxed block p-2"
+style="background:linear-gradient(90deg, #ffeba4 50%, transparent 50%) 100% 0 / 200% 100% no-repeat;
+background-position:calc((1 - var(--highlight-position)) * 100%) 1">
+<span class="font-semibold">Documents in Huly</span> can be used for sharing reference materials among team members, collaborating on plans and roadmaps, storing meeting notes and assigning action items.
+</span></div>
+<div id="cursor-overlay"
+class="relative absolute w-full scale-[1] opacity-0 transition-opacity duration-300 pointer-events-none md:absolute md:top-[330px] md:right-[30px]"
+style="--cursor-position: 0;">
+<span class="pointer-events-none md:h-[10px] !bg-[length:10px_36px] bg-no-repeat text-transparent md:!bg-[length:8px_26px] whitespace-pre-wrap leading-relaxed block p-2 md:pr-2 sm:!bg-[length:7px_25px]"
+style="background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5wMy5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpEWdCb3g9IjAgMCAxMCAzNiI+PHBhdGggZmlsbD0iIzMwMzIzNiIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNNCAyNi4xQTUuMDAyIDUuMDAyIDAgMCAwIDUgMzZhNSA1IDAgMCAwIDEtOS45VjBINHoiIGNsaXAtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==)100%0 no-repeat;background-position:calc(var(--cursor-position)*100%) 8px" aria-hidden="true">
+<span class="font-semibold">Documents in Huly</span> can be used for sharing reference materials among team members, collaborating on plans and roadmaps, storing meeting notes and assigning action items.
+</span>
+</div>
+</div>
+<div class="relative flex items-center top-0 justify-center md:absolute md:top-[520px] md:left-[365px]">
+<img src="board.webp" alt="chat"
+class="w-[360px] h-[240px] md:w-[570px] md:h-[450px] rounded-[20px]" />
+</div>
+
+<div  class="relative flex flex-wrap md:absolute md:top-[960px] md:left-[365px] md:w-[570px] md:h-[50px]">
+<div class="absolute left-0 top-0 h-[31.5%] w-px xl:h-[33%] sm:hidden"></div>
+<p class="relative max-w-full break-words -mt-8 pb-3 pt-[68px] lg:-mt-9 md:mt-[-19px] md:pt-[47px] sm:mt-[-22px] sm:pt-[38px]">
+<span class="absolute left-1/2 top-0 -z-10 h-full w-px" aria-hidden="true"></span>
+With 
+<span class="relative text-center bg-gradient-to-br from-slate-7 to-slate-7 bg-[left_14px] bg-no-repeat [transition:background_1s_0.5s,color_0.5s_0s] lg:bg-[left_12px] md:bg-[left_9px] bg-[length:100%_2px] text-slate-7 sm:bg-[length:100%_1px]">live</span> 
+real-time collaboration, remote teams are able toa unifieo life on the page. Tagging users, linking to issues, and assigning action items are just a few of the 
+<span class="relative bg-gradient-to-br from-slate-7 to-slate-7 bg-[left_14px] bg-no-repeat [transition:background_1.5s_2s,color_0.5s_1.5s] lg:bg-[left_12px] md:bg-[left_9px] bg-[length:100%_2px] text-slate-7 sm:bg-[length:100%_1px]">advanced solutions</span> 
+<span class="relative pr-2 md:pr-1">
+<strong class="font-medium text-orange">powerful features</strong>
+<span class="relative">
+<span class="absolute z-40 flex flex-col items-center hover:cursor-grab active:cursor-grabbing group bottom-[-8px] left-[-30px] text-orange md:top-[10px] md:left-[-21px] sm:left-[-16px]" aria-hidden="true" draggable="false" style="-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;touch-action:none">
+</span>
+</span>
+</span>
+available within the Huly document editor.
+</p>
+</div>
+<div class="relative flex items-center justify-center
+         top-0 md:absolute md:top-[1100px] md:left-[365px]"
+>
+  <img id="visible" 
+    src="code.webp"
+    alt="code screenshot"
+    class="w-[360px] h-[240px] md:w-[570px] md:h-[450px] rounded-[20px]"
+  />
+  <pre id="codeBlock" class="hidden">
 async function fetchData() {
   const response = await fetch('/api/data');
   const data = await response.json();
@@ -353,170 +307,183 @@ async function handleRequest() {
     console.error('Error:', error);
   }
 }
-          </pre>
-          <button
-            id="copyBtn"
-            class="absolute top-2 right-2 flex items-center space-x-1 bg-gray-700 bg-opacity-75 hover:bg-opacity-100 text-white px-3 py-1 rounded text-sm"
-            aria-label="Copy code to clipboard"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                d="M8 16H6a2 2 0 01-2-2V6a2
-                       2 0 012-2h8a2 2 0 012 2v2"/>
-              <rect x="8" y="8" width="12" height="12" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-            <span>Copy Code</span>
-          </button>
-        </div>
+</pre><button id="copyBtn"class="absolute top-2 right-2 flex items-center space-x-1 bg-gray-700 bg-opacity-75 hover:bg-opacity-100 text-white px-3 py-1 rounded text-sm" aria-label="Copy code to clipboard">
+<svg xmlns="http://www.w3.org/2000/svg"class="w-4 h-4"fill="none" viewBox="0 0 24 24"stroke="currentColor" stroke-width="2">
+<path stroke-linecap="round" stroke-linejoin="round"
+d="M8 16H6a2 2 0 01-2-2V6a2 
+2 0 012-2h8a2 2 0 012 2v2"/>
+<rect x="8" y="8" width="12" height="12"rx="2" ry="2" stroke-linecap="round"stroke-linejoin="round"/>
+</svg><span>Copy Code</span>
+</button>
+</div>
+<script>document .getElementById('copyBtn') .addEventListener('click', () => {
+const code = document.getElementById('codeBlock').innerText;
+document.execCommand('copy');
+ // Use execCommand for clipboard access in iframes
+ const tempInput = document.createElement('textarea');
+ tempInput.value = code;
+ document.body.appendChild(tempInput);
+ tempInput.select();
+ document.execCommand('copy');
+ document.body.removeChild(tempInput);
+ alert('Code copied to clipboard!');
+ });
+</script>
+<div id="text-block" id="pin" class="relative md:absolute md:top-[1450px] md:left-[365px] md:w-[570px] text-start w-full md:w-auto relative overflow-visible pt-32">
+<p class="max-w-xl mx-auto md:mx-0 mb-12" style="color: #A0A0A0;">Bring your documents to life with text styling, images, files, and code—perfect for planning, documenting, and aligning your team.</p>
+</div>
+<div class="relative">
+<div class="relative flex flex-wrap w-full mx-auto md:absolute md:top-[10px] md:left-[365px]">
+<span class="text-slate-700">Tap here to continue...</span>
+</div>
+</div>
+<div class="relative">
+<div class="mt-3 flex w-fit gap-x-1 rounded-full bg-[#333333] p-[5px] shadow-[0px_4px_10px_0px_rgba(0,0,0,0.15)] sm:mt-2 sm:gap-x-0.5 sm:p-1 md:mt-1.5 mx-auto md:absolute md:top-[10px] md:left-[370px]">
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-black sm:h-[27px] sm:w-[27px] md:h-[30px] md:w-[30px]"> 
+<svg xmlns="http://www.w3.org/2000/svg" fill="#000000" viewBox="0 0 12 12" class="m-auto h-auto w-3.5 stroke-white sm:w-3"><path d="M6 1v10M1 6h10"></path></svg>
+</div>
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-8 md:h-[30px] md:w-[30px] sm:h-[27px] sm:w-[27px]">
+<img class="m-auto h-auto w-5 sm:w-3" src="camera.svg" height="20" width="20" loading="lazy" alt="">
+</div>
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-8 md:h-[30px] md:w-[30px] sm:h-[27px] sm:w-[27px]">
+<img class="m-auto h-auto w-4.5 sm:w-3" src="data:image/svg+xml;base64,PHN2Z...=" height="18" width="18" loading="lazy" alt="">
+</div>
+</div>
+</div>
+<div
+class="card-wrapper hidden md:block absolute top-[50px] left-[100px] w-[100px] h-[1900px] z-[-2]"
+style="background-image: url('line1.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+</div>
+<div id="card-wrapper"
+class="absolute top-[80px] left-[50px] w-[250px] sm:hidden">
+<div class="sm:hidden relative w-full h-[300px]">
+<img src="lbox.png"alt="Card background"
+class="sm:hidden absolute inset-0 w-full h-full object-cover rounded-2xl shadow-lg"/>
+</div>
+    </div>
+    
+</section>
+ <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const videoOverlayStates = [
+                document.getElementById('video-overlay-0'), // Knowledge at Your Fingertip
+                document.getElementById('video-overlay-1'), // Collaborate
+                document.getElementById('video-overlay-2')  // Version History
+            ];
+            const userPreviewCircle = document.getElementById('user-preview-circle');
+            const videoCardContainer = document.getElementById('video-card-container');
+            const leftVideoPanel = document.getElementById('left-video-panel'); // Get the video panel itself
+            
+            // Get references to the new sections
+            const section1 = document.getElementById('section-1');
+            const section2 = document.getElementById('section-2');
+            const section3 = document.getElementById('section-3');
 
-        <div id="text-block" class="relative md:absolute md:top-[1450px] md:left-[365px] md:w-[570px] text-start w-full md:w-auto overflow-visible pt-32">
-          <p class="max-w-xl mx-auto md:mx-0 mb-12" style="color: #A0A0A0;">
-            Bring your documents to life with text styling, images, files, and code—perfect for planning, documenting, and aligning your team.
-          </p>
-        </div>
+            // Scroll thresholds for overlay content changes
+            const threshold1 = 950; 
+            const threshold2 = 1830; 
 
-        <div class="relative">
-          <div class="relative flex flex-wrap w-full mx-auto md:absolute md:top-[1102px] md:left-[365px]">
-            <span class="text-slate-700">Tap here to continue...</span>
-          </div>
-        </div>
+            let currentState = -1; 
 
-        <div class="relative">
-          <div
-            class="mt-3 flex w-fit gap-x-1 rounded-full bg-[#333333] p-[5px] shadow-[0px_4px_10px_0px_rgba(0,0,0,0.15)] sm:mt-2 sm:gap-x-0.5 sm:p-1 md:mt-1.5 mx-auto md:absolute md:top-[1126px] md:left-[370px]"
-          >
-            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-black sm:h-[27px] sm:w-[27px] md:h-[30px] md:w-[30px]">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="#000000" viewBox="0 0 12 12" class="m-auto h-auto w-3.5 stroke-white sm:w-3">
-                <path d="M6 1v10M1 6h10"></path>
-              </svg>
-            </div>
-            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-8 md:h-[30px] md:w-[30px] sm:h-[27px] sm:w-[27px]">
-              <img class="m-auto h-auto w-5 sm:w-3" src="https://placehold.co/20x20/888888/FFFFFF?text=CAM" height="20" width="20" loading="lazy" alt="" />
-            </div>
-            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-8 md:h-[30px] md:w-[30px] sm:h-[27px] sm:w-[27px]">
-              <img class="m-auto h-auto w-4.5 sm:w-3" src="data:image/svg+xml;base64,PHN2Z...=" height="18" width="18" loading="lazy" alt="" />
-            </div>
-          </div>
-        </div>
+            function updateVideoOverlayContent() {
+                const scrollY = window.scrollY;
+                let newState = 0; 
 
-        <div
-          class="card-wrapper hidden md:block absolute top-[50px] left-[100px] w-[100px] h-[1900px] z-[-2]"
-          style="background-image: url('https://placehold.co/100x1900/555555/FFFFFF?text=Line'); background-size: cover; background-position: center; background-repeat: no-repeat;"
-        ></div>
-      </div>
-    </section>
-  </div>
+                if (scrollY >= threshold2) {
+                    newState = 2; 
+                } else if (scrollY >= threshold1) {
+                    newState = 1; 
+                } else {
+                    newState = 0; 
+                }
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const videoOverlayStates = [
-        document.getElementById('video-overlay-0'), // Knowledge at Your Fingertip
-        document.getElementById('video-overlay-1')  // Team overlay
-      ];
-      const metabrainSection = document.getElementById('metabrain-section');
-      let videoOverlayThreshold = 0;
+                if (newState !== currentState) {
+                    if (currentState !== -1) { 
+                        videoOverlayStates[currentState].classList.remove('opacity-100');
+                        videoOverlayStates[currentState].classList.add('opacity-0');
+                        if (currentState === 1) {
+                            videoOverlayStates[currentState].classList.remove('video-overlay-active');
+                        }
+                    }
 
-      function updateScrollThresholds() {
-        if (metabrainSection) {
-          const metabrainTop = metabrainSection.offsetTop;
-          // Switch overlay 500px into section
-          videoOverlayThreshold = metabrainTop + 500;
-        }
-      }
+                    videoOverlayStates[newState].classList.remove('opacity-0');
+                    videoOverlayStates[newState].classList.add('opacity-100');
 
-      let currentVideoOverlayState = 0;
+                    if (newState === 1) {
+                        videoOverlayStates[newState].classList.add('video-overlay-active');
+                    }
 
-      function updateVideoOverlayContent() {
-        const scrollY = window.scrollY;
-        let newVideoOverlayState = scrollY >= videoOverlayThreshold ? 1 : 0;
+                    currentState = newState;
+                }
+            }
 
-        if (newVideoOverlayState !== currentVideoOverlayState) {
-          // Hide previous
-          videoOverlayStates[currentVideoOverlayState].classList.remove('opacity-100');
-          videoOverlayStates[currentVideoOverlayState].classList.add('opacity-0');
+            function updateUserPreviewCirclePosition() {
+                const scrollY = window.scrollY;
+                const initialRight = 32; 
+                const initialTop = 64; 
 
-          // If leaving state 1, remove animation class
-          if (currentVideoOverlayState === 1) {
-            videoOverlayStates[currentVideoOverlayState].classList.remove('video-overlay-active');
-          }
+                const newTop = initialTop - (scrollY * 0.1);
+                userPreviewCircle.style.top = `${Math.max(16, newTop)}px`;
+            }
 
-          // Show new
-          videoOverlayStates[newVideoOverlayState].classList.remove('opacity-0');
-          videoOverlayStates[newVideoOverlayState].classList.add('opacity-100');
+            function updateVideoCardPosition() {
+                const scrollY = window.scrollY;
+                const cardHeight = videoCardContainer.offsetHeight;
+                const viewportHeight = window.innerHeight;
+                
+                // Get absolute positions of section2 relative to the document
+                const section2AbsoluteTop = section2.offsetTop;
+                const section2AbsoluteBottom = section2.offsetTop + section2.offsetHeight;
 
-          // If entering state 1, add animation
-          if (newVideoOverlayState === 1) {
-            videoOverlayStates[newVideoOverlayState].classList.add('video-overlay-active');
-          }
+                // The ideal 'top' position for the card if it were fixed and vertically centered in the viewport
+                const idealFixedTop = (viewportHeight - cardHeight) / 2;
 
-          currentVideoOverlayState = newVideoOverlayState;
-        }
-      }
+                // Calculate the scrollY points where the card should "pin"
+                // When scrollY reaches this point, the card's idealFixedTop aligns with section2AbsoluteTop
+                const pinTopScroll = section2AbsoluteTop - idealFixedTop;
+                // When scrollY reaches this point, the card's bottom aligns with section2AbsoluteBottom
+                const pinBottomScroll = section2AbsoluteBottom - viewportHeight + idealFixedTop;
 
-      // Initial calls
-      updateScrollThresholds();
-      updateVideoOverlayContent();
+                if (scrollY < pinTopScroll) {
+                    // Case 1: Scrolling above section 2's active zone
+                    // Pin the card to the top of section 2
+                    videoCardContainer.style.position = 'absolute';
+                    videoCardContainer.style.top = `${section2AbsoluteTop}px`;
+                    videoCardContainer.style.transform = 'none'; // Ensure no translateY
+                } else if (scrollY > pinBottomScroll) {
+                    // Case 2: Scrolling below section 2's active zone
+                    // Pin the card to the bottom of section 2
+                    videoCardContainer.style.position = 'absolute';
+                    videoCardContainer.style.top = `${section2AbsoluteBottom - cardHeight}px`;
+                    videoCardContainer.style.transform = 'none'; // Ensure no translateY
+                } else {
+                    // Case 3: Scrolling within section 2's active zone
+                    // Keep the card fixed and vertically centered in the viewport
+                    videoCardContainer.style.position = 'fixed';
+                    videoCardContainer.style.top = '50%';
+                    videoCardContainer.style.transform = 'translateY(-50%)';
+                }
+            }
 
-      // Listen to scroll and resize
-      window.addEventListener('scroll', () => {
-        updateVideoOverlayContent();
-      });
-      window.addEventListener('resize', () => {
-        updateScrollThresholds();
-        updateVideoOverlayContent();
-      });
+            // Initial calls to set the correct state and positions on page load
+            updateVideoOverlayContent();
+            updateUserPreviewCirclePosition();
+            updateVideoCardPosition(); 
 
-      // Copy Code button logic
-      const copyBtn = document.getElementById('copyBtn');
-      if (copyBtn) {
-        copyBtn.addEventListener('click', () => {
-          const code = document.getElementById('codeBlock').innerText;
-          const tempTextArea = document.createElement('textarea');
-          tempTextArea.value = code;
-          document.body.appendChild(tempTextArea);
-          tempTextArea.select();
-          try {
-            document.execCommand('copy');
-            console.log('Code copied to clipboard!');
-          } catch (err) {
-            console.error('Copy failed:', err);
-          } finally {
-            document.body.removeChild(tempTextArea);
-          }
+            // Add scroll event listener
+            window.addEventListener('scroll', () => {
+                updateVideoOverlayContent();
+                updateUserPreviewCirclePosition();
+                updateVideoCardPosition(); 
+            });
+
+            // Handle window resize to ensure responsiveness
+            window.addEventListener('resize', () => {
+                updateUserPreviewCirclePosition();
+                updateVideoCardPosition(); 
+            });
         });
-      }
-
-      // Highlight and cursor animation
-      const editorContainer = document.getElementById('editor-container');
-      const highlightOverlay = document.getElementById('highlight-overlay');
-      const cursorOverlay = document.getElementById('cursor-overlay');
-      const editor = document.getElementById('editor');
-
-      if (editorContainer && highlightOverlay && cursorOverlay && editor && metabrainSection) {
-        window.addEventListener('scroll', () => {
-          const metabrainRect = metabrainSection.getBoundingClientRect();
-          const editorRect = editorContainer.getBoundingClientRect();
-
-          // Calculate scroll progress relative to editor
-          const scrollProgress = Math.max(
-            0,
-            Math.min(
-              1,
-              (metabrainRect.top * -1 + window.innerHeight / 2) / (editorRect.height * 2)
-            )
-          );
-
-          // Highlight animation
-          highlightOverlay.style.opacity = scrollProgress > 0.1 && scrollProgress < 0.9 ? '1' : '0';
-          highlightOverlay.style.setProperty('--highlight-position', scrollProgress.toFixed(2));
-
-          // Cursor animation
-          cursorOverlay.style.opacity = scrollProgress > 0.1 && scrollProgress < 0.9 ? '1' : '0';
-          cursorOverlay.style.setProperty('--cursor-position', scrollProgress.toFixed(2));
-        });
-      }
-    });
-  </script>
+    </script>
 </body>
 </html>
 
