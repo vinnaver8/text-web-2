@@ -141,9 +141,17 @@
         <h2 class="text-4xl font-bold">Section 1: Introduction</h2>
     </section>
 
-    <section id="section-2" class="relative min-h-[1500px] bg-gray-800 text-white">
+    <section id="section-2" class="relative min-h-[700px] bg-gray-800 text-white flex items-center justify-center">
+        <h2 class="text-4xl font-bold">Section 2: More Content</h2>
+    </section>
+
+    <section id="section-3" class="relative min-h-[700px] bg-gray-700 text-white flex items-center justify-center">
+        <h2 class="text-4xl font-bold">Section 3: Transition</h2>
+    </section>
+
+    <section id="section-4" class="relative min-h-[1500px] bg-gray-800 text-white">
         <div class="p-8">
-            <h2 class="text-4xl font-bold mb-4">Section 2: Interactive Content</h2>
+            <h2 class="text-4xl font-bold mb-4">Section 4: Interactive Content</h2>
             <p class="text-lg">This is where the video card will be active and follow your scroll, staying vertically centered.</p>
             <div class="h-[1000px] flex items-center justify-center text-gray-400">
                 <p>Scroll down to see the card move!</p>
@@ -151,8 +159,8 @@
         </div>
     </section>
 
-    <section id="section-3" class="relative min-h-[800px] bg-gray-900 text-white flex items-center justify-center">
-        <h2 class="text-4xl font-bold">Section 3: Conclusion</h2>
+    <section id="section-5" class="relative min-h-[800px] bg-gray-900 text-white flex items-center justify-center">
+        <h2 class="text-4xl font-bold">Section 5: Conclusion</h2>
     </section>
 
     <div id="draggableContainer" class="relative w-full max-w-xl mx-auto text-center overflow-visible pt-32 md:text-left">
@@ -369,10 +377,12 @@ class="sm:hidden absolute inset-0 w-full h-full object-cover rounded-2xl shadow-
             const videoCardContainer = document.getElementById('video-card-container');
             const leftVideoPanel = document.getElementById('left-video-panel'); // Get the video panel itself
             
-            // Get references to the new sections
+            // Get references to all sections
             const section1 = document.getElementById('section-1');
             const section2 = document.getElementById('section-2');
             const section3 = document.getElementById('section-3');
+            const section4 = document.getElementById('section-4'); // The section where the card should be sticky
+            const section5 = document.getElementById('section-5');
 
             // Scroll thresholds for overlay content changes
             const threshold1 = 950; 
@@ -384,9 +394,12 @@ class="sm:hidden absolute inset-0 w-full h-full object-cover rounded-2xl shadow-
                 const scrollY = window.scrollY;
                 let newState = 0; 
 
-                if (scrollY >= threshold2) {
+                // Adjust these thresholds based on where you want the content to change relative to section4
+                // For simplicity, keeping the original thresholds for now, but they might need fine-tuning
+                // based on the new section heights.
+                if (scrollY >= section4.offsetTop + 1000) { // Example: 1000px into section4
                     newState = 2; 
-                } else if (scrollY >= threshold1) {
+                } else if (scrollY >= section4.offsetTop + 500) { // Example: 500px into section4
                     newState = 1; 
                 } else {
                     newState = 0; 
@@ -417,32 +430,31 @@ class="sm:hidden absolute inset-0 w-full h-full object-cover rounded-2xl shadow-
                 const cardHeight = videoCardContainer.offsetHeight;
                 const viewportHeight = window.innerHeight;
                 
-                // Get absolute positions of section2 relative to the document
-                const section2Rect = section2.getBoundingClientRect();
-                const section2AbsoluteTop = section2.offsetTop;
-                const section2AbsoluteBottom = section2.offsetTop + section2.offsetHeight;
+                // Get absolute positions of section4 relative to the document
+                const section4AbsoluteTop = section4.offsetTop;
+                const section4AbsoluteBottom = section4.offsetTop + section4.offsetHeight;
 
                 // The ideal 'top' position for the card if it were fixed and vertically centered in the viewport
                 const idealFixedTop = (viewportHeight - cardHeight) / 2;
 
                 // Calculate the scrollY points where the card should "pin"
-                const pinTopScroll = section2AbsoluteTop - idealFixedTop;
-                const pinBottomScroll = section2AbsoluteBottom - viewportHeight + idealFixedTop;
+                const pinTopScroll = section4AbsoluteTop - idealFixedTop;
+                const pinBottomScroll = section4AbsoluteBottom - viewportHeight + idealFixedTop;
 
                 if (scrollY < pinTopScroll) {
-                    // Case 1: Scrolling above section 2's active zone
-                    // Pin the card to the top of section 2
+                    // Case 1: Scrolling above section 4's active zone
+                    // Pin the card to the top of section 4
                     videoCardContainer.style.position = 'absolute';
-                    videoCardContainer.style.top = `${section2AbsoluteTop}px`;
+                    videoCardContainer.style.top = `${section4AbsoluteTop}px`;
                     videoCardContainer.style.transform = 'none'; // Ensure no translateY
                 } else if (scrollY > pinBottomScroll) {
-                    // Case 2: Scrolling below section 2's active zone
-                    // Pin the card to the bottom of section 2
+                    // Case 2: Scrolling below section 4's active zone
+                    // Pin the card to the bottom of section 4
                     videoCardContainer.style.position = 'absolute';
-                    videoCardContainer.style.top = `${section2AbsoluteBottom - cardHeight}px`;
+                    videoCardContainer.style.top = `${section4AbsoluteBottom - cardHeight}px`;
                     videoCardContainer.style.transform = 'none'; // Ensure no translateY
                 } else {
-                    // Case 3: Scrolling within section 2's active zone
+                    // Case 3: Scrolling within section 4's active zone
                     // Keep the card fixed and vertically centered in the viewport
                     videoCardContainer.style.position = 'fixed';
                     videoCardContainer.style.top = '50%';
