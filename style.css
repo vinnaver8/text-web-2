@@ -753,3 +753,527 @@ filter: blur(4px);i
       accent-color: #db2777;
       cursor: pointer;
       }
+/* last section------------*/
+/* Curved Scroller (Grok section) */
+        @import url('https://unpkg.com/normalize.css') layer(normalize);
+
+        @layer normalize, base, demo, snapping;
+
+        @layer snapping {
+            @supports (animation-timeline: scroll()) {
+                .scroller header,
+                .scroller footer {
+                    scroll-snap-align: unset;
+                }
+                .scroller header {
+                    --align: start;
+                    animation: snap both linear reverse;
+                    animation-timeline: scroll(nearest);
+                    animation-range: calc(var(--padding, 0) * 1px) 0;
+                }
+                .scroller footer {
+                    --align: end;
+                    animation: snap both linear;
+                    animation-timeline: scroll(nearest);
+                    animation-range: calc(100% - (var(--padding, 0) * 1px)) 100%;
+                }
+                @keyframes snap {
+                    to {
+                        scroll-snap-align: var(--align, start);
+                    }
+                }
+            }
+        }
+
+        @layer demo {
+            :root {
+                --size: 300px;
+                --radius: 32;
+                --padding: 64px;
+                --bg: hsl(180 0% 33%);
+                --bar: hsl(0 0% 100% / 0.5);
+                --panel: hsl(20 60% 50%);
+                timeline-scope: --scroller;
+            }
+
+            .scroller {
+                position: relative;
+                width: 100%;
+                max-width: 600px;
+                aspect-ratio: 3 / 3.5; /* Updated aspect ratio */
+                resize: none;
+                overflow: hidden;
+                padding: 1rem;
+            }
+
+            .scroller img {
+                width: 100%;
+                object-fit: cover;
+                border-radius: 6px;
+                filter: contrast(1.5) grayscale(1);
+            }
+
+            .bar__thumb,
+            .bar__track {
+                opacity: 0;
+                transition: opacity 0.2s;
+            }
+
+            [data-rounded-scroll='true'] .scroller :is(.bar__thumb, .bar__track) {
+                opacity: 1;
+            }
+
+            .scroller > svg {
+                position: absolute;
+                top: 1rem;
+                bottom: 1rem;
+                right: 1rem;
+                pointer-events: none;
+                width: calc(var(--radius) * 2px);
+                overflow: visible !important;
+                z-index: 2;
+            }
+
+            [data-rounded-scroll='true'] .scroller div::-webkit-scrollbar {
+                display: none;
+            }
+
+            [data-rounded-scroll='true'] div::-webkit-scrollbar {
+                display: none;
+                opacity: 0 !important;
+            }
+
+            [data-rounded-scroll='true'] .scroller div {
+                scrollbar-width: 0;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+
+            .scroller path {
+                stroke-width: calc(var(--stroke-width) * 1px);
+            }
+
+            .bar__thumb {
+                stroke: color-mix(
+                    in hsl,
+                    var(--color, #fff),
+                    #0000 calc((1 - var(--bar-alpha, 0.5)) * 100%)
+                );
+                stroke-dasharray: var(--thumb-size) var(--track-length);
+            }
+
+            @supports (animation-timeline: scroll()) {
+                .bar__thumb {
+                    animation: scroll both linear;
+                    animation-timeline: --scroller;
+                }
+            }
+
+            .bar__track {
+                stroke: hsl(0 0% 100% / var(--track-alpha, 0));
+            }
+
+            .scroller > div {
+                height: 100%;
+                width: 100%;
+                overflow: auto;
+                background: #0D0D0D;
+                border-radius: calc(var(--radius) * 1px);
+                display: grid;
+                grid-auto-flow: row;
+                gap: 0;
+                margin: 0;
+                padding: calc(var(--padding) * 1px) 0;
+                list-style-type: none;
+                scroll-snap-type: y mandatory;
+                scroll-timeline: --scroller;
+                scroll-behavior: smooth;
+                outline: 1px solid color-mix(in lch, canvas, canvasText);
+                outline-offset: 1px;
+
+                &::after {
+                    content: '';
+                    height: calc(var(--stroke, 4) * 1px);
+                    width: clamp(40px, 50%, 80px);
+                    background: canvasText;
+                    border-radius: 100px;
+                    position: absolute;
+                    bottom: calc(1rem + 4px);
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+
+            .scroller > div > * {
+                padding-inline: 1.25rem;
+            }
+            .scroller main :not(:last-child) {
+                margin-bottom: 2rem;
+            }
+
+            .scroller main p:last-of-type {
+                opacity: 0.4;
+            }
+
+            .scroller p {
+                opacity: 0.6;
+                font-size: 0.875rem;
+            }
+
+            .scroller header {
+                scroll-snap-align: start;
+                margin-block: 2rem;
+                text-transform: uppercase;
+                font-family: 'Reddit Mono', monospace;
+
+                div {
+                    margin-block: 4rem;
+                }
+
+                h1 {
+                    font-size: 1.25rem;
+                    font-weight: 300;
+                    margin: 0;
+                }
+                p {
+                    margin: 0;
+                    font-size: 1rem;
+                    font-weight: 300;
+                }
+            }
+
+            .scroller footer {
+                scroll-snap-align: end;
+                padding-inline: 1rem;
+                text-align: center;
+                padding-block: 1rem;
+                font-size: 0.75rem;
+                opacity: 0.5;
+            }
+        }
+
+        /* API Section Box (middle box) */
+        #api-box {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            height: 280px;
+            background-color: #111;
+            border: 1px solid #333;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 3 / 3.5; /* Updated aspect ratio */
+        }
+        #api-typing {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.2rem;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid #fff;
+            width: max-content;
+            max-width: 0;
+            animation:
+                api-typing-reveal 3s steps(29, end) forwards,
+                api-blink 0.6s step-end infinite alternate;
+            padding-right: 2px;
+            color: #fff;
+        }
+        @keyframes api-typing-reveal {
+            from { max-width: 0; }
+            to   { max-width: 100%; }
+        }
+        @keyframes api-blink {
+            50% { border-color: transparent; }
+        }
+        #api-thinking {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            padding: 16px;
+        }
+        #api-spinner {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            width: 18px;
+            height: 18px;
+            border: 3px solid #333;
+            border-top: 3px solid #fff;
+            border-radius: 50%;
+            animation: api-spin 1s linear infinite;
+        }
+        @keyframes api-spin {
+            to { transform: rotate(360deg); }
+        }
+        #api-countText {
+            position: absolute;
+            top: 14px;
+            left: 46px;
+            font-size: 1rem;
+            white-space: nowrap;
+            color: #fff;
+        }
+        #api-scrollContainer {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            height: 150px;
+            overflow: hidden;
+        }
+
+        #api-scrollContent {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            line-height: 1.4rem;
+            color: #ccc;
+            font-size: 0.95rem;
+            animation: api-scrollUp 10s linear infinite;
+        }
+
+        @keyframes api-scrollUp {
+            0%   { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
+        #api-final {
+            display: none;
+            width: 100%;
+            max-width: 500px;
+            height: 280px;
+            background-color: #111;
+            border-radius: 12px;
+            border: 1px solid #333;
+            padding: 16px;
+            box-sizing: border-box;
+            color: #fff;
+            aspect-ratio: 3 / 3.5; /* Updated aspect ratio */
+        }
+        #api-checkIcon {
+            width: 24px;
+            height: 24px;
+            fill: #4caf50;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+        #api-finalHeader {
+            display: flex;
+            align-items: center;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+        #api-finalContent {
+            font-size: 0.95rem;
+            line-height: 1.4rem;
+            color: #ddd;
+            height: 200px;
+            overflow-y: auto;
+        }
+        #offices-display {
+            display: none;
+            width: 100%;
+            height: 280px;
+            padding: 20px;
+            background-color: #000;
+            color: #fff;
+            overflow-y: auto;
+            border-radius: 12px;
+            border: 1px solid #333;
+            box-sizing: border-box;
+            aspect-ratio: 3 / 3.5; /* Updated aspect ratio */
+        }
+
+        #offices-display h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        #offices-display p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        #offices-display button {
+            border: 1px solid #fff;
+            background-color: transparent;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        #offices-display button:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        #offices-map-container {
+            flex: 1;
+            min-width: 200px;
+            margin-left: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #offices-map-container svg {
+            width: 100%;
+            height: auto;
+            max-width: 300px;
+        }
+
+        #offices-map-container text {
+            font-family: 'Inter', sans-serif;
+            font-size: 7px;
+        }
+
+        #offices-map-container .city-name {
+            font-size: 8px;
+            fill: #fff;
+        }
+        @media (max-width: 600px) {
+            #offices-display {
+                padding: 10px;
+            }
+            #offices-display h2 {
+                font-size: 1.5rem;
+            }
+            #offices-map-container {
+                margin-top: 20px;
+                margin-left: 0;
+            }
+            #offices-display .flex-container {
+                flex-direction: column;
+            }
+        }
+
+        /* Infinite Scroller (Developer Docs section) */
+        @layer demo {
+            .infinite-scroller-main-container {
+                --font-level: 5;
+                opacity: 0;
+                width: 100%;
+                max-width: 600px;
+                height: 280px;
+                max-height: 100%;
+                display: flex;
+                place-items: center;
+                mask: linear-gradient(
+                    #0000 0.25lh,
+                    #fff calc(50% - 0.5lh),
+                    #fff calc(50% + 0.5lh),
+                    #0000 calc(100% - 0.25lh)
+                );
+                color: color-mix(in lch, canvasText, canvas 15%);
+                text-align: center;
+                position: relative;
+                background: #0D0D0D;
+                overflow: hidden;
+                border-radius: 12px;
+                border: 1px solid #333;
+                aspect-ratio: 3 / 3.5; /* Updated aspect ratio */
+            }
+
+            .infinite-scroller-main-container ul {
+                padding: 0;
+                margin: 0;
+                list-style-type: none;
+                text-transform: uppercase;
+                line-height: 1;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+                height: 1lh;
+                display: inline-grid;
+                position: relative;
+                padding-inline: 1em;
+                align-items: center;
+                align-content: center;
+                justify-content: center;
+                justify-items: center;
+                text-align: center;
+                width: 100%;
+            }
+
+            .infinite-scroller-main-container li {
+                color: #666; /* Default dim color */
+                /* No transition here, color change is instant via JS */
+            }
+
+            .infinite-scroller-main-container .indicator {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                height: 1lh;
+                width: calc((var(--width) * 1px) + (var(--c) * 2));
+                opacity: 1;
+                pointer-events: none;
+                z-index: 0; /* Ensure it's behind the text */
+
+                /* Core changes for the [ ] effect */
+                border-style: solid;
+                border-width: 2px;
+                border-image-slice: 20 fill; /* Slice from 20px from each side, fill the middle */
+                border-image-width: 20px; /* Width of the border-image itself */
+                border-image-outset: 0; /* No outset */
+                border-image-repeat: stretch; /* Stretch the image to cover the border */
+
+                /* Dynamically generated SVG for the square brackets.
+                   The 'currentColor' within the SVG will pick up the 'color' property of .indicator
+                   This way, we can control the vibrant color via JavaScript by updating the
+                   indicator's 'color' CSS property.
+                */
+                border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M0,10 L0,0 L10,0 M50,0 L60,0 L60,10 M60,50 L60,60 L50,60 M10,60 L0,60 L0,50' stroke='oklch(0.75 1 var(--h, 320))' fill='none' stroke-width='2'/%3E%3C/svg%3E");
+
+                /* This CSS 'color' property will set the 'currentColor' inside the SVG */
+                color: oklch(0.75 1 var(--h, 320));
+            }
+        }
+
+        @layer base {
+            :root {
+                --font-size-min: 16;
+                --font-size-max: 20;
+                --font-ratio-min: 1.2;
+                --font-ratio-max: 1.33;
+                --font-width-min: 375;
+                --font-width-max: 1500;
+            }
+
+            :where(.fluid) {
+                --fluid-min: calc(
+                    var(--font-size-min) *
+                    pow(var(--font-ratio-min), var(--font-level, 0))
+                );
+                --fluid-max: calc(
+                    var(--font-size-max) *
+                    pow(var(--font-ratio-max), var(--font-level, 0))
+                );
+                --fluid-preferred: calc(
+                    (var(--fluid-max) - var(--fluid-min)) /
+                    (var(--font-width-max) - var(--font-width-min))
+                );
+                --fluid-type: clamp(
+                    (var(--fluid-min) / 16) * 1rem,
+                    ((var(--fluid-min) / 16) * 1rem) -
+                    (((var(--fluid-preferred) * var(--font-width-min)) / 16) * 1rem) +
+                    (var(--fluid-preferred) * var(--variable-unit, 100vi)),
+                    (var(--fluid-max) / 16) * 1rem
+                );
+                font-size: var(--fluid-type);
+            }
+
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+            }
+                  }
