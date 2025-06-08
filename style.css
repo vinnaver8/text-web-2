@@ -754,7 +754,12 @@ filter: blur(4px);i
       cursor: pointer;
       }
 /* last section------------*/
-/* Curved Scroller (Grok section) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Curved Scroller (Grok section) */
         @import url('https://unpkg.com/normalize.css') layer(normalize);
 
         @layer normalize, base, demo, snapping;
@@ -1167,13 +1172,7 @@ filter: blur(4px);i
                 max-height: 100%;
                 display: flex;
                 place-items: center;
-                mask: linear-gradient(
-                    #0000 0.25lh,
-                    #fff calc(50% - 0.5lh),
-                    #fff calc(50% + 0.5lh),
-                    #0000 calc(100% - 0.25lh)
-                );
-                color: color-mix(in lch, canvasText, canvas 15%);
+                /* Removed mask to handle fading with color/opacity directly on list items */
                 text-align: center;
                 position: relative;
                 background: #0D0D0D;
@@ -1204,37 +1203,25 @@ filter: blur(4px);i
             }
 
             .infinite-scroller-main-container li {
-                color: #666; /* Default dim color */
-                /* No transition here, color change is instant via JS */
+                display: inline-block;
+                width: fit-content;
+                height: 1lh;
+                grid-area: 1 / 1;
+                color: #666; /* Default dim color for non-highlighted text */
+                transition: color 0.2s ease-in-out; /* Smooth color transition */
             }
 
             .infinite-scroller-main-container .indicator {
+                --c: 0.3em;
                 position: absolute;
                 top: 50%;
                 transform: translateY(-50%);
                 height: 1lh;
+                border: 0.05em solid oklch(0.75 1 var(--h, 320));
+                transition: width 0.25s, border-color 0.25s;
                 width: calc((var(--width) * 1px) + (var(--c) * 2));
-                opacity: 1;
-                pointer-events: none;
-                z-index: 0; /* Ensure it's behind the text */
-
-                /* Core changes for the [ ] effect */
-                border-style: solid;
-                border-width: 2px;
-                border-image-slice: 20 fill; /* Slice from 20px from each side, fill the middle */
-                border-image-width: 20px; /* Width of the border-image itself */
-                border-image-outset: 0; /* No outset */
-                border-image-repeat: stretch; /* Stretch the image to cover the border */
-
-                /* Dynamically generated SVG for the square brackets.
-                   The 'currentColor' within the SVG will pick up the 'color' property of .indicator
-                   This way, we can control the vibrant color via JavaScript by updating the
-                   indicator's 'color' CSS property.
-                */
-                border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M0,10 L0,0 L10,0 M50,0 L60,0 L60,10 M60,50 L60,60 L50,60 M10,60 L0,60 L0,50' stroke='oklch(0.75 1 var(--h, 320))' fill='none' stroke-width='2'/%3E%3C/svg%3E");
-
-                /* This CSS 'color' property will set the 'currentColor' inside the SVG */
-                color: oklch(0.75 1 var(--h, 320));
+                border-radius: 8px;
+                opacity: 1; /* Ensure indicator is visible */
             }
         }
 
@@ -1276,4 +1263,4 @@ filter: blur(4px);i
             *::after {
                 box-sizing: border-box;
             }
-                  }
+        }
