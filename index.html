@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animated Video Overlay Layout</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
-    <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animated Video Overlay Layout</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<style>
         /* Ensure no horizontal scrollbar */
         body {
             overflow-x: hidden;
@@ -185,7 +186,7 @@ lg:pt-16">
         </div>
     </div>
 
-    <section id="section-1" class="relative min-h-[900px] bg-gray-900 text-white flex items-center justify-center pt-32">
+<section id="section-1" class="relative min-h-[900px] text-white flex items-center justify-center pt-32">
 <div class="relative top-20 text-center md:absolute md:top-[20px] md:text-center">
      <!-- 1) Headline -->
 <h2 class="text-6xl font-bold bg-gradient-to-bl from-yellow-500 via-red-500 to-pink-500 text-transparent bg-clip-text">
@@ -524,10 +525,10 @@ class="frame relative w-[600px] h-[500px]
         <div class="key" data-key="N">N</div>
         <div class="key" data-key="M">M</div>
 </div></div></div></div></div></div>
-    </section>
+</section>
 
-    <section id="section-2" class="relative min-h-[1460px] bg-gray-800 pt-32">
-    <div class="grid-background">
+<section id="section-2" class="relative min-h-[1460px] pt-32">
+<div class="grid-background">
 <div class="max-w-6xl w-full bg-[#0D0D0D] rounded-xl shadow-lg p-8 md:p-12 relative z-10">
 <div class="text-start absolute top-[5px] left-[130px] md:top-[10px] md:left-[165px] md:h-[50px] md:w-[600px]">
 <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-1 text-transparent bg-clip-text bg-gradient-to-tl from-slate-800 via-blue-400 to-zinc-400">
@@ -791,7 +792,7 @@ Create customized virtual office spaces for any department or event with high qu
 </div></div>
     </section>
 
-<section id="section-3" class="relative min-h-[1100px] bg-gray-700 pt-32">
+<section id="section-3" class="relative min-h-[1100px] pt-32">
 <div class="relative md:absolute md:top-[100px] md:left-[360px] md:text-left text-80 text-center w-full md:w-auto">
 <h1 class="text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-tl from-slate-100 via-violet-500 to-white">
   INDOX <span class="text-transparent bg-clip-text bg-gradient-to-tl from-slate-100 via-violet-500 to-white">META BRAIN</span>
@@ -829,7 +830,7 @@ class="w-[360px] h-[240px] md:w-[250px] md:h-[240px] rounded-[20px] shadow-xl bg
 </div></div>
 
 </section>
-<section id="section-4" class="relative min-h-[2000px] bg-gray-800 text-white overflow-hidden pt-32">
+<section id="section-4" class="relative min-h-[2000px] text-white overflow-hidden pt-32">
 <div id="draggableContainer" class="relative md:absolute md:w-[570px] md:top-[15px] md:left-[360px] md:text-left text-80 text-center w-full md:w-auto relative overflow-visible pt-32">
 <h1 class="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-red-500 to-pink-500">
   Knowledge at <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-red-500 to-pink-500">Fingertips</span>
@@ -1024,7 +1025,7 @@ class="sm:hidden absolute inset-0 w-full h-full object-cover rounded-2xl shadow-
 </div>
 </section>
 
-<section id="section-4" class="relative min-h-[2200px] bg-[#0D0D0D] text-white overflow-hidden pt-32">
+<section id="section-5" class="relative min-h-[2200px] text-white overflow-hidden pt-32">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-32">
             <div class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-8">
                 [ PRODUCTS ]
@@ -1046,7 +1047,7 @@ class="sm:hidden absolute inset-0 w-full h-full object-cover rounded-2xl shadow-
                     </button>
                 </div>
                 <!-- Curved Scroller (Grok section) -->
-                <div class="md:w-1/2 flex justify-center items-center">
+                <div class="md:w-1/2 flex text-center justify-center items-center">
                     <div class="scroller">
                         <svg class="scroller__bar bar" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
                             <path class="bar__thumb" fill="none" stroke-linecap="round" />
@@ -1280,9 +1281,7 @@ class="sm:hidden absolute inset-0 w-full h-full object-cover rounded-2xl shadow-
         </div>
     </section>
 <script>
-        // JS for the API section animation
-        // Renamed IDs to be unique to avoid conflicts and ensure correct targeting
-        let apiTypingDiv, apiThinkingDiv, apiFinalDiv, apiCountText, apiFinalContent, officesDisplayDiv;
+         let apiTypingDiv, apiThinkingDiv, apiFinalDiv, apiCountText, apiFinalContent, officesDisplayDiv;
         let originalApiFinalContentElements = [];
 
         function startAnimationSequence() {
@@ -1702,36 +1701,26 @@ class="sm:hidden absolute inset-0 w-full h-full object-cover rounded-2xl shadow-
         }
     </script>
 <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const videoOverlayStates = [
-                document.getElementById('video-overlay-0'), // Knowledge at Your Fingertip
-                document.getElementById('video-overlay-1'), // Collaborate
-                document.getElementById('video-overlay-2')  // Version History
+document.addEventListener('DOMContentLoaded', () => {
+const videoOverlayStates = [
+document.getElementById('video-overlay-0'), // Knowledge at Your Fingertip
+document.getElementById('video-overlay-1'), // Collaborate
+document.getElementById('video-overlay-2')  // Version History
             ];
             const videoCardContainer = document.getElementById('video-card-container');
             const leftVideoPanel = document.getElementById('left-video-panel'); // Get the video panel itself
-            
-            // Get references to all sections
             const section1 = document.getElementById('section-1');
             const section2 = document.getElementById('section-2');
             const section3 = document.getElementById('section-3');
             const section4 = document.getElementById('section-4'); // The section where the card should be sticky
             const section5 = document.getElementById('section-5');
-
-            // Scroll thresholds for overlay content changes
-            const threshold1 = 950; 
-            const threshold2 = 1830; 
-
-            let currentState = -1; 
-
-            function updateVideoOverlayContent() {
+ const threshold1 = 950; 
+const threshold2 = 1830; 
+ let currentState = -1; 
+ function updateVideoOverlayContent() {
                 const scrollY = window.scrollY;
                 let newState = 0; 
-
-                // Adjust these thresholds based on where you want the content to change relative to section4
-                // For simplicity, keeping the original thresholds for now, but they might need fine-tuning
-                // based on the new section heights.
-                if (scrollY >= section4.offsetTop + 1000) { // Example: 1000px into section4
+if (scrollY >= section4.offsetTop + 1000) { // Example: 1000px into section4
                     newState = 2; 
                 } else if (scrollY >= section4.offsetTop + 500) { // Example: 500px into section4
                     newState = 1; 
@@ -1795,23 +1784,16 @@ class="sm:hidden absolute inset-0 w-full h-full object-cover rounded-2xl shadow-
                     videoCardContainer.style.transform = 'translateY(-50%)';
                 }
             }
-
-            // Initial calls to set the correct state and positions on page load
-            updateVideoOverlayContent();
+ updateVideoOverlayContent();
             updateVideoCardPosition(); 
-
-            // Add scroll event listener
-            window.addEventListener('scroll', () => {
+window.addEventListener('scroll', () => {
                 updateVideoOverlayContent();
                 updateVideoCardPosition(); 
             });
-
-            // Handle window resize to ensure responsiveness
-            window.addEventListener('resize', () => {
+window.addEventListener('resize', () => {
                 updateVideoCardPosition(); 
             });
         });
     </script>
 </body>
 </html>
-
