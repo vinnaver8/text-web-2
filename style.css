@@ -755,9 +755,6 @@ filter: blur(4px);i
       }
 /* last section------------*/
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        body {
-            font-family: 'Inter', sans-serif;
-        }
 
         /* Curved Scroller (Grok section) */
         @import url('https://unpkg.com/normalize.css') layer(normalize);
