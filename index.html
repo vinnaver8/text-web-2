@@ -1281,7 +1281,9 @@ class="sm:hidden absolute inset-0 w-full h-full object-cover rounded-2xl shadow-
         </div>
     </section>
 <script>
-         let apiTypingDiv, apiThinkingDiv, apiFinalDiv, apiCountText, apiFinalContent, officesDisplayDiv;
+        // JS for the API section animation
+        // Renamed IDs to be unique to avoid conflicts and ensure correct targeting
+        let apiTypingDiv, apiThinkingDiv, apiFinalDiv, apiCountText, apiFinalContent, officesDisplayDiv;
         let originalApiFinalContentElements = [];
 
         function startAnimationSequence() {
@@ -1468,15 +1470,11 @@ class="sm:hidden absolute inset-0 w-full h-full object-cover rounded-2xl shadow-
 
             gsap.set(indicator, {
                 '--width': wordWidth,
-                // '--h' is already set in the CSS, so no need to set it here if using CSS custom properties for SVG stroke
+                '--h': gsap.utils.random(0, 359),
                 left: wordCenterXRelativeToContainer,
                 xPercent: -50,
                 opacity: 1
             });
-
-            // Update the --h variable to change the indicator's border color
-            const randomHue = gsap.utils.random(0, 359);
-            indicator.style.setProperty('--h', randomHue);
 
             // Brighten the current line instantly
             gsap.to(currentLine, { color: '#FFFFFF', duration: 0 }); // Instant brighten
