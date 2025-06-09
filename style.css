@@ -763,17 +763,17 @@ filter: blur(4px);i
 
         @layer snapping {
             @supports (animation-timeline: scroll()) {
-                .scroller header,
-                .scroller footer {
+                .roller header,
+                .roller footer {
                     scroll-snap-align: unset;
                 }
-                .scroller header {
+                .roller header {
                     --align: start;
                     animation: snap both linear reverse;
                     animation-timeline: scroll(nearest);
                     animation-range: calc(var(--padding, 0) * 1px) 0;
                 }
-                .scroller footer {
+                .roller footer {
                     --align: end;
                     animation: snap both linear;
                     animation-timeline: scroll(nearest);
@@ -798,7 +798,7 @@ filter: blur(4px);i
                 timeline-scope: --scroller;
             }
 
-            .scroller {
+            .roller {
                 position: relative;
                 width: 100%;
                 max-width: 600px;
@@ -808,7 +808,7 @@ filter: blur(4px);i
                 padding: 1rem;
             }
 
-            .scroller img {
+            .roller img {
                 width: 100%;
                 object-fit: cover;
                 border-radius: 6px;
@@ -825,7 +825,7 @@ filter: blur(4px);i
                 opacity: 1;
             }
 
-            .scroller > svg {
+            .roller > svg {
                 position: absolute;
                 top: 1rem;
                 bottom: 1rem;
@@ -851,7 +851,7 @@ filter: blur(4px);i
                 -ms-overflow-style: none;
             }
 
-            .scroller path {
+            .roller path {
                 stroke-width: calc(var(--stroke-width) * 1px);
             }
 
@@ -875,7 +875,7 @@ filter: blur(4px);i
                 stroke: hsl(0 0% 100% / var(--track-alpha, 0));
             }
 
-            .scroller > div {
+            .roller > div {
                 height: 100%;
                 width: 100%;
                 overflow: auto;
@@ -906,23 +906,23 @@ filter: blur(4px);i
                 }
             }
 
-            .scroller > div > * {
+            .roller > div > * {
                 padding-inline: 1.25rem;
             }
-            .scroller main :not(:last-child) {
+            .roller main :not(:last-child) {
                 margin-bottom: 2rem;
             }
 
-            .scroller main p:last-of-type {
+            .roller main p:last-of-type {
                 opacity: 0.4;
             }
 
-            .scroller p {
+            .roller p {
                 opacity: 0.6;
                 font-size: 0.875rem;
             }
 
-            .scroller header {
+            .roller header {
                 scroll-snap-align: start;
                 margin-block: 2rem;
                 text-transform: uppercase;
@@ -944,7 +944,7 @@ filter: blur(4px);i
                 }
             }
 
-            .scroller footer {
+            .roller footer {
                 scroll-snap-align: end;
                 padding-inline: 1rem;
                 text-align: center;
