@@ -5,82 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Animated Video Overlay Layout</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link rel="stylesheet" href="style.css">
-<style>
-        /* Ensure no horizontal scrollbar */
-        body {
-            overflow-x: hidden;
-        }
-
-        /* General transition for video overlay content */
-        .video-overlay-content {
-            transition: opacity 0.5s ease-in-out;
-        }
-
-        /* Arrow animation styles for video overlay */
-        .video-overlay-content .arrow-container {
-            position: absolute;
-            top: 50%; /* Center verticarlay */
-            left: 70%; /* Center horizontally within the overlay */
-            transform: translate(-50%, -50%); /* Adjust for its own size */
-            width: 100px; /* A fixed width for the container to define the central area */
-            height: 50px; /* Height to contain arrows */
-            pointer-events: none; /* Allow clicks to pass through */
-            overflow: hidden;
-        }
-
-        .video-overlay-content .arrow-svg {
-            position: absolute;
-            fill: none;
-            stroke: #EF4444; /* Red color for arrows */
-            stroke-width: 2;
-            opacity: 0; /* Initially hidden */
-            transition: opacity 0.3s ease-in-out;
-            top: 50%; /* Center vertically within its container */
-            transform: translateY(-50%);
-        }
-
-        /* Keyframes for arrow animation */
-        @keyframes arrowMoveLeft {
-            0% {
-                transform: translate(0px, -50%) scale(0.8); /* Start at center of container */
-                opacity: 0;
-            }
-            20% {
-                opacity: 1;
-            }
-            100% {
-                transform: translate(-70px, -50%) scale(1); /* Move left from center */
-                opacity: 1;
-            }
-        }
-
-        @keyframes arrowMoveRight {
-            0% {
-                transform: translate(0px, -50%) scale(0.8); /* Start at center of container */
-                opacity: 0;
-            }
-            20% {
-                opacity: 1;
-            }
-            100% {
-                transform: translate(70px, -50%) scale(1); /* Move right from center */
-                opacity: 1;
-            }
-        }
-
-        /* Apply animation when active */
-        .video-overlay-active .arrow-left {
-            animation: arrowMoveLeft 1s forwards;
-            left: 50%; /* Start from center of arrow-container */
-        }
-
-        .video-overlay-active .arrow-right {
-            animation: arrowMoveRight 1s forwards;
-            left: 50%; /* Start from center of arrow-container */
-        }
-    </style>
 </head>
 <body class="bg-[#0D0D0D] text-gray-800">
     <div class="pointer-events-none absolute inset-x-0 h-32 lg:h-24 duration-200 bg-gradient-to-b from-black lg:from-black/75 opacity-100" style="mask: linear-gradient(black, black, transparent); backdrop-filter: blur(8px);"></div>
@@ -1025,7 +950,7 @@ class="sm:hidden absolute inset-0 w-full h-full object-cover rounded-2xl shadow-
 </div>
 </section>
 
-<section id="section-5" class="relative min-h-[2200px] text-white overflow-hidden pt-32">
+<section id="section-5" class=".ai-widget relative min-h-[2200px] text-white overflow-hidden pt-32">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-32">
             <div class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-8">
                 [ PRODUCTS ]
@@ -1047,7 +972,7 @@ class="sm:hidden absolute inset-0 w-full h-full object-cover rounded-2xl shadow-
                     </button>
                 </div>
                 <!-- Curved Scroller (Grok section) -->
-            <div class="ai-widget md:w-1/2 flex justify-center items-center">
+            <div class="md:w-1/2 flex justify-center items-center">
                     <div class="scroller">
                         <svg class="scroller__bar bar" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
                             <path class="bar__thumb" fill="none" stroke-linecap="round" />
