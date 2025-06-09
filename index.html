@@ -971,92 +971,56 @@ class="sm:hidden absolute inset-0 w-full h-full object-cover rounded-2xl shadow-
                     </button>
                 </div>
                 <!-- Curved Scroller (Grok section) -->
-                <div class="md:w-1/2 flex justify-center items-center">
-                    <div class="scroller">
-                        <svg class="scroller__bar bar" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
-                            <path class="bar__thumb" fill="none" stroke-linecap="round" />
-                            <path class="bar__track" fill="none" stroke-linecap="round" />
-                        </svg>
-                        <div>
-                            <header>
-                                <div class="flex justify-center items-center"> 
-                                    <h1>023: curved scroller.</h1>
-                                    <p>Jhey Tompkins.</p>
-                                </div>
-                                <img src="https://picsum.photos/1280/720?random=12" alt="Random image" onerror="this.onerror=null;this.src='https://placehold.co/1280x720/000/FFF?text=Image+Placeholder';" />
-                            </header>
-                            <main>
-                                <p>
-                                    Lorem, ipsum, dolor sit amet consectetur adipisicing elit. Suscipit
-                                    in voluptatum, ducimus labore iste consectetur laboriosam officiis
-                                    aliquid similique reprehenderit, consequatur distinctio consequuntur
-                                    nam magnam blanditiis reiciendis eligendi laudantium a.
-                                </p>
-                                <p>
-                                    Dignissimos, nisi tenetur doloremque esse cum amet delectus
-                                    cupiditate natus quo illum quisquam perspiciatis ipsa maiores aut
-                                    soluta, facilis sunt rem eius. Alias, illum, cumque. Temporibus
-                                    doloremque praesentium in, consectetur.
-                                </p>
-                                <p>
-                                    Molestias voluptas architecto atque maiores, laboriosam, dolorem
-                                    commodi autem, id, ipsa praesentium rerum inventore! Optio maiores
-                                    nulla impedit, sapiente similique, voluptas placeat hic quas dicta a
-                                    voluptate minima alias aliquam?
-                                </p>
-                                <img src="https://picsum.photos/1280/720?random=48" alt="Random image" onerror="this.onerror=null;this.src='https://placehold.co/1280x720/000/FFF?text=Image+Placeholder';" />
-                                <p>
-                                    Suscipit repudiandae, consectetur ratione quo, ipsa inventore
-                                    doloremque quibusdam sit iusto, obcaecati natus! Tempore, tenetur
-                                    culpa, mollitia consequuntur necessitatibus minima aliquid in
-                                    recusandae, exercitationem nulla voluptates atque quaerat,
-                                    doloremque illum.
-                                </p>
-                                <p>
-                                    Quibusdam quas, soluta quisquam nobis porro odio sit, maxime libero,
-                                    optio cumque, sint! Enim, atque, velit. Iste quisquam minus deleniti
-                                    quasi saepe! Saepe assumenda iste accusantium rem, sunt repudiandae
-                                    quae!
-                                </p>
-                                <p>
-                                    Mollitia quod fuga ex, consequatur saepe. Id laboriosam aspernatur
-                                    iusto unde quo. Optio molestiae maxime officia blanditiis voluptate,
-                                    quasi impedit aperiam corrupti nihil sit doloremque dolorem harum
-                                    necessitatibus expedita laboriosam.
-                                </p>
-                                <p>
-                                    Deleniti molestiae maxime ullam officia natus, eaque nisi numquam,
-                                    aliquam sapiente doloribus atque obcaecati illum vitae modi labore,
-                                    eligendi hic illo earum doloremque. Deserunt ut aliquam a aliquid,
-                                    dolores, magni.
-                                </p>
-                                <img src="https://picsum.photos/1280/720?random=36" alt="Random image" onerror="this.onerror=null;this.src='https://placehold.co/1280x720/000/FFF?text=Image+Placeholder';" />
-                                <p>
-                                    Nesciunt dolor fugiat excepturi sunt molestias quis quam
-                                    consequatur, ea, eos officiis? Veniam totam, quas quasi eos
-                                    quibusdam, dolorem deleniti minus aperiam, nobis sapiente sit,
-                                    necessitatibus delectus quidem. Voluptate, nemo!
-                                </p>
-                                <p>
-                                    Qui fugit rerum harum, odio eos esse dicta dolore atque itaque
-                                    voluptatem, doloribus ullam tempora quidem, accusantium quae,
-                                    incidunt natus error fuga inventore expedita autem veniam in sequi
-                                    iure. Officia.
-                                </p>
-                                <p>
-                                    Ab mollitia, illum. Iusto quam enim, in sapiente sed impedit
-                                    nesciunt pariatur delectus asperiores officia hic ratione quasi eum
-                                    quidem facere quaerat ducimus dolor totam omnis itaque sequi
-                                    expedita optio?
-                                </p>
-                                <p>Find out how to do things like this and more by subscribing.</p>
-                            </main>
-                            <footer>
-                                <p>The Craft of UI&nbsp;&copy;</p>
-                            </footer>
-                        </div>
-                        <style id="scroller-frames"></style>
-                    </div>
+                <div class="md:w-1/2 flex justify-center items-center px-4">
+  <!-- scroller wrapper: border only on mobile, rounded corners, shadow -->
+  <div class="scroller border border-gray-700 md:border-none rounded-2xl shadow-lg w-full max-w-md overflow-hidden">
+    <!-- your curved SVG track -->
+    <svg class="scroller__bar bar" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+      <path class="bar__thumb" fill="none" stroke-linecap="round" />
+      <path class="bar__track" fill="none" stroke-linecap="round" />
+    </svg>
+
+    <!-- content container: padded, flex-col, left-aligned text -->
+    <div class="p-6 flex flex-col items-start text-left space-y-6">
+      
+      <!-- header -->
+      <header class="w-full flex flex-col items-start space-y-1">
+        <h1 class="font-mono text-xl">023: curved scroller.</h1>
+        <p class="font-mono text-sm text-gray-400">Jhey Tompkins.</p>
+      </header>
+      
+      <!-- hero image -->
+      <img
+        class="w-full rounded-lg"
+        src="https://picsum.photos/1280/720?random=12"
+        alt="Random image"
+        onerror="this.onerror=null;this.src='https://placehold.co/1280x720/000/FFF?text=Image+Placeholder';"
+      />
+      
+      <!-- main text -->
+      <main class="space-y-4 text-gray-200 text-sm leading-relaxed">
+        <p>Lorem, ipsum, dolor sit amet consectetur adipisicing elit. Suscipit...</p>
+        <p>Dignissimos, nisi tenetur doloremque esse cum amet delectus...</p>
+        <!-- etc… -->
+        <img
+          class="w-full rounded-lg"
+          src="https://picsum.photos/1280/720?random=48"
+          alt="Random image"
+          onerror="this.onerror=null;this.src='https://placehold.co/1280x720/000/FFF?text=Image+Placeholder';"
+        />
+        <p>Suscipit repudiandae, consectetur ratione quo, ipsa inventore...</p>
+        <!-- more paragraphs/images… -->
+      </main>
+      
+      <!-- footer -->
+      <footer class="w-full text-center pt-4">
+        <p class="text-xs text-gray-500">The Craft of UI ©</p>
+      </footer>
+    </div>
+
+    <!-- keep your generated @keyframes here -->
+    <style id="scroller-frames"></style>
+  </div>
                 </div>
             </div>
             <!-- Grok Section End -->
