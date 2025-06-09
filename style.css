@@ -877,85 +877,83 @@ filter: blur(4px);i
             .bar__track {
                 stroke: hsl(0 0% 100% / var(--track-alpha, 0));
             }
+.scroller {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: #0D0D0D;
+  border-radius: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  scroll-snap-type: y mandatory;
+}
 
-            .scroller > div {
-                height: 100%;
-                width: 100%;
-                overflow: auto;
-                background: #0D0D0D;
-                border-radius: calc(var(--radius) * 1px);
-                display: grid;
-                grid-auto-flow: row;
-                gap: 0;
-                margin: 0;
-                padding: calc(var(--padding) * 1px) 0;
-                list-style-type: none;
-                scroll-snap-type: y mandatory;
-                scroll-timeline: --scroller;
-                scroll-behavior: smooth;
-                outline: 1px solid color-mix(in lch, canvas, canvasText);
-                outline-offset: 1px;
+.scroller > div {
+  flex: 1;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  padding: 1rem;
+  position: relative;
+}
 
-                &::after {
-                    content: '';
-                    height: calc(var(--stroke, 4) * 1px);
-                    width: clamp(40px, 50%, 80px);
-                    background: canvasText;
-                    border-radius: 100px;
-                    position: absolute;
-                    bottom: calc(1rem + 4px);
-                    left: 50%;
-                    transform: translateX(-50%);
-                }
-            }
+.scroller > div::after {
+  content: '';
+  height: 4px;
+  width: clamp(40px, 50%, 80px);
+  background: #fff;
+  border-radius: 100px;
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
-            .scroller > div > * {
-                padding-inline: 1.25rem;
-            }
-            .scroller main :not(:last-child) {
-                margin-bottom: 2rem;
-            }
+.scroller > div > * {
+  padding-inline: 1.25rem;
+}
 
-            .scroller main p:last-of-type {
-                opacity: 0.4;
-            }
+.scroller main :not(:last-child) {
+  margin-bottom: 2rem;
+}
 
-            .scroller p {
-                opacity: 0.6;
-                font-size: 0.875rem;
-            }
+.scroller main p:last-of-type {
+  opacity: 0.4;
+}
 
-            .scroller header {
-                scroll-snap-align: start;
-                margin-block: 2rem;
-                text-transform: uppercase;
-                font-family: 'Reddit Mono', monospace;
+.scroller p {
+  opacity: 0.6;
+  font-size: 0.875rem;
+  margin: 0.5rem 0;
+}
 
-              .scroller  div {
-                    margin-block: 4rem;
-                }
+.scroller header {
+  scroll-snap-align: start;
+  margin-block: 2rem;
+  text-transform: uppercase;
+  font-family: 'Reddit Mono', monospace;
+}
 
-              .scroller  h1 {
-                    font-size: 1.25rem;
-                    font-weight: 300;
-                    margin: 0;
-                }
-             .scroller  p {
-                    margin: 0;
-                    font-size: 1rem;
-                    font-weight: 300;
-                }
-            }
+.scroller header h1 {
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin: 0;
+}
 
-            .scroller footer {
-                scroll-snap-align: end;
-                padding-inline: 1rem;
-                text-align: center;
-                padding-block: 1rem;
-                font-size: 0.75rem;
-                opacity: 0.5;
-            }
-        }
+.scroller header p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.scroller footer {
+  scroll-snap-align: end;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.75rem;
+  opacity: 0.5;
+}
 
         /* API Section Box (middle box) */
         #api-box {
