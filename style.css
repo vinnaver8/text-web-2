@@ -763,17 +763,17 @@ filter: blur(4px);i
 
         @layer snapping {
             @supports (animation-timeline: scroll()) {
-                .roller header,
-                .roller footer {
+               .ai-widget .scroller header,
+               .ai-widget .scroller footer {
                     scroll-snap-align: unset;
                 }
-                .roller header {
+               .ai-widget .scroller header {
                     --align: start;
                     animation: snap both linear reverse;
                     animation-timeline: scroll(nearest);
                     animation-range: calc(var(--padding, 0) * 1px) 0;
                 }
-                .roller footer {
+               .ai-widget .scroller footer {
                     --align: end;
                     animation: snap both linear;
                     animation-timeline: scroll(nearest);
@@ -798,7 +798,7 @@ filter: blur(4px);i
                 timeline-scope: --scroller;
             }
 
-            .roller {
+           .ai-widget .scroller {
                 position: relative;
                 width: 100%;
                 max-width: 600px;
@@ -808,7 +808,7 @@ filter: blur(4px);i
                 padding: 1rem;
             }
 
-            .roller img {
+           .ai-widget .scroller img {
                 width: 100%;
                 object-fit: cover;
                 border-radius: 6px;
@@ -825,7 +825,7 @@ filter: blur(4px);i
                 opacity: 1;
             }
 
-            .roller > svg {
+            .ai-widget .scroller > svg {
                 position: absolute;
                 top: 1rem;
                 bottom: 1rem;
@@ -851,7 +851,7 @@ filter: blur(4px);i
                 -ms-overflow-style: none;
             }
 
-            .roller path {
+           .ai-widget .scroller path {
                 stroke-width: calc(var(--stroke-width) * 1px);
             }
 
@@ -875,7 +875,7 @@ filter: blur(4px);i
                 stroke: hsl(0 0% 100% / var(--track-alpha, 0));
             }
 
-            .roller > div {
+           .ai-widget .scroller > div {
                 height: 100%;
                 width: 100%;
                 overflow: auto;
@@ -906,45 +906,45 @@ filter: blur(4px);i
                 }
             }
 
-            .roller > div > * {
+           .ai-widget .scroller > div > * {
                 padding-inline: 1.25rem;
             }
-            .roller main :not(:last-child) {
+           .ai-widget .scroller main :not(:last-child) {
                 margin-bottom: 2rem;
             }
 
-            .roller main p:last-of-type {
+           .ai-widget .scroller main p:last-of-type {
                 opacity: 0.4;
             }
 
-            .roller p {
+           .ai-widget .scroller p {
                 opacity: 0.6;
                 font-size: 0.875rem;
             }
 
-            .roller header {
+          .ai-widget .scroller header {
                 scroll-snap-align: start;
                 margin-block: 2rem;
                 text-transform: uppercase;
                 font-family: 'Reddit Mono', monospace;
 
-                div {
+              .ai-widget .scroller div {
                     margin-block: 4rem;
                 }
 
-                h1 {
+               .ai-widget .scroller h1 {
                     font-size: 1.25rem;
                     font-weight: 300;
                     margin: 0;
                 }
-                p {
+             .ai-widget .scroller p {
                     margin: 0;
                     font-size: 1rem;
                     font-weight: 300;
                 }
             }
 
-            .roller footer {
+           .ai-widget .scroller footer {
                 scroll-snap-align: end;
                 padding-inline: 1rem;
                 text-align: center;
