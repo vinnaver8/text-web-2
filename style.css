@@ -754,17 +754,8 @@ filter: blur(4px);i
       cursor: pointer;
       }
 /* last section------------*/
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-body {
-    font-family: 'Inter', sans-serif;
-}
-
-/* Curved Scroller (Grok section) */
 @import url('https://unpkg.com/normalize.css') layer(normalize);
-
 @layer normalize, base, demo, snapping;
-
 @layer snapping {
     @supports (animation-timeline: scroll()) {
         .ai-widget .scroller header,
@@ -1131,4 +1122,3 @@ body {
         box-sizing: border-box;
     }
 }
-</style>
