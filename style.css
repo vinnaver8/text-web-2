@@ -931,21 +931,6 @@ filter: blur(4px);i
                 margin-block: 2rem;
                 text-transform: uppercase;
                 font-family: 'Reddit Mono', monospace;
-
-                div {
-                    margin-block: 4rem;
-                }
-
-                h1 {
-                    font-size: 1.25rem;
-                    font-weight: 300;
-                    margin: 0;
-                }
-                p {
-                    margin: 0;
-                    font-size: 1rem;
-                    font-weight: 300;
-                }
             }
 
             .scroller footer {
