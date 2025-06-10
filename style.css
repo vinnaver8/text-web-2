@@ -754,411 +754,309 @@ filter: blur(4px);i
       cursor: pointer;
       }
 /* last section------------*/
-
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         body {
             font-family: 'Inter', sans-serif;
         }
 
-        /* Curved Scroller (Grok section) */
-        @import url('https://unpkg.com/normalize.css') layer(normalize);
-
-        @layer normalize, base, demo, snapping;
-
-        @layer snapping {
-            @supports (animation-timeline: scroll()) {
-                .scroller header,
-                .scroller footer {
-                    scroll-snap-align: unset;
-                }
-                .scroller header {
-                    --align: start;
-                    animation: snap both linear reverse;
-                    animation-timeline: scroll(nearest);
-                    animation-range: calc(var(--padding, 0) * 1px) 0;
-                }
-                .scroller footer {
-                    --align: end;
-                    animation: snap both linear;
-                    animation-timeline: scroll(nearest);
-                    animation-range: calc(100% - (var(--padding, 0) * 1px)) 100%;
-                }
-                @keyframes snap {
-                    to {
-                        scroll-snap-align: var(--align, start);
-                    }
-                }
-            }
+        /* Standard Vertical Scroller (Grok section - iPhone Layout) */
+        .vertical-scroller-container {
+            width: 320px; /* iPhone-like width */
+            height: 480px; /* Medium iPhone-like height */
+            background: #0d0d0d; /* Slightly brighter screen background */
+            border-radius: 40px; /* More rounded for iPhone look */
+            border: 10px solid #282828; /* Thicker, darker bezel */
+            box-sizing: border-box;
+            position: relative; /* For notch/speaker styling */
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.7), inset 0 0 15px rgba(255, 255, 255, 0.05); /* Outer shadow + subtle inner screen light */
+            overflow: hidden; /* Hide anything outside the main phone frame */
         }
 
-        @layer demo {
-            :root {
-                --size: 300px;
-                --radius: 32;
-                --padding: 64px;
-                --bg: hsl(180 0% 33%);
-                --bar: hsl(0 0% 100% / 0.5);
-                --panel: hsl(20 60% 50%);
-                timeline-scope: --scroller;
-            }
-
-            .scroller {
-                position: relative;
-                width: 100%;
-                max-width: 600px;
-                aspect-ratio: 3 / 3.5; /* Updated aspect ratio */
-                resize: none;
-                overflow: hidden;
-                padding: 1rem;
-            }
-
-            .scroller img {
-                width: 100%;
-                object-fit: cover;
-                border-radius: 6px;
-                filter: contrast(1.5) grayscale(1);
-            }
-
-            .bar__thumb,
-            .bar__track {
-                opacity: 0;
-                transition: opacity 0.2s;
-            }
-
-            [data-rounded-scroll='true'] .scroller :is(.bar__thumb, .bar__track) {
-                opacity: 1;
-            }
-
-            .scroller > svg {
-                position: absolute;
-                top: 1rem;
-                bottom: 1rem;
-                right: 1rem;
-                pointer-events: none;
-                width: calc(var(--radius) * 2px);
-                overflow: visible !important;
-                z-index: 2;
-            }
-
-            [data-rounded-scroll='true'] .scroller div::-webkit-scrollbar {
-                display: none;
-            }
-
-            [data-rounded-scroll='true'] div::-webkit-scrollbar {
-                display: none;
-                opacity: 0 !important;
-            }
-
-            [data-rounded-scroll='true'] .scroller div {
-                scrollbar-width: 0;
-                scrollbar-width: none;
-                -ms-overflow-style: none;
-            }
-
-            .scroller path {
-                stroke-width: calc(var(--stroke-width) * 1px);
-            }
-
-            .bar__thumb {
-                stroke: color-mix(
-                    in hsl,
-                    var(--color, #fff),
-                    #0000 calc((1 - var(--bar-alpha, 0.5)) * 100%)
-                );
-                stroke-dasharray: var(--thumb-size) var(--track-length);
-            }
-
-            @supports (animation-timeline: scroll()) {
-                .bar__thumb {
-                    animation: scroll both linear;
-                    animation-timeline: --scroller;
-                }
-            }
-
-            .bar__track {
-                stroke: hsl(0 0% 100% / var(--track-alpha, 0));
-            }
-
-            .scroller > div {
-                height: 100%;
-                width: 100%;
-                overflow: auto;
-                background: #0D0D0D;
-                border-radius: calc(var(--radius) * 1px);
-                display: grid;
-                grid-auto-flow: row;
-                gap: 0;
-                margin: 0;
-                padding: calc(var(--padding) * 1px) 0;
-                list-style-type: none;
-                scroll-snap-type: y mandatory;
-                scroll-timeline: --scroller;
-                scroll-behavior: smooth;
-                outline: 1px solid color-mix(in lch, canvas, canvasText);
-                outline-offset: 1px;
-
-                &::after {
-                    content: '';
-                    height: calc(var(--stroke, 4) * 1px);
-                    width: clamp(40px, 50%, 80px);
-                    background: canvasText;
-                    border-radius: 100px;
-                    position: absolute;
-                    bottom: calc(1rem + 4px);
-                    left: 50%;
-                    transform: translateX(-50%);
-                }
-            }
-
-            .scroller > div > * {
-                padding-inline: 1.25rem;
-            }
-            .scroller main :not(:last-child) {
-                margin-bottom: 2rem;
-            }
-
-            .scroller main p:last-of-type {
-                opacity: 0.4;
-            }
-
-            .scroller p {
-                opacity: 0.6;
-                font-size: 0.875rem;
-            }
-
-            .scroller header {
-                scroll-snap-align: start;
-                margin-block: 2rem;
-                text-transform: uppercase;
-                font-family: 'Reddit Mono', monospace;
-            }
-
-            .scroller footer {
-                scroll-snap-align: end;
-                padding-inline: 1rem;
-                text-align: center;
-                padding-block: 1rem;
-                font-size: 0.75rem;
-                opacity: 0.5;
-            }
-        }
-
-        /* API Section Box (middle box) */
-        #api-box {
-            position: relative;
-            width: 100%;
-            max-width: 500px;
-            height: 280px;
-            background-color: #111;
-            border: 3px solid #333;
-            border-radius: 12px;
-            overflow: hidden;
-            aspect-ratio: 3 / 3.5; /* Updated aspect ratio */
-        }
-        #api-typing {
+        /* New div for the iPhone notch */
+        .iphone-notch {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 1.2rem;
-            white-space: nowrap;
-            overflow: hidden;
-            border-right: 2px solid #fff;
-            width: max-content;
-            max-width: 0;
-            animation:
-                api-typing-reveal 3s steps(29, end) forwards,
-                api-blink 0.6s step-end infinite alternate;
-            padding-right: 2px;
-            color: #fff;
-        }
-        @keyframes api-typing-reveal {
-            from { max-width: 0; }
-            to   { max-width: 100%; }
-        }
-        @keyframes api-blink {
-            50% { border-color: transparent; }
-        }
-        #api-thinking {
-            display: none;
-            width: 100%;
-            height: 100%;
-            position: relative;
-            padding: 16px;
-        }
-        #api-spinner {
-            position: absolute;
-            top: 16px;
-            left: 16px;
-            width: 18px;
-            height: 18px;
-            border: 3px solid #333;
-            border-top: 3px solid #fff;
-            border-radius: 50%;
-            animation: api-spin 1s linear infinite;
-        }
-        @keyframes api-spin {
-            to { transform: rotate(360deg); }
-        }
-        #api-countText {
-            position: absolute;
-            top: 14px;
-            left: 46px;
-            font-size: 1rem;
-            white-space: nowrap;
-            color: #fff;
-        }
-        #api-scrollContainer {
-            position: absolute;
-            top: 60px;
+            top: 0px; /* Position relative to the container's inner edge (adjust for border) */
             left: 50%;
             transform: translateX(-50%);
-            width: 90%;
-            height: 150px;
-            overflow: hidden;
+            width: 130px; /* Notch width */
+            height: 30px; /* Notch height */
+            background: #282828;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            border: 1px solid #282828; /* Match the main border color */
+            box-sizing: border-box; /* Include border in size */
+            z-index: 100; /* Ensure notch is always on top */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5); /* Subtle shadow for depth */
         }
 
-        #api-scrollContent {
-            position: absolute;
-            top: 0;
+        /* New container for scrollable content inside the iPhone */
+        .iphone-scrollable-content {
+            height: 100%; /* Take full height of parent container */
             width: 100%;
-            line-height: 1.4rem;
-            color: #ccc;
-            font-size: 0.95rem;
-            animation: api-scrollUp 10s linear infinite;
-        }
-
-        @keyframes api-scrollUp {
-            0%   { transform: translateY(0); }
-            100% { transform: translateY(-50%); }
-        }
-        #api-final {
-            display: none;
-            width: 100%;
-            max-width: 500px;
-            height: 280px;
-            background-color: #111;
-            border-radius: 12px;
-            border: 1px solid #333;
-            padding: 16px;
+            overflow-y: auto; /* Enable vertical scrolling for this content */
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+            padding-top: 4.5rem; /* Space for the fixed notch */
+            padding-bottom: 1rem;
             box-sizing: border-box;
-            color: #fff;
-            aspect-ratio: 3 / 3.5; /* Updated aspect ratio */
+            position: relative; /* Needed for z-index context if internal elements need it */
+            z-index: 50; /* Ensure content is below notch */
         }
-        #api-checkIcon {
-            width: 24px;
-            height: 24px;
-            fill: #4caf50;
-            vertical-align: middle;
-            margin-right: 8px;
+
+        .iphone-scrollable-content::-webkit-scrollbar {
+            display: none; /* Hide scrollbar for Chrome, Safari, Opera */
         }
-        #api-finalHeader {
+
+        .vertical-scroller-content {
             display: flex;
-            align-items: center;
-            font-size: 1.2rem;
-            margin-bottom: 12px;
-        }
-        #api-finalContent {
-            font-size: 0.95rem;
-            line-height: 1.4rem;
-            color: #ddd;
-            height: 200px;
-            overflow-y: auto;
-        }
-        #offices-display {
-            display: none;
-            width: 100%;
-            height: 280px;
-            padding: 20px;
-            background-color: #000;
-            color: #fff;
-            overflow-y: auto;
-            border-radius: 12px;
-            border: 1px solid #333;
-            box-sizing: border-box;
-            aspect-ratio: 3 / 3.5; /* Updated aspect ratio */
+            flex-direction: column;
+            gap: 1.5rem; /* Gap between content items */
+            padding-left: 1rem;
+            padding-right: 1rem;
+            /* No padding-top/bottom here, handled by iphone-scrollable-content */
         }
 
-        #offices-display h2 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        #offices-display p {
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
-
-        #offices-display button {
-            border: 1px solid #fff;
-            background-color: transparent;
-            color: #fff;
-            padding: 8px 15px;
-            border-radius: 5px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        #offices-display button:hover {
-            background-color: #fff;
-            color: #000;
-        }
-
-        #offices-map-container {
-            flex: 1;
-            min-width: 200px;
-            margin-left: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #offices-map-container svg {
+        .vertical-scroller-content img {
             width: 100%;
             height: auto;
-            max-width: 300px;
+            object-fit: cover;
+            border-radius: 6px;
         }
 
-        #offices-map-container text {
-            font-family: 'Inter', sans-serif;
-            font-size: 7px;
+        .vertical-scroller-content h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
         }
 
-        #offices-map-container .city-name {
-            font-size: 8px;
-            fill: #fff;
+        .vertical-scroller-content p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #ccc;
         }
-        @media (max-width: 600px) {
-            #offices-display {
-                padding: 10px;
-            }
-            #offices-display h2 {
-                font-size: 1.5rem;
-            }
-            #offices-map-container {
-                margin-top: 20px;
-                margin-left: 0;
-            }
-            #offices-display .flex-container {
-                flex-direction: column;
-            }
+
+
+        /* API Section (MacBook Layout) */
+        .macbook-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px; /* Adjusted wider for the full laptop */
+            margin-bottom: 30px; /* Space for the base */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 10px 60px rgba(0, 0, 0, 0.9); /* More prominent overall shadow */
+            border-radius: 18px; /* Overall rounded corners for the laptop */
+            background-color: #3a3a3a; /* Darker base color */
         }
+
+        #api-box {
+            position: relative;
+            width: calc(100% - 10px); /* Account for thin screen border */
+            height: 380px; /* Medium screen height */
+            background-color: #0d0d0d; /* Screen background */
+            border-radius: 12px 12px 0 0; /* Rounded top corners, sharp bottom for screen */
+            border: 4px solid #1a1a1a; /* Thicker, darker bezel */
+            box-sizing: border-box;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column; /* Use flex column for general layout */
+            align-items: center;
+            justify-content: flex-start; /* Align content to top initially */
+            aspect-ratio: 16 / 9; /* Typical laptop screen aspect ratio */
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.7), 0 5px 15px rgba(0,0,0,0.3); /* Inner screen depth + subtle screen shadow */
+            margin-top: 5px; /* Push down slightly from container top edge */
+            padding: 25px; /* General padding for screen content */
+        }
+
+        /* MacBook Camera Dot */
+        #api-box::before {
+            content: '';
+            position: absolute;
+            top: 15px; /* Position camera at top center */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 7px;
+            height: 7px;
+            background: #444;
+            border-radius: 50%;
+            z-index: 10;
+            box-shadow: 0 0 3px rgba(0,0,0,0.5);
+        }
+
+        .macbook-base {
+            width: 98%; /* Slightly narrower base than screen */
+            height: 35px; /* Thickness of the base/keyboard area */
+            background-color: #2b2b2b; /* Base color, slightly different from screen */
+            border-radius: 0 0 18px 18px; /* Rounded bottom corners matching container */
+            position: relative;
+            z-index: -1; /* Place behind the screen for hinge effect */
+            box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.3), 0 10px 20px rgba(0,0,0,0.5); /* Inner shadow for keyboard area + outer shadow */
+            margin-top: -15px; /* Overlap with screen for hinge effect */
+            transform: perspective(200px) rotateX(4deg); /* Slight 3D tilt for base */
+            transform-origin: top center;
+            border-top: 2px solid #444; /* Hinge line */
+        }
+
+        /* Real-time clock */
+        #macbook-clock {
+            position: absolute; /* Keep absolute to position over other content */
+            top: 25px; /* Adjust padding from top */
+            left: 25px; /* Adjust padding from left */
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #ccc;
+            z-index: 15; /* Higher z-index to always be on top */
+        }
+
+        /* Main content containers within MacBook screen */
+        .macbook-screen-content-wrapper {
+            position: absolute; /* Take full screen content area */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between; /* Distribute space for input/button at bottom */
+            padding: 25px; /* General padding for screen content */
+            padding-top: 60px; /* Adjust padding for the clock at the top */
+            box-sizing: border-box;
+        }
+
+
+        /* Input and Button Styling */
+        #inputFormContent {
+            display: flex; /* Ensure it's a flex container for its children */
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            width: 100%; /* Take full width of parent */
+            padding: 0 20px; /* Add horizontal padding */
+            box-sizing: border-box;
+            margin-top: auto; /* Push to the bottom */
+        }
+
+        #apiQueryInput {
+            width: 100%; /* Fill the container width */
+            padding: 12px 15px;
+            border: 1px solid #555;
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: #2a2a2a;
+            color: #fff;
+            outline: none;
+        }
+
+        #generateResponseButton {
+            background-color: #f85922;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            width: 100%; /* Fill the container width */
+        }
+
+        #generateResponseButton:hover {
+            background-color: #e04a1b;
+        }
+
+        /* Generation Progress Styling */
+        .generation-progress {
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: absolute; /* Take full screen content area */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0d0d0d; /* Match screen background */
+            z-index: 10; /* Overlay other content but below clock */
+            padding-top: 60px; /* Space for the clock */
+            box-sizing: border-box;
+        }
+
+        .generation-progress p {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .dynamic-number {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #f85922;
+        }
+
+        /* Response Display Styling */
+        .response-display {
+            display: none; /* Hidden by default */
+            position: absolute; /* Take full screen content area */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            text-align: left;
+            padding: 25px; /* Match screen padding */
+            padding-top: 60px; /* Adjust padding for the clock at the top */
+            box-sizing: border-box;
+            background-color: #0d0d0d; /* Match screen background */
+            z-index: 10; /* Overlay other content but below clock */
+            overflow-y: auto; /* Enable scrolling for long content */
+            -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+            scrollbar-width: none; /* Hide scrollbar for Firefox */
+        }
+        .response-display::-webkit-scrollbar {
+            display: none; /* Hide scrollbar for Chrome, Safari, Opera */
+        }
+
+        .response-display h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #f85922;
+        }
+
+        .response-display p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+
+        .response-display ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            color: #ccc;
+        }
+
+        .response-display .footer-text {
+            font-size: 0.75rem;
+            color: #555;
+            margin-top: auto; /* Push to bottom */
+            padding-top: 15px; /* Padding above footer text */
+        }
+
 
         /* Infinite Scroller (Developer Docs section) */
         @layer demo {
             .infinite-scroller-main-container {
                 --font-level: 5;
-                opacity: 0;
+                opacity: 1; /* Make visible initially */
                 width: 100%;
                 max-width: 600px;
                 height: 280px;
                 max-height: 100%;
                 display: flex;
                 place-items: center;
-                /* Removed mask to handle fading with color/opacity directly on list items */
                 text-align: center;
                 position: relative;
                 background: #0D0D0D;
@@ -1166,6 +1064,22 @@ filter: blur(4px);i
                 border-radius: 12px;
                 border: 1px solid #333;
                 aspect-ratio: 3 / 3.5; /* Updated aspect ratio */
+
+                /* Apply mask for blur effect with sharper transitions */
+                mask-image: linear-gradient(
+                    to bottom,
+                    transparent 0%,
+                    black 10%, /* Start opaque earlier */
+                    black 90%, /* End opaque later */
+                    transparent 100%
+                );
+                -webkit-mask-image: linear-gradient(
+                    to bottom,
+                    transparent 0%,
+                    black 10%,
+                    black 90%,
+                    transparent 100%
+                );
             }
 
             .infinite-scroller-main-container ul {
@@ -1249,4 +1163,5 @@ filter: blur(4px);i
             *::after {
                 box-sizing: border-box;
             }
-          }
+        }
+    </style>
