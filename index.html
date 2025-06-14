@@ -1416,5 +1416,69 @@ window.addEventListener('resize', () => {
 
         gsap.set('.infinite-scroller-main-container', { opacity: 1 });
     </script>
+    <footer class="custom-effect bg-[#0d0d0d] py-16 px-4 sm:px-6 lg:px-8">
+        <!-- Top part of the footer (Join the Movement) -->
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 pb-16">
+            <!-- Animated Logo Section -->
+            <div class="flex-shrink-0 w-full md:w-1/2 flex items-center justify-center md:justify-start">
+                <div role="button" class="animated-logo-container">
+                    <span class="glow"></span>
+                    <div>
+                        <span>cool</span>Glowing shadows
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action Content -->
+            <div class="flex-1 text-center md:text-left">
+                <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
+                    Join the <span class="block">Movement</span>
+                </h2>
+                <p class="text-lg text-gray-400 mb-2">
+                    Unlock the future of productivity with Huly.
+                </p>
+                <p class="text-lg text-gray-400 mb-8">
+                    Remember, this journey is just getting started.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
+                    <button id="glowButton" class="glow-btn px-8 py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-transform transform hover:-translate-y-1 bg-gradient-to-r from-white to-orange-200 text-gray-800">
+  <span>START NOW</span>
+                    </button>
+                    <button class="flex items-center justify-center gap-2 gradient-border-button px-8 py-4 rounded-xl text-lg font-semibold hover:bg-gray-800 transition-colors">
+                        <i class="fab fa-slack text-xl"></i>
+                        JOIN OUR SLACK
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom part of the footer (Copyright and Legal) -->
+        <div class="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-6 pt-8">
+            <!-- Left section: Social Icons and Copyright -->
+            <div class="flex flex-col items-center md:items-start gap-4 text-gray-400 text-sm w-full md:w-auto">
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-white transition-colors"><i class="fab fa-twitter text-xl"></i></a> <!-- Using Twitter for X -->
+                    <a href="#" class="hover:text-white transition-colors"><i class="fab fa-linkedin-in text-xl"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fab fa-youtube text-xl"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fab fa-discord text-xl"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fab fa-github text-xl"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fab fa-dribbble text-xl"></i></a>
+                </div>
+                <!-- Copyright text moved directly below social icons -->
+                <p class="mt-4 md:mt-0 text-center md:text-left">Copyright &copy; 2025 Huly Labs. All rights reserved.</p>
+            </div>
+
+            <!-- Right section: Legal Links and Made with Passion -->
+            <div class="flex flex-col items-center md:items-end gap-4 text-gray-400 text-sm w-full md:w-auto">
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                </div>
+                <p class="flex items-center gap-1 mt-4 md:mt-0 text-center md:text-right">
+                    Made with passion and Huly <i class="fas fa-heart text-red-500"></i>
+                </p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
