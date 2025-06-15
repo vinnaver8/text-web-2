@@ -1416,7 +1416,7 @@ window.addEventListener('resize', () => {
 
         gsap.set('.infinite-scroller-main-container', { opacity: 1 });
     </script>
-    <footer class="custom-effect bg-[#0d0d0d] py-16 px-4 sm:px-6 lg:px-8">
+      <footer class="custom-effect bg-gray-950 py-16 px-4 sm:px-6 lg:px-8">
         <!-- Top part of the footer (Join the Movement) -->
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 pb-16">
             <!-- Animated Logo Section -->
@@ -1441,9 +1441,11 @@ window.addEventListener('resize', () => {
                     Remember, this journey is just getting started.
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
-                    <button id="glowButton" class="glow-btn px-8 py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-transform transform hover:-translate-y-1 bg-gradient-to-r from-white to-orange-200 text-gray-800">
-  <span>START NOW</span>
+                    <!-- Updated "START NOW" button with unique classes and ID -->
+                    <button id="hulyStartNowButton" class="huly-start-now-btn px-8 py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-transform transform hover:-translate-y-1">
+                        <span>START NOW</span>
                     </button>
+                    <!-- Original "JOIN OUR SLACK" button -->
                     <button class="flex items-center justify-center gap-2 gradient-border-button px-8 py-4 rounded-xl text-lg font-semibold hover:bg-gray-800 transition-colors">
                         <i class="fab fa-slack text-xl"></i>
                         JOIN OUR SLACK
@@ -1480,25 +1482,30 @@ window.addEventListener('resize', () => {
             </div>
         </div>
     </footer>
+
+    <!-- Unique JavaScript for the "START NOW" button glow effect -->
     <script>
-    const btn = document.getElementById("glowButton");
-    btn.addEventListener("mousemove", (e) => {
-      const rect = btn.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      btn.style.setProperty('--x', `${x}px`);
-      btn.style.setProperty('--y', `${y}px`);
-    });
-</script>
-    <!-- JavaScript for CSS.registerProperty detection -->
+        const hulyGlowButton = document.getElementById("hulyStartNowButton");
+        if (hulyGlowButton) {
+            hulyGlowButton.addEventListener("mousemove", (e) => {
+                const rect = hulyGlowButton.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                hulyGlowButton.style.setProperty('--huly-x-pos', `${x}px`);
+                hulyGlowButton.style.setProperty('--huly-y-pos', `${y}px`);
+            });
+        }
+    </script>
+
+    <!-- Original JavaScript for CSS.registerProperty detection -->
     <script>
         if (typeof window.CSS.registerProperty === 'function') {
             console.log('CSS.registerProperty supported 🎉');
-            document.body.style.setProperty('--supported', 1);
+            document.body.style.setProperty('--huly-supported', 1);
             document.body.classList.add('registerProperty-supported');
         } else {
             console.log('CSS.registerProperty not supported ❌');
-            document.body.style.setProperty('--not-supported', 1);
+            document.body.style.setProperty('--huly-not-supported', 1);
             document.body.classList.add('registerProperty-not-supported');
         }
     </script>
