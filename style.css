@@ -1166,35 +1166,42 @@ filter: blur(4px);i
         }
     </style>
 <style>
- .glow-btn {
-      position: relative;
-      overflow: hidden;
-    }
+        /* Unique CSS for the new Start Now button with glow effect */
+        .huly-start-now-btn {
+            position: relative;
+            overflow: hidden;
+            /* Reverting to the original orange gradient for consistency */
+            background: linear-gradient(90deg, #FF6F00 0%, #FFB300 100%);
+            color: #1a1a1a; /* Darker text for contrast on bright gradient */
+            z-index: 1; /* Ensure button text is above the glow */
+        }
 
-    .glow-btn::before {
-      content: '';
-      position: absolute;
-      top: var(--y);
-      left: var(--x);
-      transform: translate(-50%, -50%);
-      width: 200px;
-      height: 200px;
-      background: radial-gradient(circle, rgba(255,255,255,0.8), rgba(255,165,0,0.4), transparent 60%);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s;
-      border-radius: 50%;
-      z-index: 0;
-    }
+        .huly-start-now-btn::before {
+            content: '';
+            position: absolute;
+            top: var(--huly-y-pos); /* Unique CSS variable */
+            left: var(--huly-x-pos); /* Unique CSS variable */
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255,255,255,0.8), rgba(255,165,0,0.4), transparent 60%);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            border-radius: 50%;
+            z-index: 0;
+        }
 
-    .glow-btn:hover::before {
-      opacity: 1;
-    }
+        .huly-start-now-btn:hover::before {
+            opacity: 1;
+        }
 
-    .glow-btn span {
-      position: relative;
-      z-index: 1;
-    }
+        .huly-start-now-btn span {
+            position: relative;
+            z-index: 1; /* Ensure text is above the pseudo-element glow */
+        }
+
+        /* Existing gradient for the "JOIN OUR SLACK" button */
         .gradient-border-button {
             background: transparent;
             border: 2px solid;
@@ -1209,93 +1216,101 @@ filter: blur(4px);i
                  url("https://assets.codepen.io/64/Mona-Sans.woff2") format("woff2-variations");
             font-weight: 100 1000;
         }
-        @property --hue {
+
+        /* Inter font for overall body, as previously requested */
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        /* CSS @property rules for animation (these are globally registered and cannot be scoped) */
+        @property --huly-hue {
             syntax: "<number>";
             inherits: true;
             initial-value: 0;
         }
-        @property --rotate {
+        @property --huly-rotate {
             syntax: "<number>";
             inherits: true;
             initial-value: 0;
         }
-        @property --bg-y {
+        @property --huly-bg-y {
             syntax: "<number>";
             inherits: true;
             initial-value: 0;
         }
-        @property --bg-x {
+        @property --huly-bg-x {
             syntax: "<number>";
             inherits: true;
             initial-value: 0;
         }
-        @property --glow-translate-y {
+        @property --huly-glow-translate-y {
             syntax: "<number>";
             inherits: true;
             initial-value: 0;
         }
-        @property --bg-size {
+        @property --huly-bg-size {
             syntax: "<number>";
             inherits: true;
             initial-value: 0;
         }
-        @property --glow-opacity {
+        @property --huly-glow-opacity {
             syntax: "<number>";
             inherits: true;
             initial-value: 0;
         }
-        @property --glow-blur {
+        @property --huly-glow-blur {
             syntax: "<number>";
             inherits: true;
             initial-value: 0;
         }
-        @property --glow-scale {
+        @property --huly-glow-scale {
             syntax: "<number>";
             inherits: true;
             initial-value: 2;
         }
-        @property --glow-radius {
+        @property --huly-glow-radius {
             syntax: "<number>";
             inherits: true;
             initial-value: 2;
         }
-        @property --white-shadow {
+        @property --huly-white-shadow {
             syntax: "<number>";
             inherits: true;
             initial-value: 0;
         }
-.custom-effect {
-  --debug: 0;
-  --supported: 0;
-  --not-supported: 0;
 
-  --card-color: hsl(260deg 100% 3%);
-  --text-color: hsl(260deg 10% 55%);
-  --card-radius: 3.6vw;
-  --border-width: 3px;
-  --bg-size: 1;
+        /* Root variables for the animation, scoped to custom-effect */
+        .custom-effect {
+            --huly-debug: 0;
+            --huly-supported: 0;
+            --huly-not-supported: 0;
 
-  --hue: 0;
-  --hue-speed: 1;
-  --rotate: 0;
-  --animation-speed: 4s;
+            --huly-card-color: hsl(260deg 100% 3%);
+            --huly-text-color: hsl(260deg 10% 55%);
+            --huly-card-radius: 3.6vw;
+            --huly-border-width: 3px;
+            --huly-bg-size: 1;
 
-  --interaction-speed: 0.55s;
-  --glow-scale: 1.5;
-  --scale-factor: 1;
-  --glow-blur: 6;
-  --glow-opacity: 1;
-  --glow-radius: 100;
-  --glow-rotate-unit: 1deg;
+            --huly-hue: 0;
+            --huly-hue-speed: 1;
+            --huly-rotate: 0;
+            --huly-animation-speed: 4s;
+
+            --huly-interaction-speed: 0.55s;
+            --huly-glow-scale: 1.5;
+            --huly-scale-factor: 1;
+            --huly-glow-blur: 6;
+            --huly-glow-opacity: 1;
+            --huly-glow-radius: 100;
+            --huly-glow-rotate-unit: 1deg;
         }
 
-        /* Main container for the animated logo */
-        .animated-logo-container {
+        /.animated-logo-container {
             /* These dimensions match the original placeholder image (w-64 h-64) */
             width: 256px;
             height: 256px;
             /* Adjust --card-width to match the container's width */
-            --card-width: 256px;
+            --huly-card-width: 256px; /* Unique variable */
             /* Make it square */
             aspect-ratio: 1 / 1;
             color: white;
@@ -1305,7 +1320,7 @@ filter: blur(4px);i
             justify-content: center;
             position: relative;
             z-index: 2;
-            border-radius: var(--card-radius);
+            border-radius: var(--huly-card-radius); /* Unique variable */
             cursor: pointer;
             /* Apply Mona Sans to the animation text */
             font-family: "Mona Sans", sans-serif;
@@ -1314,31 +1329,31 @@ filter: blur(4px);i
         .animated-logo-container:hover {
             > div {
                 mix-blend-mode: darken;
-                --text-color: white;
-                box-shadow: 0 0 calc(var(--white-shadow) * 1vw) calc(var(--white-shadow) * 0.15vw) rgb(255 255 255 / 20%);
-                animation: shadow-pulse calc(var(--animation-speed) * 2) linear infinite;
+                --huly-text-color: white; /* Unique variable */
+                box-shadow: 0 0 calc(var(--huly-white-shadow) * 1vw) calc(var(--huly-white-shadow) * 0.15vw) rgb(255 255 255 / 20%); /* Unique variable */
+                animation: huly-shadow-pulse calc(var(--huly-animation-speed) * 2) linear infinite; /* Unique animation */
                 &:before {
-                    --bg-size: 15;
+                    --huly-bg-size: 15; /* Unique variable */
                     animation-play-state: paused;
-                    transition: --bg-size var(--interaction-speed) ease;
+                    transition: --huly-bg-size var(--huly-interaction-speed) ease; /* Unique variable */
                 }
             }
             .glow {
-                --glow-blur: 1.5;
-                --glow-opacity: 0.6;
-                --glow-scale: 2.5;
-                --glow-radius: 0;
-                --rotate: 900;
-                --glow-rotate-unit: 0;
-                --scale-factor: 1.25;
+                --huly-glow-blur: 1.5; /* Unique variable */
+                --huly-glow-opacity: 0.6; /* Unique variable */
+                --huly-glow-scale: 2.5; /* Unique variable */
+                --huly-glow-radius: 0; /* Unique variable */
+                --huly-rotate: 900; /* Unique variable */
+                --huly-glow-rotate-unit: 0; /* Unique variable */
+                --huly-scale-factor: 1.25; /* Unique variable */
                 animation-play-state: paused;
 
                 &:after {
-                    --glow-translate-y: 0;
+                    --huly-glow-translate-y: 0; /* Unique variable */
                     animation-play-state: paused;
-                    transition: --glow-translate-y 0s ease, --glow-blur 0.05s ease,
-                    --glow-opacity 0.05s ease, --glow-scale 0.05s ease,
-                    --glow-radius 0.05s ease;
+                    transition: --huly-glow-translate-y 0s ease, --huly-glow-blur 0.05s ease,
+                    --huly-glow-opacity 0.05s ease, --huly-glow-scale 0.05s ease,
+                    --huly-glow-radius 0.05s ease;
                 }
             }
         }
@@ -1350,15 +1365,15 @@ filter: blur(4px);i
             position: absolute;
             width: 100%;
             height: 100%;
-            border-radius: var(--card-radius);
+            border-radius: var(--huly-card-radius); /* Unique variable */
         }
 
         .animated-logo-container > div {
             position: absolute;
             width: 100%;
             height: 100%;
-            background: var(--card-color);
-            border-radius: calc(calc(var(--card-radius) * 0.9));
+            background: var(--huly-card-color); /* Unique variable */
+            border-radius: calc(calc(var(--huly-card-radius) * 0.9)); /* Unique variable */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1367,14 +1382,14 @@ filter: blur(4px);i
             font-stretch: 150%;
             font-size: 18px;
             font-size: clamp(1.5vw, 1.5vmin, 32px); /* Keep this responsive sizing */
-            color: var(--text-color);
-            padding: calc(var(--card-width) / 8);
+            color: var(--huly-text-color); /* Unique variable */
+            padding: calc(var(--huly-card-width) / 8); /* Unique variable */
 
             span {
                 display: inline-block;
                 padding: 0.25em;
                 border-radius: 4px;
-                background: var(--text-color);
+                background: var(--huly-text-color); /* Unique variable */
                 color: black;
                 margin-right: 8px;
                 font-weight: 900;
@@ -1386,86 +1401,86 @@ filter: blur(4px);i
                 position: absolute;
                 width: 100%;
                 height: 100%;
-                border-radius: calc(calc(var(--card-radius) * 0.9));
+                border-radius: calc(calc(var(--huly-card-radius) * 0.9)); /* Unique variable */
                 box-shadow: 0 0 20px black;
                 mix-blend-mode: color-burn;
                 z-index: -1;
                 background: hsl(0deg 0% 16%)
                 radial-gradient(
-                    30% 30% at calc(var(--bg-x) * 1%) calc(var(--bg-y) * 1%),
-                    hsl(calc(calc(var(--hue) * var(--hue-speed)) * 1deg) 100% 90%)
-                    calc(0% * var(--bg-size)),
-                    hsl(calc(calc(var(--hue) * var(--hue-speed)) * 1deg) 100% 80%)
-                    calc(20% * var(--bg-size)),
-                    hsl(calc(calc(var(--hue) * var(--hue-speed)) * 1deg) 100% 60%)
-                    calc(40% * var(--bg-size)),
+                    30% 30% at calc(var(--huly-bg-x) * 1%) calc(var(--huly-bg-y) * 1%), /* Unique variable */
+                    hsl(calc(calc(var(--huly-hue) * var(--huly-hue-speed)) * 1deg) 100% 90%) /* Unique variable */
+                    calc(0% * var(--huly-bg-size)), /* Unique variable */
+                    hsl(calc(calc(var(--huly-hue) * var(--huly-hue-speed)) * 1deg) 100% 80%) /* Unique variable */
+                    calc(20% * var(--huly-bg-size)), /* Unique variable */
+                    hsl(calc(calc(var(--huly-hue) * var(--huly-hue-speed)) * 1deg) 100% 60%) /* Unique variable */
+                    calc(40% * var(--huly-bg-size)), /* Unique variable */
                     transparent 100%
                 );
-                width: calc(100% + var(--border-width));
-                height: calc(100% + var(--border-width));
-                animation: hue-animation var(--animation-speed) linear infinite,
-                rotate-bg var(--animation-speed) linear infinite;
-                transition: --bg-size var(--interaction-speed) ease;
+                width: calc(100% + var(--huly-border-width)); /* Unique variable */
+                height: calc(100% + var(--huly-border-width)); /* Unique variable */
+                animation: huly-hue-animation var(--huly-animation-speed) linear infinite, /* Unique animation */
+                huly-rotate-bg var(--huly-animation-speed) linear infinite; /* Unique animation */
+                transition: --huly-bg-size var(--huly-interaction-speed) ease; /* Unique variable */
             }
         }
 
         .animated-logo-container .glow {
-            --glow-translate-y: 0;
+            --huly-glow-translate-y: 0; /* Unique variable */
             display: block;
             position: absolute;
-            width: calc(var(--card-width) / 5);
-            height: calc(var(--card-width) / 5);
-            animation: rotate var(--animation-speed) linear infinite;
-            transform: rotateZ(calc(var(--rotate) * var(--glow-rotate-unit)));
+            width: calc(var(--huly-card-width) / 5); /* Unique variable */
+            height: calc(var(--huly-card-width) / 5); /* Unique variable */
+            animation: huly-rotate-animation var(--huly-animation-speed) linear infinite; /* Unique animation */
+            transform: rotateZ(calc(var(--huly-rotate) * var(--huly-glow-rotate-unit))); /* Unique variable */
             transform-origin: center;
-            border-radius: calc(var(--glow-radius) * 10vw);
+            border-radius: calc(var(--huly-glow-radius) * 10vw); /* Unique variable */
 
             &:after {
                 content: "";
                 display: block;
                 z-index: -2;
-                filter: blur(calc(var(--glow-blur) * 10px));
+                filter: blur(calc(var(--huly-glow-blur) * 10px)); /* Unique variable */
                 width: 130%;
                 height: 130%;
                 left: -15%;
                 top: -15%;
                 background: hsl(
-                    calc(calc(var(--hue) * var(--hue-speed)) * 1deg) 100% 60%
+                    calc(calc(var(--huly-hue) * var(--huly-hue-speed)) * 1deg) 100% 60% /* Unique variable */
                 );
                 position: relative;
-                border-radius: calc(var(--glow-radius) * 10vw);
-                animation: hue-animation var(--animation-speed) linear infinite;
-                transform: scaleY(calc(var(--glow-scale) * var(--scale-factor) / 1.1))
-                scaleX(calc(var(--glow-scale) * var(--scale-factor) * 1.2))
-                translateY(calc(var(--glow-translate-y) * 1%));
-                opacity: var(--glow-opacity);
+                border-radius: calc(var(--huly-glow-radius) * 10vw); /* Unique variable */
+                animation: huly-hue-animation var(--huly-animation-speed) linear infinite; /* Unique animation */
+                transform: scaleY(calc(var(--huly-glow-scale) * var(--huly-scale-factor) / 1.1)) /* Unique variable */
+                scaleX(calc(var(--huly-glow-scale) * var(--huly-scale-factor) * 1.2)) /* Unique variable */
+                translateY(calc(var(--huly-glow-translate-y) * 1%)); /* Unique variable */
+                opacity: var(--huly-glow-opacity); /* Unique variable */
             }
         }
 
-        @keyframes shadow-pulse {
-            0%, 24%, 46%, 73%, 96% { --white-shadow: 0.5; }
-            12%, 28%, 41%, 63%, 75%, 82%, 98% { --white-shadow: 2.5; }
-            6%, 32%, 57% { --white-shadow: 1.3; }
-            18%, 52%, 88% { --white-shadow: 3.5; }
+        @keyframes huly-shadow-pulse { /* Unique animation name */
+            0%, 24%, 46%, 73%, 96% { --huly-white-shadow: 0.5; }
+            12%, 28%, 41%, 63%, 75%, 82%, 98% { --huly-white-shadow: 2.5; }
+            6%, 32%, 57% { --huly-white-shadow: 1.3; }
+            18%, 52%, 88% { --huly-white-shadow: 3.5; }
         }
 
-        @keyframes rotate-bg {
-            0% { --bg-x: 0; --bg-y: 0; }
-            25% { --bg-x: 100; --bg-y: 0; }
-            50% { --bg-x: 100; --bg-y: 100; }
-            75% { --bg-x: 0; --bg-y: 100; }
-            100% { --bg-x: 0; --bg-y: 0; }
+        @keyframes huly-rotate-bg { /* Unique animation name */
+            0% { --huly-bg-x: 0; --huly-bg-y: 0; }
+            25% { --huly-bg-x: 100; --huly-bg-y: 0; }
+            50% { --huly-bg-x: 100; --huly-bg-y: 100; }
+            75% { --huly-bg-x: 0; --huly-bg-y: 100; }
+            100% { --huly-bg-x: 0; --huly-bg-y: 0; }
         }
-        @keyframes rotate {
-            from { --rotate: -70; --glow-translate-y: -65; }
-            25% { --glow-translate-y: -65; }
-            50% { --glow-translate-y: -65; }
-            60%, 75% { --glow-translate-y: -65; }
-            85% { --glow-translate-y: -65; }
-            to { --rotate: calc(360 - 70); --glow-translate-y: -65; }
+        @keyframes huly-rotate-animation { /* Unique animation name */
+            from { --huly-rotate: -70; --huly-glow-translate-y: -65; }
+            25% { --huly-glow-translate-y: -65; }
+            50% { --huly-glow-translate-y: -65; }
+            60%, 75% { --huly-glow-translate-y: -65; }
+            85% { --huly-glow-translate-y: -65; }
+            to { --huly-rotate: calc(360 - 70); --huly-glow-translate-y: -65; }
         }
-        @keyframes hue-animation {
-            0% { --hue: 0; }
-            100% { --hue: 360; }
+        @keyframes huly-hue-animation { /* Unique animation name */
+            0% { --huly-hue: 0; }
+            100% { --huly-hue: 360; }
         }
     </style>
