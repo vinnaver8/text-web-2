@@ -56,6 +56,61 @@ lg:pt-16">
 <div class="flex flex-col gap-3 sm:flex-row">
 </div></div></div></div></div></div>
 
+    <div id="video-card-container" class="fixed left-8 z-10 w-[300px] h-[300px]" style="top: 50%; transform: translateY(-50%);">
+        <div id="left-video-panel" class="relative bg-black rounded-xl shadow-lg w-full h-full overflow-hidden">
+            <video class="absolute inset-0 w-full h-full object-cover" autoplay loop muted playsinline>
+                <source src="holographicgradient.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <div id="video-overlay-0" class="video-overlay-content opacity-100 absolute inset-0 flex flex-col justify-center items-center p-6 text-white bg-black bg-opacity-50">
+                <h2 class="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-red-500 to-pink-500">
+                    Knowledge at <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-red-500 to-pink-500">Fingertips</span>
+                </h2>
+                <p class="text-gray-200 text-sm text-center">
+                    Huly offers a wide range of features to create and manage your collaborative tools and boost team efficiency.
+                </p>
+                <div class="mt-4 flex items-center justify-center space-x-2">
+                    <span class="inline-block bg-blue-400 text-blue-900 text-xs px-2 py-1 rounded-full">John S.</span>
+                    <span class="inline-block bg-purple-400 text-purple-900 text-xs px-2 py-1 rounded-full">Lilianna</span>
+                </div>
+            </div>
+
+            <div id="video-overlay-1" class="video-overlay-content opacity-0 absolute inset-0 flex flex-col justify-center items-center p-6 text-white bg-black bg-opacity-50">
+                <div class="relative w-full h-full flex flex-col justify-center items-center">
+                    <div class="arrow-container">
+                        <svg class="arrow-svg arrow-left" width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M15 18l-6-6 6-6"></path>
+                        </svg>
+                        <svg class="arrow-svg arrow-right" width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M9 18l6-6-6-6"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-xl font-semibold mb-4 text-white z-10">Team</h2>
+                    <p class="text-gray-200 text-sm text-center z-10">
+                        Enhance teamwork with powerful real-time collaboration features.
+                    </p>
+                    <div class="mt-4 flex items-center justify-center space-x-2 z-10">
+                        <span class="inline-block bg-blue-400 text-blue-900 text-xs px-2 py-1 rounded-full">John S.</span>
+                        <span class="inline-block bg-purple-400 text-purple-900 text-xs px-2 py-1 rounded-full">Lilianna</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="video-overlay-2" class="video-overlay-content opacity-0 absolute inset-0 flex flex-col justify-center items-center p-6 text-white bg-black bg-opacity-50">
+                <h2 class="text-xl font-semibold mb-4 text-white text-center">Version History</h2>
+                <p class="text-gray-200 text-sm text-center">
+                    Track every edit effortlessly, and never lose a single change.
+                </p>
+                <div class="mt-4 text-gray-300 text-xs">
+                    <p>Finn Hayes - Today, 3:18 PM</p>
+                    <p>Zoe Quinn - Today, 1:50 PM</p>
+                    <p>Ava Neal - Yesterday, 2:55 PM</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 <section id="section-1" class="relative min-h-[900px] text-white flex items-center justify-center pt-32">
 <div class="relative top-20 text-center md:absolute md:top-[20px] md:text-center">
      <!-- 1) Headline -->
@@ -701,58 +756,6 @@ class="w-[360px] h-[240px] md:w-[250px] md:h-[240px] rounded-[20px] shadow-xl bg
 
 </section>
 <section id="section-4" class="relative min-h-[2000px] text-white overflow-hidden pt-32">
-<div id="video-card-container" class="fixed left-8 z-10 w-[300px] h-[300px]" style="top: 50%; transform: translateY(-50%);">
-        <div id="left-video-panel" class="relative bg-black rounded-xl shadow-lg w-full h-full overflow-hidden">
-            <video class="absolute inset-0 w-full h-full object-cover" autoplay loop muted playsinline>
-                <source src="holographicgradient.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-
-            <div id="video-overlay-0" class="video-overlay-content opacity-100 absolute inset-0 flex flex-col justify-center items-center p-6 text-white bg-black bg-opacity-50">
-                <h2 class="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-red-500 to-pink-500">
-                    Knowledge at <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-red-500 to-pink-500">Fingertips</span>
-                </h2>
-                <p class="text-gray-200 text-sm text-center">
-                    Huly offers a wide range of features to create and manage your collaborative tools and boost team efficiency.
-                </p>
-                <div class="mt-4 flex items-center justify-center space-x-2">
-                    <span class="inline-block bg-blue-400 text-blue-900 text-xs px-2 py-1 rounded-full">John S.</span>
-                    <span class="inline-block bg-purple-400 text-purple-900 text-xs px-2 py-1 rounded-full">Lilianna</span>
-                </div>
-            </div>
-    <div id="video-overlay-1" class="video-overlay-content opacity-0 absolute inset-0 flex flex-col justify-center items-center p-6 text-white bg-black bg-opacity-50">
-                <div class="relative w-full h-full flex flex-col justify-center items-center">
-                    <div class="arrow-container">
-                        <svg class="arrow-svg arrow-left" width="24" height="24" viewBox="0 0 24 24">
-                            <path d="M15 18l-6-6 6-6"></path>
-                        </svg>
-                        <svg class="arrow-svg arrow-right" width="24" height="24" viewBox="0 0 24 24">
-                            <path d="M9 18l6-6-6-6"></path>
-                        </svg>
-                    </div>
-                    <h2 class="text-xl font-semibold mb-4 text-white z-10">Team</h2>
-                    <p class="text-gray-200 text-sm text-center z-10">
-                        Enhance teamwork with powerful real-time collaboration features.
-                    </p>
-                    <div class="mt-4 flex items-center justify-center space-x-2 z-10">
-                        <span class="inline-block bg-blue-400 text-blue-900 text-xs px-2 py-1 rounded-full">John S.</span>
-                        <span class="inline-block bg-purple-400 text-purple-900 text-xs px-2 py-1 rounded-full">Lilianna</span>
-                    </div>
-                </div>
-            </div>
-  <div id="video-overlay-2" class="video-overlay-content opacity-0 absolute inset-0 flex flex-col justify-center items-center p-6 text-white bg-black bg-opacity-50">
-                <h2 class="text-xl font-semibold mb-4 text-white text-center">Version History</h2>
-                <p class="text-gray-200 text-sm text-center">
-                    Track every edit effortlessly, and never lose a single change.
-                </p>
-                <div class="mt-4 text-gray-300 text-xs">
-                    <p>Finn Hayes - Today, 3:18 PM</p>
-                    <p>Zoe Quinn - Today, 1:50 PM</p>
-                    <p>Ava Neal - Yesterday, 2:55 PM</p>
-                </div>
-            </div>
-        </div></div>
-    
 <div id="draggableContainer" class="relative md:absolute md:w-[570px] md:top-[15px] md:left-[360px] md:text-left text-80 text-center w-full md:w-auto relative overflow-visible pt-32">
 <h1 class="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-red-500 to-pink-500">
   Knowledge at <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-red-500 to-pink-500">Fingertips</span>
@@ -946,7 +949,645 @@ class="sm:hidden absolute inset-0 w-full h-full object-cover rounded-2xl shadow-
 </div>
 </div>
 </section>
-    <!--left video card-->
+<section id="section-4" class="relative min-h-[2200px] bg-[#0D0D0D] text-white overflow-hidden pt-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-32">
+            <div class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-8">
+                [ PRODUCTS ]
+            </div>
+
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold mb-24 leading-tight">
+                AI for all humanity
+            </h1>
+
+            <!-- Grok Section -->
+            <div class="flex flex-col md:flex-row items-center justify-between gap-16">
+                <div class="md:w-1/2 text-left">
+                    <h2 class="text-4xl font-semibold mb-4">Grok</h2>
+                    <p class="text-lg text-gray-300 mb-8 max-w-md">
+                        Grok is your cosmic guide, now accessible on grok.com, iOS, and Android. Explore the universe with AI.
+                    </p>
+                    <button class="px-8 py-4 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+                        USE NOW <span class="ml-2">&#8594;</span>
+                    </button>
+                </div>
+                <!-- Curved Scroller (Grok section) -->
+                <div class="md:w-1/2 flex justify-center items-center px-4">
+  <!-- scroller wrapper: border only on mobile, rounded corners, shadow -->
+  <div class="scroller border border-gray-700 md:border-none rounded-2xl shadow-lg w-full max-w-md overflow-hidden">
+    <!-- your curved SVG track -->
+    <svg class="scroller__bar bar" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+      <path class="bar__thumb" fill="none" stroke-linecap="round" />
+      <path class="bar__track" fill="none" stroke-linecap="round" />
+    </svg>
+
+    <!-- content container: padded, flex-col, left-aligned text -->
+    <div class="p-6 flex flex-col items-start text-left space-y-6">
+      
+      <!-- header -->
+      <header class="w-full flex flex-col items-start space-y-1">
+        <h1 class="font-mono text-xl">023: curved scroller.</h1>
+        <p class="font-mono text-sm text-gray-400">Jhey Tompkins.</p>
+      </header>
+      
+      <!-- hero image -->
+      <img
+        class="w-full rounded-lg"
+        src="https://picsum.photos/1280/720?random=12"
+        alt="Random image"
+        onerror="this.onerror=null;this.src='https://placehold.co/1280x720/000/FFF?text=Image+Placeholder';"
+      />
+      
+      <!-- main text -->
+      <main class="space-y-4 text-gray-200 text-sm leading-relaxed">
+        <p>Lorem, ipsum, dolor sit amet consectetur adipisicing elit. Suscipit...</p>
+        <p>Dignissimos, nisi tenetur doloremque esse cum amet delectus...</p>
+        <!-- etc… -->
+        <img
+          class="w-full rounded-lg"
+          src="https://picsum.photos/1280/720?random=48"
+          alt="Random image"
+          onerror="this.onerror=null;this.src='https://placehold.co/1280x720/000/FFF?text=Image+Placeholder';"
+        />
+        <p>Suscipit repudiandae, consectetur ratione quo, ipsa inventore...</p>
+        <!-- more paragraphs/images… -->
+      </main>
+      
+      <!-- footer -->
+      <footer class="w-full text-center pt-4">
+        <p class="text-xs text-gray-500">The Craft of UI ©</p>
+      </footer>
+    </div>
+
+    <!-- keep your generated @keyframes here -->
+    <style id="scroller-frames"></style>
+  </div>
+                </div>
+            </div>
+            <!-- Grok Section End -->
+
+            <!-- API Section -->
+            <div class="flex flex-col md:flex-row items-center justify-between gap-16">
+                <div class="md:w-1/2 text-left">
+                    <h2 class="text-4xl font-semibold mb-4">API</h2>
+                    <p class="text-lg text-gray-300 mb-8 max-w-md">
+                        Supercharge your applications with Grok's enhanced speed, precision, and multilingual capabilities.
+                    </p>
+                    <button class="px-8 py-4 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+                        BUILD NOW <span class="ml-2">&#8594;</span>
+                    </button>
+                </div>
+                <div class="md:w-1/2 flex justify-center items-center">
+                    <div id="api-box" class="rounded-lg shadow-lg">
+                        <div id="api-typing">What is the meaning of life?</div>
+                        <div id="api-thinking" class="rounded-lg">
+                            <div id="api-spinner"></div>
+                            <div id="api-countText">Thinking for 1 second...</div>
+                            <div id="api-scrollContainer">
+                                <div id="api-scrollContent">
+                                    <p>First, I need to acknowledge the depth of the question. It's not something that can be answered lightly or with a simple phrase. The meaning of life encompasses philosophy, purpose, and individual experience.</p>
+                                    <p>Second, perspectives vary: some find meaning through relationships, others through achievements, and still others through self-discovery or spiritual beliefs.</p>
+                                    <p>Finally, each person's answer may evolve over time as they grow, learn, and encounter new experiences.</p>
+                                    <p>First, I need to acknowledge the depth of the question. It's not something that can be answered lightly or with a simple phrase. The meaning of life encompasses philosophy, purpose, and individual experience.</p>
+                                    <p>Second, perspectives vary: some find meaning through relationships, others through achievements, and still others through self-discovery or spiritual beliefs.</p>
+                                    <p>Finally, each person's answer may evolve over time as they grow, learn and encounter new experiences.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="api-final" class="rounded-lg shadow-lg">
+                            <div id="api-finalHeader">
+                                <svg id="api-checkIcon" viewBox="0 0 24 24">
+                                    <path d="M9 16.2l-3.5-3.5-1.4 1.4 4.9 4.9 10-10-1.4-1.4z"/>
+                                </svg>
+                                Thought for 5 seconds
+                            </div>
+                            <div id="api-finalContent">
+                                <p>The question "What is the meaning of life?" is one that has puzzled humanity for centuries, and it's not something that comes with a single, universal answer. Instead, it's a deeply personal and complex idea that can look very different depending on who's asking and what they value.</p>
+                                <h4 style="margin-top:12px; margin-bottom:8px;">A Range of Perspectives</h4>
+                                <p>People have approached this question from many angles:</p>
+                                <ul style="margin-left: 16px; color: #ddd;">
+                                    <li><strong>Philosophical Views:</strong> Some philosophers, like existentialists, suggest that life doesn't come with a built-in meaning. Instead, individuals must create their own purpose.</li>
+                                    <li><strong>Religious/Spiritual Interpretations:</strong> Many religious traditions propose that the meaning of life is to fulfill the will of a higher power, achieve spiritual enlightenment, or attain harmony with the universe.</li>
+                                    <li><strong>Scientific Approaches:</strong> From a scientific perspective, life may be seen as a process of evolution, where meaning arises from survival, reproduction, and the expansion of knowledge.</li>
+                                    <li><strong>Personal Fulfillment:</strong> Others believe the meaning of life is found in personal happiness, relationships, creativity, and leaving a positive impact on the world.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="offices-display">
+                            <div style="font-size: 0.8rem; color: #aaa; margin-bottom: 20px;">[ OFFICES ]</div>
+                            <h2>Collaboration across borders</h2>
+
+                            <div class="flex-container" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap;">
+                                <div style="flex: 1; min-width: 280px;">
+                                    <p>
+                                        We are hiring across all our offices in San Francisco, Palo Alto, and London, UK. We prioritize in-person
+                                        work to support our fast-paced, collaborative projects. Exceptional candidates are welcome to
+                                        apply from anywhere.
+                                    </p>
+                                    <button>
+                                        OPEN ROLES
+                                    </button>
+                                </div>
+                                <div id="offices-map-container">
+                                    <svg viewBox="0 0 500 250">
+                                        <path d="M 0 125 C 125 0, 375 0, 500 125" stroke="#444" stroke-width="1" fill="none"/>
+                                        <path d="M 0 125 C 125 250, 375 250, 500 125" stroke="#444" stroke-width="1" fill="none"/>
+                                        <circle cx="100" cy="100" r="3" fill="#FF5733"/>
+                                        <text x="105" y="95" class="city-name">SAN FRANCISCO</text>
+                                        <text x="105" y="105" fill="#aaa">PALO ALTO</text>
+                                        <text x="105" y="115" fill="#aaa">37.6145°N</text>
+                                        <text x="105" y="125" fill="#aaa">122.3945°W</text>
+
+                                        <!-- London -->
+                                        <circle cx="400" cy="80" r="3" fill="#FF5733"/>
+                                        <text x="405" y="75" class="city-name">LONDON</text>
+                                        <text x="405" y="85" fill="#aaa">51.5053°N</text>
+                                        <text x="405" y="95" fill="#aaa">0.121°W</text>
+
+                                        <!-- Memphis -->
+                                        <circle cx="250" cy="180" r="3" fill="#FF5733"/>
+                                        <text x="255" y="175" class="city-name">MEMPHIS</text>
+                                        <text x="255" y="185" fill="#aaa">35.1495°N</text>
+                                        <text x="255" y="195" fill="#aaa">90.049°W</text>
+
+                                        <!-- Connecting lines from image -->
+                                        <path d="M100,100 C175,50 325,50 400,80" stroke="#FF5733" stroke-width="1" fill="none"/>
+                                        <path d="M100,100 C150,140 200,160 250,180" stroke="#FF5733" stroke-width="1" fill="none"/>
+                                        <path d="M400,80 C350,120 300,140 250,180" stroke="#FF5733" stroke-width="1" fill="none"/>
+
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- API Section End -->
+
+            <!-- Developer Docs Section -->
+            <div class="flex flex-col md:flex-row items-center justify-between gap-16">
+                <div class="md:w-1/2 text-left">
+                    <h2 class="text-4xl font-semibold mb-4">Developer Docs</h2>
+                    <p class="text-lg text-gray-300 mb-8 max-w-md">
+                        Learn how to quickly install Grok at the heart of your applications and explore guides covering common use cases.
+                    </p>
+                    <button class="px-8 py-4 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+                        LEARN MORE <span class="ml-2">&#8594;</span>
+                    </button>
+                </div>
+                <!-- Infinite Scroller -->
+                <div class="md:w-1/2 flex justify-center items-center">
+                    <div class="infinite-scroller-main-container fluid">
+                        <div class="indicator"></div>
+                        <ul>
+                            <li>prototype.</li>
+                            <li>solve.</li>
+                            <li>build.</li>
+                            <li>develop.</li>
+                            <li>debug.</li>
+                            <li>learn.</li>
+                            <li>cook.</li>
+                            <li>ship.</li>
+                            <li>prompt.</li>
+                            <li>collaborate.</li>
+                            <li>create.</li>
+                            <li>inspire.</li>
+                            <li>follow.</li>
+                            <li>innovate.</li>
+                            <li>test.</li>
+                            <li>optimize.</li>
+                            <li>teach.</li>
+                            <li>visualize.</li>
+                            <li>transform.</li>
+                            <li>scale.</li>
+                            <li>do it.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Developer Docs Section End -->
+
+        </div>
+    </section>
+
+    <script>
+        // JS for the API section animation
+        // Renamed IDs to be unique to avoid conflicts and ensure correct targeting
+        let apiTypingDiv, apiThinkingDiv, apiFinalDiv, apiCountText, apiFinalContent, officesDisplayDiv;
+        let originalApiFinalContentElements = [];
+
+        function startAnimationSequence() {
+            apiTypingDiv.style.display = "none";
+            apiThinkingDiv.style.display = "none";
+            apiFinalDiv.style.display = "none";
+            officesDisplayDiv.style.display = "none";
+
+            // Reset typing animation
+            apiTypingDiv.style.maxWidth = "0";
+            apiTypingDiv.textContent = "What is the meaning of life?";
+
+            apiCountText.textContent = `Thinking for 1 second...`;
+            const scrollContent = document.getElementById("api-scrollContent");
+            scrollContent.style.animationDuration = "10s"; // Ensure scroll animation speed
+            apiFinalContent.innerHTML = ''; // Clear previous content
+
+            apiTypingDiv.style.display = "block"; // Show typing div
+            setTimeout(() => {
+                apiTypingDiv.style.display = "none"; // Hide typing div
+                apiThinkingDiv.style.display = "block"; // Show thinking div
+
+                let seconds = 1;
+                apiCountText.textContent = `Thinking for ${seconds} second...`;
+                const intervalId = setInterval(() => {
+                    seconds++;
+                    const plural = seconds > 1 ? "seconds" : "second";
+                    apiCountText.textContent = `Thinking for ${seconds} ${plural}...`;
+
+                    if (seconds >= 10) { // Stop after 10 seconds of "thinking"
+                        clearInterval(intervalId); // Stop the counter
+                        setTimeout(() => {
+                            apiThinkingDiv.style.display = "none"; // Hide thinking div
+                            apiFinalDiv.style.display = "block"; // Show final div
+                            typeOutApiFinalContent(0); // Start typing out the final content
+                        }, 1000); // Wait 1 second before showing final
+                    }
+                }, 1000); // Update every second
+            }, 3000); // Show thinking div after 3 seconds of typing
+        }
+
+        function typeOutApiFinalContent(elementIndex) {
+            if (elementIndex < originalApiFinalContentElements.length) {
+                const currentElementHTML = originalApiFinalContentElements[elementIndex];
+                const tempContainer = document.createElement('div');
+                tempContainer.innerHTML = currentElementHTML;
+                const actualElement = tempContainer.firstElementChild;
+                if (!actualElement) {
+                    console.error("Could not parse element:", currentElementHTML);
+                    setTimeout(() => typeOutApiFinalContent(elementIndex + 1), 100);
+                    return;
+                }
+
+                apiFinalContent.appendChild(actualElement);
+
+                if (actualElement.tagName === 'P' || actualElement.tagName === 'LI') {
+                    const originalText = actualElement.textContent;
+                    actualElement.textContent = '';
+                    let charIndex = 0;
+                    const typingSpeed = 20;
+
+                    function typeChar() {
+                        if (charIndex < originalText.length) {
+                            actualElement.textContent += originalText[charIndex];
+                            charIndex++;
+                            setTimeout(typeChar, typingSpeed);
+                        } else {
+                            setTimeout(() => typeOutApiFinalContent(elementIndex + 1), 500);
+                        }
+                    }
+                    typeChar();
+                } else if (actualElement.tagName === 'H4' || actualElement.tagName === 'UL') {
+                    setTimeout(() => typeOutApiFinalContent(elementIndex + 1), 500);
+                } else {
+                    setTimeout(() => typeOutApiFinalContent(elementIndex + 1), 500);
+                }
+            } else {
+                setTimeout(() => {
+                    apiFinalDiv.style.display = "none";
+                    officesDisplayDiv.style.display = "block";
+                    setTimeout(startAnimationSequence, 5000);
+                }, 1000);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Updated IDs for API section elements
+            apiTypingDiv = document.getElementById("api-typing");
+            apiThinkingDiv = document.getElementById("api-thinking");
+            apiFinalDiv = document.getElementById("api-final");
+            apiCountText = document.getElementById("api-countText");
+            apiFinalContent = document.getElementById("api-finalContent");
+            officesDisplayDiv = document.getElementById("offices-display"); // This ID remains global as per original code
+
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = `
+                <p>The question "What is the meaning of life?" is one that has puzzled humanity for centuries, and it's not something that comes with a single, universal answer. Instead, it's a deeply personal and complex idea that can look very different depending on who's asking and what they value.</p>
+                <h4 style="margin-top:12px; margin-bottom:8px;">A Range of Perspectives</h4>
+                <p>People have approached this question from many angles:</p>
+                <ul style="margin-left: 16px; color: #ddd;">
+                    <li><strong>Philosophical Views:</strong> Some philosophers, like existentialists, suggest that life doesn't come with a built-in meaning. Instead, individuals must create their own purpose.</li>
+                    <li><strong>Religious/Spiritual Interpretations:</strong> Many religious traditions propose that the meaning of life is to fulfill the will of a higher power, achieve spiritual enlightenment, or attain harmony with the universe.</li>
+                    <li><strong>Scientific Approaches:</strong> From a scientific perspective, life may be seen as a process of evolution, where meaning arises from survival, reproduction, and the expansion of knowledge.</li>
+                    <li><strong>Personal Fulfillment:</strong> Others believe the meaning of life is found in personal happiness, relationships, creativity, and leaving a positive impact on the world.</li>
+                </ul>
+            `;
+            originalApiFinalContentElements = Array.from(tempDiv.children).map(child => child.outerHTML);
+
+            startAnimationSequence();
+        });
+    </script>
+
+    <script type="module">
+        // GSAP for Infinite Scroller
+        import gsap from 'https://cdn.skypack.dev/gsap@3.12.0';
+
+        gsap.defaults({
+            duration: 1,
+        });
+
+        const tl = gsap.timeline({ paused: true });
+        const lines = gsap.utils.toArray('.infinite-scroller-main-container ul li'); // Target specific ul for infinite scroller
+
+        gsap.set(lines, { yPercent: 300 });
+
+        const paddedLines = [...lines, ...lines, ...lines];
+
+        paddedLines.forEach((line, index) => {
+            const lineTl = gsap.timeline()
+                .set(line, { yPercent: 300 })
+                .to(
+                    line,
+                    {
+                        yPercent: '-=600',
+                        repeatRefresh: true,
+                        immediateRender: false,
+                        ease: 'none',
+                        duration: 6,
+                    },
+                    0
+                );
+            tl.add(lineTl, index);
+        });
+
+        const scrubber = gsap.timeline({ paused: true }).fromTo(
+            tl,
+            {
+                totalTime: lines.length + 1,
+            },
+            {
+                totalTime: lines.length * 2 + 1,
+                ease: 'none',
+                duration: lines.length,
+                repeat: -1,
+            }
+        );
+
+        gsap.set(scrubber, { totalTime: lines.length + 2 });
+
+        let index = 0;
+        const indicator = document.querySelector('.infinite-scroller-main-container .indicator');
+
+        // Added for text cover animation: keep track of the last highlighted line
+        let lastActiveLine = null;
+
+        const syncIndicator = () => {
+            // Dim the previously active line, if any, instantly
+            if (lastActiveLine) {
+                gsap.to(lastActiveLine, { color: '#666', duration: 0 }); // Instant dim
+            }
+
+            index += 1;
+            const currentLine = lines[index % lines.length];
+            const wordWidth = currentLine.getBoundingClientRect().width;
+
+            const containerRect = document.querySelector('.infinite-scroller-main-container').getBoundingClientRect();
+            const ulRect = currentLine.closest('ul').getBoundingClientRect();
+            const lineRect = currentLine.getBoundingClientRect();
+
+            const ulPaddingLeft = parseFloat(getComputedStyle(currentLine.closest('ul')).paddingLeft);
+
+            const wordLeftInUlContent = lineRect.left - ulRect.left;
+            const wordCenterXRelativeToContainer = (ulRect.left - containerRect.left) + wordLeftInUlContent + (wordWidth / 2);
+
+            gsap.set(indicator, {
+                '--width': wordWidth,
+                '--h': gsap.utils.random(0, 359),
+                left: wordCenterXRelativeToContainer,
+                xPercent: -50,
+                opacity: 1
+            });
+
+            // Brighten the current line instantly
+            gsap.to(currentLine, { color: '#FFFFFF', duration: 0 }); // Instant brighten
+            lastActiveLine = currentLine;
+        };
+
+        const initialLine = lines[0];
+        const initialWordWidth = initialLine.getBoundingClientRect().width;
+        const initialContainerRect = document.querySelector('.infinite-scroller-main-container').getBoundingClientRect();
+        const initialUlRect = initialLine.closest('ul').getBoundingClientRect();
+        const initialLineRect = initialLine.getBoundingClientRect();
+        const initialUlPaddingLeft = parseFloat(getComputedStyle(initialLine.closest('ul')).paddingLeft);
+        const initialWordLeftInUlContent = initialLineRect.left - initialUlRect.left;
+        const initialWordCenterXRelativeToContainer = (initialUlRect.left - initialContainerRect.left) + initialWordLeftInUlContent + (initialWordWidth / 2);
+
+        gsap.set(indicator, {
+            '--width': initialWordWidth,
+            left: initialWordCenterXRelativeToContainer,
+            xPercent: -50,
+            '--h': gsap.utils.random(0, 359),
+            opacity: 1
+        });
+
+        gsap.to(scrubber, {
+            delay: 1,
+            totalTime: '+=1',
+            duration: 1,
+            repeat: -1,
+            repeatDelay: 1,
+            repeatRefresh: true,
+            onStart: syncIndicator,
+            onRepeat: syncIndicator,
+            ease: 'elastic.out(1, 0.875)',
+        });
+
+        gsap.set('.infinite-scroller-main-container', { opacity: 1 });
+    </script>
+
+    <script type="module">
+        // GSAP for Curved Scroller
+        import { ScrollTrigger } from 'https://cdn.skypack.dev/gsap@3.12.0/ScrollTrigger';
+
+        let tlCurvedScroller;
+        let configureTimeline;
+
+        const scroller = document.querySelector('.scroller');
+        const list = scroller.querySelector('div');
+        const bar = scroller.querySelector('.scroller__bar');
+        const track = scroller.querySelector('.bar__track');
+        const thumb = bar.querySelector('.bar__thumb');
+        const styles = scroller.querySelector('style#scroller-frames');
+
+        const config = {
+            show: true,
+            radius: 32,
+            scrollPadding: 60,
+            stroke: 5,
+            inset: 6,
+            trail: 20,
+            thumb: 70,
+            finish: 5,
+            alpha: 0.9,
+            track: 0,
+            color: '#f85922',
+            cornerLength: 0,
+            offsetCorner: -50,
+            offsetEnd: 30,
+        };
+
+        let frames = [];
+        const syncBar = (scrollerBar) => {
+            const mid = config.radius;
+            const innerRad = Math.max(
+                0,
+                config.radius - (config.inset + config.stroke * 0.5)
+            );
+            const padTop = config.inset + config.stroke * 0.5;
+            const padLeft = config.radius * 2 - padTop;
+            bar.setAttribute(
+                'viewBox',
+                `0 0 ${config.radius * 2} ${scrollerBar.target.offsetHeight}`
+            );
+            scroller.style.setProperty('--stroke-width', config.stroke);
+            let d = `
+            M${mid - config.trail},${padTop}
+                ${innerRad === 0 ? '' : `L${mid},${padTop}`}
+                ${
+                    innerRad === 0
+                        ? `L${padLeft},${padTop}`
+                        : `a${innerRad},${innerRad} 0 0 1 ${innerRad} ${innerRad}`
+                }`;
+            thumb.setAttribute('d', d);
+            const cornerLength = Math.ceil(thumb.getTotalLength());
+            config.cornerLength = cornerLength;
+            d = `
+                M${mid - config.trail},${padTop}
+                ${innerRad === 0 ? '' : `L${mid},${padTop}`}
+                ${
+                    innerRad === 0
+                        ? `L${padLeft},${padTop}`
+                        : `a${innerRad},${innerRad} 0 0 1 ${innerRad} ${innerRad}`
+                }
+                L${padLeft},${
+                scrollerBar.target.offsetHeight -
+                (config.inset + config.stroke * 0.5 + innerRad)
+                }
+                ${
+                    innerRad === 0
+                        ? `L${padLeft},${
+                            scrollerBar.target.offsetHeight -
+                            (config.inset + config.stroke * 0.5)
+                        }`
+                        : `a${innerRad},${innerRad} 0 0 1 ${-innerRad} ${innerRad}`
+                }
+                L${mid - config.trail},${
+                scrollerBar.target.offsetHeight - (config.inset + config.stroke * 0.5)
+                }
+            `;
+            thumb.setAttribute('d', d);
+            track.setAttribute('d', d);
+            scroller.style.setProperty(
+                '--track-length',
+                Math.ceil(track.getTotalLength())
+            );
+            scroller.style.setProperty('--track-start', cornerLength);
+            scroller.style.setProperty('--start', config.thumb * 2 + cornerLength);
+            scroller.style.setProperty(
+                '--destination',
+                Math.ceil(track.getTotalLength()) - cornerLength + config.thumb
+            );
+            frames = [
+                [0, config.thumb - config.finish - config.offsetEnd],
+                [
+                    Math.floor(
+                        (config.scrollPadding / (list.scrollHeight - scroller.offsetHeight)) *
+                        100
+                    ),
+                    (cornerLength + config.offsetCorner) * -1,
+                ],
+                [
+                    100 -
+                    Math.floor(
+                        (config.scrollPadding / (list.scrollHeight - scroller.offsetHeight)) *
+                        100
+                    ),
+                    (Math.floor(track.getTotalLength()) -
+                        cornerLength -
+                        config.thumb -
+                        config.offsetCorner) *
+                    -1,
+                ],
+                [
+                    100,
+                    (Math.floor(track.getTotalLength()) - config.finish - config.offsetEnd) *
+                    -1,
+                ],
+            ];
+            styles.innerHTML = `
+                @keyframes scroll {
+                    ${frames[0][0]}% { stroke-dashoffset: ${frames[0][1]};}
+                    ${frames[1][0]}% { stroke-dashoffset: ${frames[1][1]};}
+                    ${frames[2][0]}% { stroke-dashoffset: ${frames[2][1]};}
+                    ${frames[3][0]}% { stroke-dashoffset: ${frames[3][1]};}
+                }
+            `;
+        };
+
+        const resizeObserver = new ResizeObserver((entries) => {
+            for (const entry of entries) {
+                syncBar(entry);
+                update();
+                if (configureTimeline && !CSS.supports('animation-timeline: scroll()'))
+                    configureTimeline();
+            }
+        });
+        resizeObserver.observe(scroller);
+
+        const update = () => {
+            document.documentElement.dataset.roundedScroll = config.show;
+            scroller.style.setProperty('--radius', config.radius);
+            scroller.style.setProperty('--padding', config.scrollPadding);
+            scroller.style.setProperty('--color', config.color);
+            scroller.style.setProperty('--thumb-size', config.thumb);
+            scroller.style.setProperty('--bar-alpha', config.alpha);
+            scroller.style.setProperty('--track-alpha', config.track);
+            scroller.style.setProperty(
+                '--destination',
+                Math.ceil(track.getTotalLength()) -
+                ((Math.ceil(track.getTotalLength()) - scroller.offsetHeight) * 0.5 +
+                    config.inset)
+            );
+            scroller.style.setProperty('--start', config.thumb * 2);
+            syncBar({ target: list });
+        };
+
+        // Set initial theme to dark
+        document.documentElement.dataset.theme = 'dark';
+
+        // Initial call to update to apply default config values and sync the bar
+        update();
+
+        syncBar({ target: scroller });
+        if (!CSS.supports('(animation-timeline: scroll())')) {
+            configureTimeline = () => {
+                if (tlCurvedScroller) tlCurvedScroller.kill();
+                tlCurvedScroller = gsap.to('.bar__thumb', {
+                    scrollTrigger: {
+                        scroller: list,
+                        scrub: true,
+                    },
+                    ease: 'none',
+                    keyframes: {
+                        [`${frames[0][0]}`]: { strokeDashoffset: frames[0][1] },
+                        [`${frames[1][0]}`]: { strokeDashoffset: frames[1][1] },
+                        [`${frames[2][0]}`]: { strokeDashoffset: frames[2][1] },
+                        [`${frames[3][0]}`]: { strokeDashoffset: frames[3][1] },
+                    },
+                });
+            };
+            gsap.registerPlugin(ScrollTrigger);
+            configureTimeline();
+        }
+    </script>
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 const videoOverlayStates = [
@@ -1042,443 +1683,5 @@ window.addEventListener('resize', () => {
             });
         });
     </script>
-    <!------------last section----->
-        <section id="section-5" class="relative min-h-[1900px] bg-[#0D0D0D] text-white overflow-hidden pt-32">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-32">
-            <div class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-8">
-                [ PRODUCTS ]
-            </div>
-
-            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold mb-24 leading-tight">
-                AI for all humanity
-            </h1>
-
-            <!-- Grok Section -->
-            <div class="flex flex-col md:flex-row items-center justify-between gap-16">
-                <div class="md:w-1/2 text-left">
-                    <h2 class="text-4xl font-semibold mb-4">Grok</h2>
-                    <p class="text-lg text-gray-300 mb-8 max-w-md">
-                        Grok is your cosmic guide, now accessible on grok.com, iOS, and Android. Explore the universe with AI.
-                    </p>
-                    <button class="px-8 py-4 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
-                        USE NOW <span class="ml-2">&#8594;</span>
-                    </button>
-                </div>
-                <!-- Standard Vertical Scroller (Grok section - iPhone Layout) -->
-                <div class="md:w-1/2 flex justify-center items-center">
-                    <div class="vertical-scroller-container">
-                        <div class="iphone-notch"></div> <!-- Dedicated notch div -->
-                        <div class="iphone-scrollable-content">
-                            <div class="vertical-scroller-content">
-                                <h3>Unlocking the Future with AI</h3>
-                                <p>Artificial Intelligence is rapidly transforming every aspect of our lives, from personalized recommendations to advanced scientific research. Discover how our cutting-edge AI models are designed to empower users and solve complex challenges across various industries.</p>
-                                <img src="https://placehold.co/1280x720/000/FFF?text=AI+Overview" alt="AI Overview Image" />
-                                <h3>Ethical AI Development</h3>
-                                <p>We are committed to developing AI responsibly, prioritizing fairness, transparency, and accountability. Our ethical guidelines ensure that our AI systems are beneficial for all of humanity, minimizing bias and promoting positive societal impact.</p>
-                                <img src="https://placehold.co/1280x720/000/FFF?text=Ethical+AI" alt="Ethical AI Image" />
-                                <h3>AI in Healthcare</h3>
-                                <p>Explore the groundbreaking ways AI is revolutionizing healthcare, from accelerating drug discovery and diagnosing diseases with greater accuracy to personalizing patient treatment plans. Our AI solutions are helping to improve health outcomes globally.</p>
-                                <img src="https://placehold.co/1280x720/000/FFF?text=Healthcare+AI" alt="Healthcare AI Image" />
-                                <h3>AI in Education</h3>
-                                <p>AI is personalizing learning experiences, providing adaptive content, and automating administrative tasks to free up educators. Learn how our AI tools are making education more accessible and effective for students worldwide.</p>
-                                <img src="https://placehold.co/1280x720/000/FFF?text=Education+AI" alt="Education AI Image" />
-                                <h3>The Power of Machine Learning</h3>
-                                <p>At the core of our AI capabilities is advanced machine learning, enabling systems to learn from data, identify patterns, and make informed decisions. We leverage state-of-the-art algorithms to deliver unparalleled performance.</p>
-                                <img src="https://placehold.co/1280x720/000/FFF?text=Machine+Learning" alt="Machine Learning Image" />
-                                <h3>Join the AI Revolution</h3>
-                                <p>Be a part of shaping the future with AI. We invite researchers, developers, and innovators to collaborate with us on open-source projects, pushing the boundaries of what's possible with artificial intelligence.</p>
-                                <img src="https://placehold.co/1280x720/000/FFF?text=Join+Us" alt="Join Us Image" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Grok Section End -->
-
-            <!-- API Section (MacBook Layout) -->
-            <div class="flex flex-col md:flex-row items-center justify-between gap-16">
-                <div class="md:w-1/2 text-left">
-                    <h2 class="text-4xl font-semibold mb-4">API</h2>
-                    <p class="text-lg text-gray-300 mb-8 max-w-md">
-                        Supercharge your applications with Grok's enhanced speed, precision, and multilingual capabilities.
-                    </p>
-                    <button class="px-8 py-4 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105" id="apiBuildNowButton">
-                        BUILD NOW <span class="ml-2">&#8594;</span>
-                    </button>
-                </div>
-                <div class="md:w-1/2 flex justify-center items-center">
-                    <div class="macbook-container">
-                        <div id="api-box">
-                            <div id="macbook-clock"></div> <!-- Real-time clock always visible -->
-                            <div class="macbook-screen-content-wrapper">
-                                <!-- Input Form Content (visible by default) -->
-                                <div id="inputFormContent" class="flex flex-col items-center justify-center w-full h-full p-6 space-y-4">
-                                    <input type="text" id="apiQueryInput" placeholder="Ask Grok AI anything..." class="w-full px-4 py-2 border border-gray-600 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-orange-500">
-                                    <button id="generateResponseButton" class="w-full py-2 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-md transition duration-300 ease-in-out">
-                                        GENERATE RESPONSE
-                                    </button>
-                                </div>
-                                <!-- Generation Progress (hidden by default) -->
-                                <div class="generation-progress" id="generationProgress">
-                                    <p>Generating Response...</p>
-                                    <div class="dynamic-number" id="dynamicNumber">0</div>
-                                </div>
-                                <!-- Response Display (hidden by default) -->
-                                <div class="response-display" id="responseDisplay">
-                                    <h3 id="apiResponseTitle">Grok</h3> <!-- Changed title to "Grok" -->
-                                    <div id="apiResponseContent" class="flex-grow overflow-y-auto pr-2"></div>
-                                    <p class="footer-text">This response was generated by Grok AI based on current understanding.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="macbook-base"></div>
-                    </div>
-                </div>
-            </div>
-            <!-- API Section End -->
-
-            <!-- Developer Docs Section -->
-            <div class="flex flex-col md:flex-row items-center justify-between gap-16">
-                <div class="md:w-1/2 text-left">
-                    <h2 class="text-4xl font-semibold mb-4">Developer Docs</h2>
-                    <p class="text-lg text-gray-300 mb-8 max-w-md">
-                        Learn how to quickly install Grok at the heart of your applications and explore guides covering common use cases.
-                    </p>
-                    <button class="px-8 py-4 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
-                        LEARN MORE <span class="ml-2">&#8594;</span>
-                    </button>
-                </div>
-                <!-- Infinite Scroller -->
-                <div class="md:w-1/2 flex justify-center items-center">
-                    <div class="infinite-scroller-main-container fluid">
-                        <div class="indicator"></div>
-                        <ul>
-                            <li>prototype.</li>
-                            <li>solve.</li>
-                            <li>build.</li>
-                            <li>develop.</li>
-                            <li>debug.</li>
-                            <li>learn.</li>
-                            <li>cook.</li>
-                            <li>ship.</li>
-                            <li>prompt.</li>
-                            <li>collaborate.</li>
-                            <li>create.</li>
-                            <li>inspire.</li>
-                            <li>follow.</li>
-                            <li>innovate.</li>
-                            <li>test.</li>
-                            <li>optimize.</li>
-                            <li>teach.</li>
-                            <li>visualize.</li>
-                            <li>transform.</li>
-                            <li>scale.</li>
-                            <li>do it.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- Developer Docs Section End -->
-
-        </div>
-    </section>
-
-    <script type="module">
-        // API Section Animations and Functionality
-        document.addEventListener("DOMContentLoaded", () => {
-            const apiQueryInput = document.getElementById('apiQueryInput');
-            const generateResponseButton = document.getElementById('generateResponseButton');
-            const inputFormContent = document.getElementById('inputFormContent');
-            const generationProgress = document.getElementById('generationProgress');
-            const dynamicNumberElement = document.getElementById('dynamicNumber');
-            const responseDisplay = document.getElementById('responseDisplay');
-            const apiResponseTitle = document.getElementById('apiResponseTitle');
-            const apiResponseContent = document.getElementById('apiResponseContent');
-            const macbookClock = document.getElementById('macbook-clock');
-
-            let numberInterval;
-
-            function updateMacbookClock() {
-                const now = new Date();
-                const hours = now.getHours().toString().padStart(2, '0');
-                const minutes = now.getMinutes().toString().padStart(2, '0');
-                macbookClock.textContent = `${hours}:${minutes}`;
-            }
-
-            // Initial clock update and set interval
-            updateMacbookClock();
-            setInterval(updateMacbookClock, 1000); // Update every second for real-time feel
-
-            // Initial setup: Only show the input form
-            inputFormContent.style.display = 'flex';
-            generationProgress.style.display = 'none';
-            responseDisplay.style.display = 'none';
-
-
-            async function generateAiResponse(prompt) {
-                try {
-                    let chatHistory = [];
-                    // Add specific instruction for 24hr time if relevant to the prompt
-                    let fullPrompt = prompt;
-                    if (prompt.toLowerCase().includes('time') || prompt.toLowerCase().includes('hour')) {
-                        fullPrompt += " (Please provide time in 24-hour format if relevant, e.g., HH:MM.)";
-                    }
-
-                    chatHistory.push({ role: "user", parts: [{ text: fullPrompt }] });
-                    const payload = { contents: chatHistory };
-                    const apiKey = "AIzaSyCCbjMYKZAENN4DXVfi2f7R0R0LJZhVvIs"; // Canvas will automatically provide the API key at runtime
-                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-
-                    const result = await response.json();
-                    if (result.candidates && result.candidates.length > 0 &&
-                        result.candidates[0].content && result.candidates[0].content.parts &&
-                        result.candidates[0].content.parts.length > 0) {
-                        return result.candidates[0].content.parts[0].text;
-                    } else {
-                        console.error("Gemini API returned an unexpected structure or no content:", result);
-                        return "Failed to get a response. Please try again.";
-                    }
-                } catch (error) {
-                    console.error("Error calling Gemini API:", error);
-                    return "An error occurred while connecting to the AI. Please try again.";
-                }
-            }
-
-            async function handleGenerateResponse() {
-                const query = apiQueryInput.value.trim();
-                if (!query) {
-                    apiResponseContent.textContent = "Please enter a query.";
-                    // Change title to "Error" for invalid input
-                    apiResponseTitle.textContent = "Error";
-                    inputFormContent.style.display = 'none';
-                    generationProgress.style.display = 'none';
-                    responseDisplay.style.display = 'flex';
-                    return;
-                }
-
-                // Clear any previous intervals
-                clearInterval(numberInterval);
-
-                // Show generation progress
-                inputFormContent.style.display = 'none';
-                responseDisplay.style.display = 'none';
-                generationProgress.style.display = 'flex';
-                dynamicNumberElement.textContent = '0';
-
-                let currentNumber = 0;
-                numberInterval = setInterval(() => {
-                    currentNumber += Math.floor(Math.random() * 5) + 1;
-                    if (currentNumber > 99) currentNumber = 99;
-                    dynamicNumberElement.textContent = currentNumber;
-                }, 100);
-
-                // Generate response from AI
-                const responseText = await generateAiResponse(query);
-
-                // Stop thinking animation
-                clearInterval(numberInterval);
-                dynamicNumberElement.textContent = '100'; // Ensure it ends at 100
-
-                // Prepare response display
-                // Change title to "Grok"
-                apiResponseTitle.textContent = "Grok";
-                apiResponseContent.textContent = responseText;
-
-                // Show response after a short delay, and keep it visible
-                setTimeout(() => {
-                    generationProgress.style.display = 'none';
-                    responseDisplay.style.display = 'flex';
-                }, 1000); // Delay for 1 second after number animation finishes
-            }
-
-            generateResponseButton.addEventListener('click', handleGenerateResponse);
-            apiQueryInput.addEventListener('keypress', (event) => {
-                if (event.key === 'Enter') {
-                    handleGenerateResponse();
-                }
-            });
-        });
-    </script>
-
-    <script type="module">
-        // GSAP for Infinite Scroller (Developer Docs section)
-        import gsap from 'https://cdn.skypack.dev/gsap@3.12.0';
-
-        gsap.defaults({
-            duration: 1,
-        });
-
-        const tl = gsap.timeline({ paused: true });
-        const lines = gsap.utils.toArray('.infinite-scroller-main-container ul li');
-
-        gsap.set(lines, { yPercent: 300 });
-
-        const paddedLines = [...lines, ...lines, ...lines];
-
-        paddedLines.forEach((line, index) => {
-            const lineTl = gsap.timeline()
-                .set(line, { yPercent: 300 })
-                .to(
-                    line,
-                    {
-                        yPercent: '-=600',
-                        repeatRefresh: true,
-                        immediateRender: false,
-                        ease: 'none',
-                        duration: 6,
-                    },
-                    0
-                );
-            tl.add(lineTl, index);
-        });
-
-        const scrubber = gsap.timeline({ paused: true }).fromTo(
-            tl,
-            {
-                totalTime: lines.length + 1,
-            },
-            {
-                totalTime: lines.length * 2 + 1,
-                ease: 'none',
-                duration: lines.length,
-                repeat: -1,
-            }
-        );
-
-        gsap.set(scrubber, { totalTime: lines.length + 2 });
-
-        let index = 0;
-        const indicator = document.querySelector('.infinite-scroller-main-container .indicator');
-
-        let lastActiveLine = null;
-
-        const syncIndicator = () => {
-            if (lastActiveLine) {
-                gsap.to(lastActiveLine, { color: '#666', duration: 0 });
-            }
-
-            index += 1;
-            const currentLine = lines[index % lines.length];
-            const wordWidth = currentLine.getBoundingClientRect().width;
-
-            const containerRect = document.querySelector('.infinite-scroller-main-container').getBoundingClientRect();
-            const ulRect = currentLine.closest('ul').getBoundingClientRect();
-            const lineRect = currentLine.getBoundingClientRect();
-
-            const wordLeftInUlContent = lineRect.left - ulRect.left;
-            const wordCenterXRelativeToContainer = (ulRect.left - initialContainerRect.left) + wordLeftInUlContent + (wordWidth / 2);
-
-            gsap.set(indicator, {
-                '--width': wordWidth,
-                '--h': gsap.utils.random(0, 359),
-                left: wordCenterXRelativeToContainer,
-                xPercent: -50,
-                opacity: 1
-            });
-
-            gsap.to(currentLine, { color: '#FFFFFF', duration: 0 });
-            lastActiveLine = currentLine;
-        };
-
-        const initialLine = lines[0];
-        const initialWordWidth = initialLine.getBoundingClientRect().width;
-        const initialContainerRect = document.querySelector('.infinite-scroller-main-container').getBoundingClientRect();
-        const initialUlRect = initialLine.closest('ul').getBoundingClientRect();
-        const initialLineRect = initialLine.getBoundingClientRect();
-        const initialWordLeftInUlContent = initialLineRect.left - initialUlRect.left;
-        const initialWordCenterXRelativeToContainer = (initialUlRect.left - initialContainerRect.left) + initialWordLeftInUlContent + (initialWordWidth / 2);
-
-        gsap.set(indicator, {
-            '--width': initialWordWidth,
-            left: initialWordCenterXRelativeToContainer,
-            xPercent: -50,
-            '--h': gsap.utils.random(0, 359),
-            opacity: 1
-        });
-
-        gsap.to(scrubber, {
-            delay: 1,
-            totalTime: '+=1',
-            duration: 1,
-            repeat: -1,
-            repeatDelay: 1,
-            repeatRefresh: true,
-            onStart: syncIndicator,
-            onRepeat: syncIndicator,
-            ease: 'elastic.out(1, 0.875)',
-        });
-
-        gsap.set('.infinite-scroller-main-container', { opacity: 1 });
-    </script>
-    <footer class="custom-effect bg-[#0d0d0d] py-16 px-4 sm:px-6 lg:px-8">
-        <!-- Top part of the footer (Join the Movement) -->
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 pb-16">
-            <!-- Animated Logo Section -->
-            <div class="flex-shrink-0 w-full md:w-1/2 flex items-center justify-center md:justify-start">
-                <div role="button" class="animated-logo-container">
-                    <span class="glow"></span>
-                    <div>
-                        <span>cool</span>Glowing shadows
-                    </div>
-                </div>
-            </div>
-
-            <!-- Call to Action Content -->
-            <div class="flex-1 text-center md:text-left">
-                <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
-                    Join the <span class="block">Movement</span>
-                </h2>
-                <p class="text-lg text-gray-400 mb-2">
-                    Unlock the future of productivity with Huly.
-                </p>
-                <p class="text-lg text-gray-400 mb-8">
-                    Remember, this journey is just getting started.
-                </p>
-                <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
-                    <button id="glowButton" class="glow-btn px-8 py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-transform transform hover:-translate-y-1 bg-gradient-to-r from-white to-orange-200 text-gray-800">
-  <span>START NOW</span>
-                    </button>
-                    <button class="flex items-center justify-center gap-2 gradient-border-button px-8 py-4 rounded-xl text-lg font-semibold hover:bg-gray-800 transition-colors">
-                        <i class="fab fa-slack text-xl"></i>
-                        JOIN OUR SLACK
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Bottom part of the footer (Copyright and Legal) -->
-        <div class="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-6 pt-8">
-            <!-- Left section: Social Icons and Copyright -->
-            <div class="flex flex-col items-center md:items-start gap-4 text-gray-400 text-sm w-full md:w-auto">
-                <div class="flex space-x-6">
-                    <a href="#" class="hover:text-white transition-colors"><i class="fab fa-twitter text-xl"></i></a> <!-- Using Twitter for X -->
-                    <a href="#" class="hover:text-white transition-colors"><i class="fab fa-linkedin-in text-xl"></i></a>
-                    <a href="#" class="hover:text-white transition-colors"><i class="fab fa-youtube text-xl"></i></a>
-                    <a href="#" class="hover:text-white transition-colors"><i class="fab fa-discord text-xl"></i></a>
-                    <a href="#" class="hover:text-white transition-colors"><i class="fab fa-github text-xl"></i></a>
-                    <a href="#" class="hover:text-white transition-colors"><i class="fab fa-dribbble text-xl"></i></a>
-                </div>
-                <!-- Copyright text moved directly below social icons -->
-                <p class="mt-4 md:mt-0 text-center md:text-left">Copyright &copy; 2025 Huly Labs. All rights reserved.</p>
-            </div>
-
-            <!-- Right section: Legal Links and Made with Passion -->
-            <div class="flex flex-col items-center md:items-end gap-4 text-gray-400 text-sm w-full md:w-auto">
-                <div class="flex space-x-6">
-                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
-                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                </div>
-                <p class="flex items-center gap-1 mt-4 md:mt-0 text-center md:text-right">
-                    Made with passion and Huly <i class="fas fa-heart text-red-500"></i>
-                </p>
-            </div>
-        </div>
-    </footer>
 </body>
     </html>
