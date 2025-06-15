@@ -1164,8 +1164,6 @@ filter: blur(4px);i
                 box-sizing: border-box;
             }
         }
-    </style>
-<style>
         /* Unique CSS for the new Start Now button with glow effect */
         .huly-start-now-btn {
             position: relative;
@@ -1216,12 +1214,6 @@ filter: blur(4px);i
                  url("https://assets.codepen.io/64/Mona-Sans.woff2") format("woff2-variations");
             font-weight: 100 1000;
         }
-
-        /* Inter font for overall body, as previously requested */
-        body {
-            font-family: "Inter", sans-serif;
-        }
-
         /* CSS @property rules for animation (these are globally registered and cannot be scoped) */
         @property --huly-hue {
             syntax: "<number>";
@@ -1483,4 +1475,3 @@ filter: blur(4px);i
             0% { --huly-hue: 0; }
             100% { --huly-hue: 360; }
         }
-    </style>
