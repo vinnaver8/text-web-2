@@ -1480,5 +1480,27 @@ window.addEventListener('resize', () => {
             </div>
         </div>
     </footer>
+    <script>
+    const btn = document.getElementById("glowButton");
+    btn.addEventListener("mousemove", (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      btn.style.setProperty('--x', `${x}px`);
+      btn.style.setProperty('--y', `${y}px`);
+    });
+</script>
+    <!-- JavaScript for CSS.registerProperty detection -->
+    <script>
+        if (typeof window.CSS.registerProperty === 'function') {
+            console.log('CSS.registerProperty supported 🎉');
+            document.body.style.setProperty('--supported', 1);
+            document.body.classList.add('registerProperty-supported');
+        } else {
+            console.log('CSS.registerProperty not supported ❌');
+            document.body.style.setProperty('--not-supported', 1);
+            document.body.classList.add('registerProperty-not-supported');
+        }
+    </script>
 </body>
 </html>
