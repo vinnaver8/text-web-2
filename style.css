@@ -754,7 +754,24 @@ filter: blur(4px);i
       cursor: pointer;
       }
 /* last section------------*/
-       .vertical-scroller-container {
+           <style>
+        /* Global Box-sizing and Color Scheme (fundamental resets, do not conflict with unique naming) */
+        *, *::after, *::before {
+            box-sizing: border-box;
+        }
+
+        html { color-scheme: light only; }
+        @media(prefers-color-scheme: dark) {
+            html { color-scheme: dark only; }
+        }
+
+        /* Custom font application via a unique class, applied to body */
+        .font-inter {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Standard Vertical Scroller (Grok section - iPhone Layout) */
+        .vertical-scroller-container {
             width: 320px; /* iPhone-like width */
             height: 480px; /* Medium iPhone-like height */
             background: #1c1c1c; /* Slightly brighter screen background */
@@ -766,7 +783,7 @@ filter: blur(4px);i
             overflow: hidden; /* Hide anything outside the main phone frame */
         }
 
-        /* New div for the iPhone notch */
+        /* Unique CSS for iPhone notch within the scroller */
         .iphone-notch {
             position: absolute;
             top: 10px; /* Position relative to the container's inner edge (adjust for border) */
@@ -783,7 +800,7 @@ filter: blur(4px);i
             box-shadow: 0 5px 15px rgba(0,0,0,0.5); /* Subtle shadow for depth */
         }
 
-        /* New container for scrollable content inside the iPhone */
+        /* Unique CSS for scrollable content within the iPhone frame */
         .iphone-scrollable-content {
             height: 100%; /* Take full height of parent container */
             width: 100%;
@@ -807,7 +824,6 @@ filter: blur(4px);i
             gap: 1.5rem; /* Gap between content items */
             padding-left: 1rem;
             padding-right: 1rem;
-            /* No padding-top/bottom here, handled by iphone-scrollable-content */
         }
 
         .vertical-scroller-content img {
@@ -887,7 +903,7 @@ filter: blur(4px);i
             }
         }
 
-        /* MacBook Camera Dot */
+        /* Unique CSS for MacBook Camera Dot */
         #api-box::before {
             content: '';
             position: absolute;
@@ -916,20 +932,20 @@ filter: blur(4px);i
             border-top: 2px solid #444; /* Hinge line */
         }
 
-        /* Real-time clock */
+        /* Unique CSS for Real-time clock on MacBook */
         #macbook-clock {
-            position: absolute; /* Keep absolute to position over other content */
-            top: 25px; /* Adjust padding from top */
-            left: 25px; /* Adjust padding from left */
+            position: absolute;
+            top: 25px;
+            left: 25px;
             font-size: 1.2rem;
             font-weight: 600;
             color: #ccc;
-            z-index: 15; /* Higher z-index to always be on top */
+            z-index: 15;
         }
 
-        /* Main content containers within MacBook screen */
+        /* Unique CSS for MacBook screen content wrapper */
         .macbook-screen-content-wrapper {
-            position: absolute; /* Take full screen content area */
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
@@ -937,16 +953,16 @@ filter: blur(4px);i
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between; /* Distribute space for input/button at bottom */
-            padding: 25px; /* General padding for screen content */
-            padding-top: 60px; /* Adjust padding for the clock at the top */
+            justify-content: space-between;
+            padding: 25px;
+            padding-top: 60px;
             box-sizing: border-box;
         }
 
 
-        /* Input and Button Styling */
+        /* Unique CSS for Input and Button Styling */
         #inputFormContent {
-            display: flex; /* Ensure it's a flex container for its children */
+            display: flex;
             flex-direction: column;
             align-items: center;
             gap: 15px;
@@ -982,7 +998,7 @@ filter: blur(4px);i
             background-color: #e04a1b;
         }
 
-        /* Generation Progress Styling */
+        /* Unique CSS for Generation Progress */
         .generation-progress {
             display: none;
             flex-direction: column;
@@ -1010,7 +1026,7 @@ filter: blur(4px);i
             color: #f85922;
         }
 
-        /* Response Display Styling */
+        /* Unique CSS for Response Display */
         .response-display {
             display: none;
             position: absolute;
@@ -1185,7 +1201,7 @@ filter: blur(4px);i
             }
         }
 
-        /* Specific styles for the new footer section */
+        /* Specific styles for the podcast/footer section */
         .footer-podcast-section {
             background-color: #0d0d0d;
             color: #ffffff;
@@ -1241,8 +1257,7 @@ filter: blur(4px);i
         /* Responsive adjustments for the "VIEW ALL EPISODES" button */
         @media (max-width: 768px) {
             .podcast-header-bg {
-                /* Adjust padding to accommodate content and button in a flow layout */
-                padding-bottom: 4rem; /* Reduced padding from bottom to make space for button */
+                padding-bottom: 4rem;
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-start;
@@ -1250,13 +1265,14 @@ filter: blur(4px);i
             }
 
             .podcast-content-wrapper {
-                margin-bottom: 1.5rem; /* Space between text/icons and button */
-                width: 100%; /* Ensure content wrapper takes full width */
+                margin-bottom: 1.5rem;
+                width: 100%;
             }
 
-            .podcast-header-bg > .px-6.py-3 { /* Targeting the button directly */
-                position: static; /* Remove absolute positioning */
-                margin-top: 1rem; /* Add some space from the content above */
-                align-self: flex-end; /* Align button to the right */
+            .podcast-header-bg > .px-6.py-3 {
+                position: static;
+                margin-top: 1rem;
+                align-self: flex-end;
             }
-          }
+        }
+    </style>
