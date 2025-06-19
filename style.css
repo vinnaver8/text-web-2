@@ -754,4 +754,509 @@ filter: blur(4px);i
       cursor: pointer;
       }
 /* last section------------*/
- 
+       .vertical-scroller-container {
+            width: 320px; /* iPhone-like width */
+            height: 480px; /* Medium iPhone-like height */
+            background: #1c1c1c; /* Slightly brighter screen background */
+            border-radius: 40px; /* More rounded for iPhone look */
+            border: 10px solid #282828; /* Thicker, darker bezel */
+            box-sizing: border-box;
+            position: relative; /* For notch/speaker styling */
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.7), inset 0 0 15px rgba(255, 255, 255, 0.05); /* Outer shadow + subtle inner screen light */
+            overflow: hidden; /* Hide anything outside the main phone frame */
+        }
+
+        /* New div for the iPhone notch */
+        .iphone-notch {
+            position: absolute;
+            top: 10px; /* Position relative to the container's inner edge (adjust for border) */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 130px; /* Notch width */
+            height: 30px; /* Notch height */
+            background: #000;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            border: 1px solid #282828; /* Match the main border color */
+            box-sizing: border-box; /* Include border in size */
+            z-index: 100; /* Ensure notch is always on top */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5); /* Subtle shadow for depth */
+        }
+
+        /* New container for scrollable content inside the iPhone */
+        .iphone-scrollable-content {
+            height: 100%; /* Take full height of parent container */
+            width: 100%;
+            overflow-y: auto; /* Enable vertical scrolling for this content */
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+            padding-top: 4.5rem; /* Space for the fixed notch */
+            padding-bottom: 1rem;
+            box-sizing: border-box;
+            position: relative; /* Needed for z-index context if internal elements needs it */
+            z-index: 50; /* Ensure content is below notch */
+        }
+
+        .iphone-scrollable-content::-webkit-scrollbar {
+            display: none; /* Hide scrollbar for Chrome, Safari, Opera */
+        }
+
+        .vertical-scroller-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem; /* Gap between content items */
+            padding-left: 1rem;
+            padding-right: 1rem;
+            /* No padding-top/bottom here, handled by iphone-scrollable-content */
+        }
+
+        .vertical-scroller-content img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .vertical-scroller-content h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .vertical-scroller-content p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #ccc;
+        }
+
+
+        /* API Section (MacBook Layout) */
+        .macbook-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px; /* Adjusted wider for the full laptop */
+            margin-bottom: 30px; /* Space for the base */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 10px 60px rgba(0, 0, 0, 0.9); /* More prominent overall shadow */
+            border-radius: 18px; /* Overall rounded corners for the laptop */
+            background-color: #3a3a3a; /* Darker base color */
+        }
+
+        #api-box {
+            position: relative;
+            width: calc(100% - 10px); /* Account for thin screen border */
+            height: 380px; /* Restored fixed height for desktop */
+            background-color: #0d0d0d; /* Screen background */
+            border-radius: 12px 12px 0 0; /* Rounded top corners, sharp bottom for screen */
+            border: 4px solid #1a1a1a; /* Thicker, darker bezel */
+            box-sizing: border-box;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column; /* Use flex column for general layout */
+            align-items: center;
+            justify-content: flex-start; /* Align content to top initially */
+            aspect-ratio: 16 / 9; /* Typical laptop screen aspect ratio */
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.7), 0 5px 15px rgba(0,0,0,0.3); /* Inner screen depth + subtle screen shadow */
+            margin-top: 5px; /* Push down slightly from container top edge */
+            padding: 25px; /* General padding for screen content */
+        }
+
+        /* Media query for mobile-specific dimensions */
+        @media (max-width: 768px) {
+            .macbook-container {
+                width: 90vw; /* Make container fluid width */
+                max-width: none; /* Remove max-width constraint for container */
+            }
+            #api-box {
+                width: calc(100% - 10px); /* Use 100% width of the new fluid container with padding */
+                max-width: none; /* Remove max-width constraint for api-box */
+                min-height: 300px; /* Adjusted from fixed height to min-height for better content fit */
+                aspect-ratio: auto; /* Remove aspect ratio on mobile to allow fixed height */
+            }
+            /* Adjust content padding for smaller screen if needed */
+            #api-box .macbook-screen-content-wrapper {
+                padding: 20px; /* Adjusted padding for smaller screens */
+                padding-top: 60px; /* Adjusted padding for clock on smaller screens */
+            }
+            #macbook-clock {
+                font-size: 1rem; /* Smaller clock on mobile */
+                top: 20px; /* Adjusted position */
+                left: 20px; /* Adjusted position */
+            }
+        }
+
+        /* MacBook Camera Dot */
+        #api-box::before {
+            content: '';
+            position: absolute;
+            top: 15px; /* Position camera at top center */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 7px;
+            height: 7px;
+            background: #444;
+            border-radius: 50%;
+            z-index: 10;
+            box-shadow: 0 0 3px rgba(0,0,0,0.5);
+        }
+
+        .macbook-base {
+            width: 98%; /* Slightly narrower base than screen */
+            height: 35px; /* Thickness of the base/keyboard area */
+            background-color: #2b2b2b; /* Base color, slightly different from screen */
+            border-radius: 0 0 18px 18px; /* Rounded bottom corners matching container */
+            position: relative;
+            z-index: -1; /* Place behind the screen for hinge effect */
+            box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.3), 0 10px 20px rgba(0,0,0,0.5); /* Inner shadow for keyboard area + outer shadow */
+            margin-top: -15px; /* Overlap with screen for hinge effect */
+            transform: perspective(200px) rotateX(4deg); /* Slight 3D tilt for base */
+            transform-origin: top center;
+            border-top: 2px solid #444; /* Hinge line */
+        }
+
+        /* Real-time clock */
+        #macbook-clock {
+            position: absolute; /* Keep absolute to position over other content */
+            top: 25px; /* Adjust padding from top */
+            left: 25px; /* Adjust padding from left */
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #ccc;
+            z-index: 15; /* Higher z-index to always be on top */
+        }
+
+        /* Main content containers within MacBook screen */
+        .macbook-screen-content-wrapper {
+            position: absolute; /* Take full screen content area */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between; /* Distribute space for input/button at bottom */
+            padding: 25px; /* General padding for screen content */
+            padding-top: 60px; /* Adjust padding for the clock at the top */
+            box-sizing: border-box;
+        }
+
+
+        /* Input and Button Styling */
+        #inputFormContent {
+            display: flex; /* Ensure it's a flex container for its children */
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+            padding: 0 20px;
+            box-sizing: border-box;
+            margin-top: auto;
+        }
+
+        #apiQueryInput {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #555;
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: #2a2a2a;
+            color: #fff;
+            outline: none;
+        }
+
+        #generateResponseButton {
+            background-color: #f85922;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            width: 100%;
+        }
+
+        #generateResponseButton:hover {
+            background-color: #e04a1b;
+        }
+
+        /* Generation Progress Styling */
+        .generation-progress {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0d0d0d;
+            z-index: 10;
+            padding-top: 60px;
+            box-sizing: border-box;
+        }
+
+        .generation-progress p {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .dynamic-number {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #f85922;
+        }
+
+        /* Response Display Styling */
+        .response-display {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            text-align: left;
+            padding: 25px;
+            padding-top: 60px;
+            box-sizing: border-box;
+            background-color: #0d0d0d;
+            z-index: 10;
+            overflow-y: auto;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .response-display::-webkit-scrollbar {
+            display: none;
+        }
+
+        .response-display h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #f85922;
+        }
+
+        .response-display p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+
+        .response-display ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            color: #ccc;
+        }
+
+        .response-display .footer-text {
+            font-size: 0.75rem;
+            color: #555;
+            margin-top: auto;
+            padding-top: 15px;
+        }
+
+        /* Infinite Scroller (Developer Docs section) */
+        @layer demo {
+            .infinite-scroller-main-container {
+                --font-level: 5;
+                opacity: 1; /* Make visible initially */
+                width: 100%;
+                max-width: 600px;
+                height: 280px;
+                max-height: 100%;
+                display: flex;
+                place-items: center;
+                text-align: center;
+                position: relative;
+                background: #0D0D0D;
+                overflow: hidden;
+                border-radius: 12px;
+                border: 1px solid #333;
+                aspect-ratio: 3 / 3.5; /* Updated aspect ratio */
+
+                /* Apply mask for blur effect with sharper transitions */
+                mask-image: linear-gradient(
+                    to bottom,
+                    transparent 0%, /* Start fully transparent */
+                    transparent 15%, /* Transparent up to 15% */
+                    black 25%, /* Fully opaque by 25% */
+                    black 75%, /* Opaque until 75% */
+                    transparent 85%, /* Starts fading out at 85% */
+                    transparent 100% /* Fully transparent at 100% */
+                );
+                -webkit-mask-image: linear-gradient(
+                    to bottom,
+                    transparent 0%,
+                    transparent 15%,
+                    black 25%,
+                    black 75%,
+                    transparent 85%,
+                    transparent 100%
+                );
+            }
+
+            .infinite-scroller-main-container ul {
+                padding: 0;
+                margin: 0;
+                list-style-type: none;
+                text-transform: uppercase;
+                line-height: 1;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
+                sans-serif;
+                height: 1lh;
+                display: inline-grid;
+                position: relative;
+                padding-inline: 1em;
+                align-items: center;
+                align-content: center;
+                justify-content: center;
+                justify-items: center;
+                text-align: center;
+                width: 100%;
+            }
+
+            .infinite-scroller-main-container li {
+                display: inline-block;
+                width: fit-content;
+                height: 1lh;
+                grid-area: 1 / 1;
+                color: #666; /* Default dim color for non-highlighted text */
+                transition: color 0.2s ease-in-out; /* Smooth color transition */
+            }
+
+            .infinite-scroller-main-container .indicator {
+                --c: 0.3em;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                height: 1lh;
+                border: 0.05em solid oklch(0.75 1 var(--h, 320));
+                transition: width 0.25s, border-color 0.25s;
+                width: calc((var(--width) * 1px) + (var(--c) * 2));
+                border-radius: 8px;
+                opacity: 1; /* Ensure indicator is visible */
+            }
+        }
+
+        @layer base {
+            :root {
+                --font-size-min: 16;
+                --font-size-max: 20;
+                --font-ratio-min: 1.2;
+                --font-ratio-max: 1.33;
+                --font-width-min: 375;
+                --font-width-max: 1500;
+            }
+
+            :where(.fluid) {
+                --fluid-min: calc(
+                    var(--font-size-min) *
+                    pow(var(--font-ratio-min), var(--font-level, 0))
+                );
+                --fluid-max: calc(
+                    var(--font-size-max) *
+                    pow(var(--font-ratio-max), var(--font-level, 0))
+                );
+                --fluid-preferred: calc(
+                    (var(--fluid-max) - var(--fluid-min)) /
+                    (var(--font-width-max) - var(--font-width-min))
+                );
+                --fluid-type: clamp(
+                    (var(--fluid-min) / 16) * 1rem,
+                    ((var(--fluid-min) / 16) * 1rem) -
+                    (((var(--fluid-preferred) * var(--font-width-min)) / 16) * 1rem) +
+                    (var(--fluid-preferred) * var(--variable-unit, 100vi)),
+                    (var(--fluid-max) / 16) * 1rem
+                );
+                font-size: var(--fluid-type);
+            }
+
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+            }
+        }
+
+        /* Specific styles for the new footer section */
+        .footer-podcast-section {
+            background-color: #0d0d0d;
+            color: #ffffff;
+        }
+
+        .podcast-header-bg {
+            background-image: url('https://placehold.co/1200x400/1a1a1a/cccccc?text=Podcast+Header+Background');
+            background-size: cover;
+            background-position: center;
+            border-radius: 0.75rem; /* rounded-xl */
+            padding-top: 8rem; /* pb-32 */
+            padding-bottom: 8rem; /* pt-32 */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .podcast-header-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.4));
+            z-index: 1;
+        }
+
+        .podcast-content-wrapper {
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-icons a {
+            color: #ffffff;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .social-icons a:hover {
+            color: #f85922; /* Orange hover color */
+        }
+
+        .subscribe-button {
+            background-color: #92e604; /* Lime green color from image */
+            color: #000;
+            font-weight: 600;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .subscribe-button:hover {
+            background-color: #72b303; /* Darker lime green on hover */
+        }
+
+        /* Responsive adjustments for the "VIEW ALL EPISODES" button */
+        @media (max-width: 768px) {
+            .podcast-header-bg {
+                /* Adjust padding to accommodate content and button in a flow layout */
+                padding-bottom: 4rem; /* Reduced padding from bottom to make space for button */
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+            }
+
+            .podcast-content-wrapper {
+                margin-bottom: 1.5rem; /* Space between text/icons and button */
+                width: 100%; /* Ensure content wrapper takes full width */
+            }
+
+            .podcast-header-bg > .px-6.py-3 { /* Targeting the button directly */
+                position: static; /* Remove absolute positioning */
+                margin-top: 1rem; /* Add some space from the content above */
+                align-self: flex-end; /* Align button to the right */
+            }
+          }
